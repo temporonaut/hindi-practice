@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Закрепи урок играюче</title>
+    <meta name="description" content="Короткие игровые практики по материалам уроков хинди." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2319536b'/%3E%3Cpath d='M18 32h28M24 19v26M40 19v26' stroke='%23ff3b73' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='sans-serif' font-size='21' fill='white'%3Eहिं%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet" />
+      <style>
+:root { --ink:#19536b; --ink-dark:#123f53; --cream:#fff9f1; --paper:#fffdf9; --pink:#fa2f6a; --pink-dark:#df1551; --peach:#f6dec9; --line:#e7d9ca; --green:#288465; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; color:var(--ink-dark); font-family:"Nunito Sans", sans-serif; background:var(--cream); }
+button { font:inherit; }
+button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
+.app-shell { max-width:1000px; margin:0 auto; padding:0 30px 64px; position:relative; overflow:hidden; }
+.topbar { height:80px; display:flex; align-items:center; gap:16px; border-bottom:1px solid rgba(25,83,107,.14); }
+.brand { width:45px; height:45px; display:grid; place-items:center; border:1.5px solid var(--ink); border-radius:50%; color:var(--ink); font-family:"Noto Sans Devanagari"; font-size:20px; text-decoration:none; }
+.topbar p { margin:0; font-weight:900; letter-spacing:.02em; }
+.lesson-pill { margin-left:auto; padding:9px 14px; border-radius:999px; background:#e7f0ed; font-size:13px; font-weight:800; color:var(--ink); }.lesson-pill span{opacity:.5;padding:0 4px}
+.lesson-picker{padding:58px 8px 30px;max-width:660px}.lesson-picker h1{font-family:"Baloo 2",sans-serif;margin:0;color:var(--ink);font-size:clamp(43px,8vw,72px);line-height:.91;letter-spacing:-.04em}.lesson-picker h1 em{font-style:normal;color:var(--pink)}.lesson-list{display:grid;gap:12px;margin-top:28px}.lesson-card{width:100%;display:flex;align-items:center;gap:15px;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);text-align:left;color:var(--ink-dark)}.lesson-card.available{cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.lesson-card.available:hover{border-color:var(--pink);transform:translateY(-2px)}.lesson-number{width:43px;height:43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-weight:900}.lesson-card-copy{display:grid;gap:2px}.lesson-card-copy b{font-size:16px}.lesson-card-copy small{color:#6e8993;font-size:12px;font-weight:800}.lesson-arrow{margin-left:auto;font-size:27px;color:var(--pink);font-weight:900}.coming-soon{opacity:.58;background:#f8f3ec}.coming-soon .lesson-number{background:#b6c4c7}.soon-label{margin-left:auto;border-radius:999px;padding:5px 9px;background:#e9e1d6;color:#788b8e;font-size:11px;font-weight:900}
+.lesson-card.completed{border-color:#b9decf}.lesson-card.completed .lesson-number{background:var(--green)}.lesson-card.completed .lesson-arrow{color:var(--green)}
+.continue-card{width:100%;display:flex;align-items:center;gap:14px;margin:25px 0 0;padding:16px;border:0;border-radius:16px;background:var(--ink);color:white;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.16);transition:.18s}.continue-card:hover{transform:translateY(-2px);background:var(--ink-dark)}.continue-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--pink);font-size:23px;font-weight:900}.continue-copy{display:grid;gap:2px}.continue-copy small{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.72}.continue-copy b{font-size:16px}.continue-card .lesson-arrow{margin-left:auto;color:#fff}
+.hero { padding:58px 8px 35px; position:relative; max-width:660px; }.eyebrow { color:var(--pink); font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.12em; margin:0 0 12px; }.hero h1 { font-family:"Baloo 2", sans-serif; margin:0; color:var(--ink); font-size:clamp(43px,8vw,72px); line-height:.91; letter-spacing:-.04em; }.hero h1 em{font-style:normal;color:var(--pink)}.intro { max-width:550px; font-size:17px; line-height:1.5; margin:18px 0 28px; color:#416b7b; font-weight:700; }
+.lesson-picker{display:none}.selecting .lesson-picker{display:block}.selecting .hero,.selecting .rounds,.selecting .game-card{display:none}
+.progress-wrap{max-width:515px}.progress-label{display:flex;justify-content:space-between;color:#547583;font-weight:800;font-size:13px;margin-bottom:8px}.progress-track{height:9px;background:#f0e4d7;border-radius:8px;overflow:hidden}.progress-fill{height:100%;width:33.3%;background:var(--pink);border-radius:8px;transition:width .35s ease}
+.mandala{position:absolute;border:1px solid var(--peach);border-radius:50%;opacity:.75;pointer-events:none}.mandala::before,.mandala::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;inset:13px}.mandala::after{inset:28px}.mandala-one{width:174px;height:174px;right:-120px;top:25px}.mandala-two{width:72px;height:72px;right:34px;bottom:20px}
+.rounds { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:22px; }.round { display:flex; align-items:center; gap:10px; cursor:pointer; border:1px solid var(--line); border-radius:13px; padding:12px; background:transparent; color:#688491; text-align:left; transition:.2s; }.round span { width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#f0e7dc;font-size:13px;font-weight:900; }.round b {font-size:13px}.round.active{background:var(--ink);color:white;border-color:var(--ink)}.round.active span{background:var(--pink);color:white}.round.done{border-color:#b9decf;color:var(--green)}.round.done span{background:#dff0e8}
+.game-card { background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:clamp(25px,5vw,48px); box-shadow:0 16px 40px rgba(22,71,90,.07); min-height:400px; }.game-label{font-size:13px;color:var(--pink);font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}.game-title{font-family:"Baloo 2";font-size:33px;line-height:1.05;margin:0 0 10px;letter-spacing:-.025em}.game-description{color:#587684;font-weight:700;margin:0 0 30px;line-height:1.55}.scenario{background:#fff4f6;border-left:4px solid var(--pink);padding:17px 20px;border-radius:0 12px 12px 0;margin:0 0 26px;font-weight:800;line-height:1.5}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{cursor:pointer;background:white;border:1.5px solid #dce5e5;border-radius:14px;padding:17px;text-align:left;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:20px;font-weight:600;transition:.18s}.choice small{display:block;font-family:"Nunito Sans";font-size:12px;margin-top:3px;color:#718d98;font-weight:800}.choice:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.choice:disabled{cursor:default}.feedback{margin-top:22px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.next{margin-top:22px;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.next:hover{transform:translateY(-1px)}.next:active{transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}
+.sentence{font-family:"Noto Sans Devanagari";font-size:24px;line-height:1.7;background:#f7f4ee;border-radius:14px;padding:18px;margin-bottom:20px}.word-options{display:flex;gap:10px;flex-wrap:wrap}.word-option{border:1.5px solid var(--ink);border-radius:999px;background:white;padding:10px 16px;color:var(--ink);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;transition:.18s}.word-option:hover:not(:disabled){background:#e7f0ed}.word-option.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.word-option.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.opinion{display:grid;gap:12px}.opinion button{border:1.5px solid #dce5e5;background:#fff;border-radius:13px;text-align:left;padding:15px 18px;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:600}.finish{padding:15px;background:#fff4df;border-radius:13px;font-weight:800;line-height:1.5}.finish-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.finish-actions .next{margin-top:0}.restart{background:var(--ink);box-shadow:0 5px 0 var(--ink-dark)}.catalog{background:#e7f0ed;color:var(--ink);box-shadow:0 5px 0 #bfd4cd}.catalog:active{box-shadow:0 2px 0 #bfd4cd}
+.chat-window{border:1px solid #dce5e5;border-radius:16px;overflow:hidden;background:#f7f6f1;margin-bottom:16px}.chat-bar{display:flex;align-items:center;gap:10px;padding:12px 15px;background:white;border-bottom:1px solid #e5e6e2}.chat-avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-weight:900}.chat-bar b{display:block;font-size:14px}.chat-bar small{display:block;font-size:11px;color:var(--green);font-weight:800}.chat-progress{margin-left:auto;color:#78919b;font-size:12px;font-weight:900}.message{max-width:79%;padding:12px 14px;margin:16px;font-family:"Noto Sans Devanagari";font-size:17px;line-height:1.5}.incoming{border-radius:4px 14px 14px;background:white;box-shadow:0 2px 8px rgba(22,71,90,.07)}.outgoing{margin-left:auto;border-radius:14px 4px 14px 14px;background:#dff0e8;color:#20674f}.chat-hint{padding:0 16px 14px;color:#6d8891;font-size:12px;font-weight:800}.chat-choices{display:grid;gap:10px}.chat-choices .choice{font-size:17px}.chat-choices .choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.chat-choices .choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.match-column{display:grid;gap:9px}.match-column p{margin:0 0 2px;color:#6d8891;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match-card{min-height:56px;border:1.5px solid #dce5e5;border-radius:13px;padding:11px 13px;background:#fff;color:var(--ink-dark);text-align:center;cursor:pointer;font-weight:800;font-size:16px;transition:.18s}.match-column:first-child .match-card{font-family:"Noto Sans Devanagari";font-size:18px}.match-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.match-card.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.match-card.matched{background:#effaf5;border-color:var(--green);color:var(--green);cursor:default}.match-card.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
+@media(max-width:600px){.app-shell{padding:0 18px 36px}.topbar{height:65px}.topbar p{font-size:14px}.lesson-pill{font-size:11px;padding:7px 9px}.lesson-pill span{display:none}.hero{padding:38px 4px 27px}.mandala-one{right:-125px;top:3px}.mandala-two{display:none}.rounds{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;margin-right:-18px;scrollbar-width:none}.rounds::-webkit-scrollbar{display:none}.round{flex:0 0 auto;padding:9px 11px}.game-card{border-radius:18px;min-height:0}.game-title{font-size:29px}.choice-grid{grid-template-columns:1fr}.sentence{font-size:21px}.intro{font-size:15px}.match-grid{gap:9px}.match-card{padding:10px 7px;font-size:14px}.match-column:first-child .match-card{font-size:16px}}
+
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Хинди-практика, на главную"><span>हिं</span></a>
+        <p>Хинди-практика</p>
+        <div class="lesson-pill" id="lesson-pill">Урок 18 <span>·</span> Просьбы и мнение</div>
+      </header>
+
+      <section class="lesson-picker" id="lesson-picker" aria-labelledby="picker-title">
+        <p class="eyebrow">Хинди-практика</p>
+        <h1 id="picker-title">Выбери<br /><em>урок</em></h1>
+        <p class="intro">Короткие игровые практики по материалам занятий.</p>
+        <button class="continue-card" id="continue-lesson" type="button" hidden>
+          <span class="continue-icon">↻</span>
+          <span class="continue-copy"><small id="continue-kicker">Продолжить урок</small><b id="continue-title"></b></span>
+          <span class="lesson-arrow">→</span>
+        </button>
+        <div class="lesson-list">
+          <button class="lesson-card available" data-lesson="17" type="button">
+            <span class="lesson-number">17</span>
+            <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>5 заданий · 3-7 минут</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
+          <button class="lesson-card available" data-lesson="18" type="button">
+            <span class="lesson-number">18</span>
+            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>5 заданий · 3-7 минут</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
+          <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
+            <span class="lesson-number">19</span>
+            <span class="lesson-card-copy"><b>Следующий урок</b><small>Скоро появится</small></span>
+            <span class="soon-label">скоро</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="mandala mandala-one"></div><div class="mandala mandala-two"></div>
+        <p class="eyebrow">Мини-игра · 5 заданий</p>
+        <h1>Закрепи урок<br /><em>играюче</em></h1>
+        <p class="intro" id="lesson-subtitle">Научимся просить, отказывать и выражать своё мнение.</p>
+        <div class="progress-wrap"><div class="progress-label"><span id="progress-text">Задание 1 из 5</span><span id="score-text">0 баллов</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
+      </section>
+
+      <nav class="rounds" aria-label="Задания">
+        <button class="round active" data-round="0"><span>1</span><b>Найти пару</b></button>
+        <button class="round" data-round="1"><span>2</span><b>Попросить</b></button>
+        <button class="round" data-round="2"><span>3</span><b>Вставить слово</b></button>
+        <button class="round" data-round="3"><span>4</span><b>Своё мнение</b></button>
+        <button class="round" data-round="4"><span>5</span><b>Мини-чат</b></button>
+      </nav>
+
+      <section class="game-card" id="game-card" aria-live="polite"></section>
+    </main>
+      <script type="module">
+{
+const lesson18 = {
+  id: '18',
+  title: 'Как попросить, отказаться, рассказать о своём мнении',
+  subtitle: 'Научимся просить, отказывать и выражать своё мнение.',
+  maxScore: 7,
+  requestPool: [
+    { scenario: 'Ты хочешь узнать у друга, во сколько начинается фильм.', correct: 'पूछना', other: 'माँगना' },
+    { scenario: 'Ты просишь у друга помочь тебе с переездом.', correct: 'माँगना', other: 'पूछना' },
+    { scenario: 'Тебе нужно спросить маму, какое задание дала работнице.', correct: 'पूछना', other: 'माँगना' }
+  ],
+  fillPool: [
+    { sentence: 'नई झाड़ू चाहिए, तुम मंडी जाकर ______ ।', correct: 'माँगो', other: ['माँगी', 'पूछ रही'], explanation: 'Верно. Здесь просьба во втором лице: «сходи на рынок и попроси».' },
+    { sentence: 'मेरी बीवी ने उच्च गुणवत्ता की नयी साड़ी ______ है ।', correct: 'माँगी', other: ['माँगो', 'पूछ रही'], explanation: 'Точно! मेरी बीवी — женский род, поэтому माँगी: «моя жена попросила».' },
+    { sentence: 'कूड़ा कौन फ़ेंकेगा और कील कौन लगायेगा, मैं तुझ से ______ हूँ ।', correct: 'पूछ रही', other: ['माँगी', 'माँगते'], explanation: 'Верно. Здесь речь о вопросе: «я спрашиваю тебя».' },
+    { sentence: 'लड़केवाले दहेज के लिए एक गाड़ी और सोने के गहने ______ हैं ।', correct: 'माँगते', other: ['माँगो', 'पूछ रही'], explanation: 'Да. लड़केवाले — множественное число, поэтому माँगते.' },
+    { sentence: 'कांग्रेस वाले नेता ने एक करोड़ की रिश्वत ______ थी ।', correct: 'माँगी', other: ['माँगो', 'पूछ रही'], explanation: 'Верно. रिश्वत «попросил» — माँगी.' }
+  ],
+  opinionPool: [
+    { scenario: '«В Индии есть только 28 языков».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Да. मुझ को शक है — буквально «у меня есть сомнение», то есть «я сомневаюсь».' },
+    { scenario: '«Хинди и урду — это один и тот же язык».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Верно: эта фраза выражает сомнение в утверждении.' },
+    { scenario: '«Мыть волосы мылом — лучший способ».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Точно. Для осторожного несогласия подходит «я сомневаюсь».' }
+  ],
+  matchingRound: {
+    type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини слова', description: 'Нажми карточку на хинди и её русский перевод. Можно начинать с любой стороны.',
+    pairs: [
+      { key: 'ask', hi: 'पूछना', ru: 'спросить' },
+      { key: 'request', hi: 'माँगना', ru: 'просить' },
+      { key: 'refuse', hi: 'इंकार करना', ru: 'отказываться' },
+      { key: 'doubt', hi: 'शक है', ru: 'сомневаюсь' },
+      { key: 'forgive', hi: 'माफ़ी माँगना', ru: 'просить прощения' },
+      { key: 'agree', hi: 'सहमत हूँ', ru: 'согласен / согласна' },
+      { key: 'accept', hi: 'मंज़ूर है', ru: 'согласен / согласна' },
+      { key: 'sure', hi: 'भरोसा है', ru: 'уверен / уверена' },
+      { key: 'know', hi: 'मालूम है', ru: 'знаю' },
+      { key: 'seems', hi: 'लगता है', ru: 'мне кажется' },
+      { key: 'doesntmatter', hi: 'फ़र्क नहीं पड़ता', ru: 'мне всё равно' },
+      { key: 'certain', hi: 'पक्का', ru: 'точно!' }
+    ]
+  },
+  chatRound: {
+    type: 'chat', label: 'Задание 5 · отказ в общении', title: 'Поставь границу', description: 'Незнакомец продолжает писать. Отвечай спокойно и твёрдо.',
+    dialogue: [
+      { message: 'गुड मॉर्निंग स्वीटी । आप कहाँ रहती हो?', correct: 'मुझे आप से बात नहीं करनी है ।', other: ['मैं आप की बात मानती हूँ ।', 'चलेगा!'], explanation: 'Хорошее начало: «Я не хочу с вами разговаривать».' },
+      { message: 'मैं ने आपकी वीडियो देखी, बिंदास है ।', correct: 'कृपया, मुझे मेसेज मत कीजिए ।', other: ['मुझ को भरोसा है ।', 'मैं आप से सहमत हूँ ।'], explanation: 'Верно. Это вежливое, но ясное: «Пожалуйста, не пишите мне».' },
+      { message: 'मेरी गर्लफ्रेंड नहीं है, क्या आप मुझ से दोस्ती करोगी?', correct: 'मैं इस को मना करती हूँ ।', other: ['मैं आप की बात मानती हूँ ।', 'पक्का!'], explanation: 'Отлично. «Я отказываюсь от этого» — финальная и однозначная граница.' }
+    ]
+  }
+};
+
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const options = (correct, other) => {
+  const choices = shuffle([correct, ...other]);
+  return { choices, answer: choices.indexOf(correct) };
+};
+
+function createLesson18Rounds() {
+  const request = pick(lesson18.requestPool);
+  const fill = pick(lesson18.fillPool);
+  const opinion = pick(lesson18.opinionPool);
+  const matchingPairs = pickSome(lesson18.matchingRound.pairs, 4);
+  const chat = {
+    ...lesson18.chatRound,
+    dialogue: lesson18.chatRound.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) }))
+  };
+  return [
+    { ...lesson18.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { type: 'choice', label: 'Задание 2 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
+    { type: 'fill', label: 'Задание 3 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'opinion', label: 'Задание 4 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
+    chat
+  ];
+}
+
+Object.assign(globalThis, { lesson18, createLesson18Rounds });
+}
+{
+const lesson17 = {
+  id: '17',
+  title: 'Как начать и закончить разговор',
+  subtitle: 'Научимся здороваться, поддерживать small talk и уместно прощаться.',
+  maxScore: 7,
+  matchingRound: {
+    type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини фразы', description: 'Нажми фразу на хинди и её русский смысл. Можно начинать с любой стороны.',
+    pairs: [
+      { key: 'namaste', hi: 'नमस्ते', ru: 'здравствуйте / до свидания' },
+      { key: 'namaskar', hi: 'नमस्कार', ru: 'официальное приветствие' },
+      { key: 'ram', hi: 'राम-राम', ru: 'приветствие, иногда прощание' },
+      { key: 'pranam', hi: 'प्रणाम', ru: 'здравствуйте; кланяюсь вам' },
+      { key: 'sikh', hi: 'सत श्री अकाल', ru: 'приветствие сикхов' },
+      { key: 'salaam', hi: 'सलाम', ru: 'мусульманское приветствие' },
+      { key: 'radhe', hi: 'राधे-राधे', ru: 'приветствие и прощание в северной Индии' },
+      { key: 'again', hi: 'फिर मिलेंगे', ru: 'до скорой встречи' },
+      { key: 'care', hi: 'अपना ध्यान रखना', ru: 'береги себя' },
+      { key: 'day', hi: 'आपका दिन अच्छा हो', ru: 'хорошего дня' },
+      { key: 'leave', hi: 'ठीक है, चलते हैं', ru: 'ну хорошо, расходимся' },
+      { key: 'tata', hi: 'टाटा', ru: 'пока' },
+      { key: 'goodbye', hi: 'अलविदा', ru: 'прощай при долгой разлуке' }
+    ]
+  },
+  contextPool: [
+    { scenario: 'Ты приехал в Пенджаб и заходишь в местный магазин, где стоит мужчина в тюрбане.', correct: 'सत श्री अकाल', other: ['राधे-राधे', 'शुभ प्रभात'], explanation: 'Верно. सत श्री अकाल — традиционное приветствие у сикхов.' },
+    { scenario: 'Ты пишешь современному индийскому сверстнику в чате.', correct: 'हाय, सब कैसा चल रहा है?', other: ['प्रणाम, आप कैसे हैं?', 'शुभ प्रभात, क्या हाल है आपका?'], explanation: 'Да, такое начало звучит естественно и современно.' },
+    { scenario: 'Ты прощаешься с коллегой в офисе и увидишь его завтра утром.', correct: 'टाटा, फिर मिलेंगे!', other: ['अलविदा, अपना खयाल रखना।', 'हेलो, शुभ रात्री।'], explanation: 'Верно. अलविदा говорят при долгой или маловероятной разлуке.' },
+    { scenario: 'Ты прощаешься с мусульманским соседом после короткого разговора.', correct: 'खुदा हाफिज', other: ['सत श्री अकाल', 'शुभ प्रभात'], explanation: 'Верно. खुदा हाफिज — распространённое мусульманское прощание.' }
+  ],
+  fillPool: [
+    { sentence: 'अच्छा, दोपहर की मीटिंग में ______!', correct: 'फिर मिलेंगे', other: ['अलविदा', 'सत श्री अकाल'], explanation: 'Точно: «увидимся на дневной встрече» — फिर मिलेंगे.' },
+    { sentence: 'रात हो गई है, ______। कल सुबह बात करते हैं।', correct: 'ठीक है, चलते हैं', other: ['शुभ प्रभात', 'प्रणाम'], explanation: 'Верно. ठीक है, चलते हैं — «ну хорошо, расходимся».' },
+    { sentence: 'अपना और परिवार का ______।', correct: 'ध्यान रखना', other: ['काम-धंधा', 'क्या हाल है'], explanation: 'Да. Это пожелание: «береги себя и семью».' },
+    { sentence: 'छुट्टी पर जाने से पहले коллега говорит: «______!»', correct: 'आपका दिन अच्छा हो', other: ['काम-धंधा कैसा है', 'बाल-बच्चे कैसे हैं'], explanation: 'Верно. आपका दिन अच्छा हो — доброжелательное «хорошего дня».' }
+  ],
+  goodbyePool: [
+    { scenario: 'Ты долго не увидишь друга: он уезжает в другую страну.', correct: 'अलविदा', other: ['टाटा', 'हाय'], explanation: 'Верно. अलविदा уместно при долгой разлуке, когда следующая встреча маловероятна.' },
+    { scenario: 'Ты в северной Индии во время Холи и хочешь поздороваться или попрощаться.', correct: 'राधे-राधे', other: ['सलाम', 'काम-धंधा कैसा है?'], explanation: 'Да. राधे-राधे используют и как приветствие, и как прощание.' }
+  ],
+  chatPool: [
+    {
+      type: 'chat', label: 'Задание 5 · мини-чат', title: 'Начни разговор', description: 'Поздоровайся, поддержи короткий разговор и заверши его естественно.',
+      dialogue: [
+        { message: 'हाय! बहुत दिनों बाद मिले!', correct: 'हाय! सब कैसा चल रहा है?', other: ['अलविदा!', 'अपना ध्यान रखना।'], explanation: 'Отличное начало: дружелюбное «Привет! Как у тебя всё?».' },
+        { message: 'सब मस्त है। स्कूल प्रोजेक्ट भी अच्छा चल रहा है।', correct: 'बहुत बढ़िया!', other: ['शुभ रात्री!', 'सत श्री अकाल!'], explanation: 'Верно. बहुत बढ़िया — «очень здорово».' },
+        { message: 'चलो, अब मुझे जाना है।', correct: 'ठीक है, फिर मिलेंगे!', other: ['अलविदा!', 'प्रणाम!'], explanation: 'Идеально для скорой следующей встречи: «хорошо, увидимся».' }
+      ]
+    },
+    {
+      type: 'chat', label: 'Задание 5 · мини-чат', title: 'Поддержи разговор', description: 'Ответь на вопросы соседей и закончи беседу естественно.',
+      dialogue: [
+        { message: 'नमस्कार! दुकान पर रौनक कैसी है?', correct: 'काम-धंधा अच्छा चल रहा है।', other: ['अलविदा!', 'शुभ रात्री!'], explanation: 'Верно: на вопрос о делах и торговле уместно ответить о работе.' },
+        { message: 'त्योहारों का सीज़न है, तो काम अच्छा है। और घर पर सब ठीक है?', correct: 'हाँ, भगवान की कृपा है।', other: ['सत श्री अकाल!', 'टाटा!'], explanation: 'Да, это естественный ответ на вопрос о семье.' },
+        { message: 'अच्छा, रात हो गई है। कल सुबह बात करते हैं।', correct: 'ठीक है, चलते हैं।', other: ['आप कैसे हैं?', 'प्रणाम!'], explanation: 'Идеально: «ну хорошо, расходимся».' }
+      ]
+    }
+  ]
+};
+
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const options = (correct, other) => {
+  const choices = shuffle([correct, ...other]);
+  return { choices, answer: choices.indexOf(correct) };
+};
+
+function createLesson17Rounds() {
+  const context = pick(lesson17.contextPool);
+  const fill = pick(lesson17.fillPool);
+  const goodbye = pick(lesson17.goodbyePool);
+  const matchingPairs = pickSome(lesson17.matchingRound.pairs, 4);
+  const chatSource = pick(lesson17.chatPool);
+  const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
+  return [
+    { ...lesson17.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { type: 'choice', label: 'Задание 2 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
+    { type: 'fill', label: 'Задание 3 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'choice', label: 'Задание 4 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
+    chat
+  ];
+}
+
+Object.assign(globalThis, { lesson17, createLesson17Rounds });
+}
+const { lesson18, createLesson18Rounds, lesson17, createLesson17Rounds } = globalThis;
+
+const lessons = {
+  '17': { data: lesson17, createRounds: createLesson17Rounds },
+  '18': { data: lesson18, createRounds: createLesson18Rounds }
+};
+let activeLesson = lessons['18'];
+let rounds = activeLesson.createRounds();
+let current = 0;
+let score = 0;
+let completed = new Set();
+let chatStep = 0;
+let chatAnswers = [];
+let mistakes = [];
+let mistakeKeys = new Set();
+let reviewIndex = 0;
+let matchSelection = null;
+let matchedPairs = new Set();
+let matchLocked = false;
+let completingPending = false;
+const card = document.querySelector('#game-card');
+const progress = document.querySelector('#progress-fill');
+const appShell = document.querySelector('.app-shell');
+const lessonCards = document.querySelectorAll('[data-lesson]');
+const brand = document.querySelector('.brand');
+const lessonPill = document.querySelector('#lesson-pill');
+const lessonSubtitle = document.querySelector('#lesson-subtitle');
+const roundsNav = document.querySelector('.rounds');
+const continueLesson = document.querySelector('#continue-lesson');
+const continueKicker = document.querySelector('#continue-kicker');
+const continueTitle = document.querySelector('#continue-title');
+const progressStorageKey = 'hindi-practice-progress-v1';
+let learningProgress = loadLearningProgress();
+
+function totalPoints() { return rounds.reduce((sum, round) => sum + (round.type === 'chat' ? round.dialogue.length : 1), 0); }
+function total() { return rounds.length; }
+function loadLearningProgress() {
+  try { return JSON.parse(localStorage.getItem(progressStorageKey)) || {}; }
+  catch { return {}; }
+}
+function updateCatalogProgress() {
+  lessonCards.forEach(cardButton => {
+    const entry = learningProgress[cardButton.dataset.lesson];
+    const meta = cardButton.querySelector('small');
+    const lesson = lessons[cardButton.dataset.lesson].data;
+    cardButton.classList.toggle('completed', Boolean(entry?.completed));
+    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : '5 заданий · 3-7 минут';
+  });
+  const lastId = learningProgress.lastLessonId || '17';
+  const lastLesson = lessons[lastId]?.data;
+  if (lastLesson) {
+    continueLesson.hidden = false;
+    continueKicker.textContent = learningProgress[lastId]?.completed ? 'Повторить урок' : 'Продолжить урок';
+    continueTitle.textContent = `Урок ${lastLesson.id} · ${lastLesson.title}`;
+  }
+}
+function saveLastOpenedLesson(id) {
+  learningProgress.lastLessonId = id;
+  try { localStorage.setItem(progressStorageKey, JSON.stringify(learningProgress)); }
+  catch { /* Игра остаётся рабочей, если браузер запретил локальное хранилище. */ }
+  updateCatalogProgress();
+}
+function saveCompletedLesson() {
+  const id = activeLesson.data.id;
+  const oldScore = learningProgress[id]?.bestScore || 0;
+  learningProgress[id] = { completed: true, bestScore: Math.max(oldScore, score) };
+  try { localStorage.setItem(progressStorageKey, JSON.stringify(learningProgress)); }
+  catch { /* Игра остаётся рабочей, если браузер запретил локальное хранилище. */ }
+  updateCatalogProgress();
+}
+function resetProgress() {
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; completingPending = false;
+}
+function updateLessonChrome() {
+  const { id, title, subtitle } = activeLesson.data;
+  lessonPill.innerHTML = `Урок ${id} <span>·</span> ${title}`;
+  lessonSubtitle.textContent = subtitle;
+  document.title = `Закрепи урок играюче — урок ${id}`;
+}
+function renderNavigation() {
+  roundsNav.innerHTML = rounds.map((round, index) => {
+    const label = round.label.split('·')[1].trim();
+    return `<button class="round${index === current ? ' active' : ''}" data-round="${index}" aria-current="${index === current ? 'step' : 'false'}"><span>${index + 1}</span><b>${label.charAt(0).toUpperCase() + label.slice(1)}</b></button>`;
+  }).join('');
+  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } render(); }));
+}
+
+function scoreWord(value) { return value === 1 ? 'балл' : value > 1 && value < 5 ? 'балла' : 'баллов'; }
+function updateHeader() {
+  document.querySelector('#progress-text').textContent = `Задание ${current + 1} из ${total()}`;
+  document.querySelector('#score-text').textContent = `${score} ${scoreWord(score)}`;
+  progress.style.width = `${(current + 1) / total() * 100}%`;
+  document.querySelectorAll('.round').forEach((button, index) => button.classList.toggle('active', index === current));
+}
+function answersMarkup(answers, className = 'choice-grid') {
+  return `<div class="${className}">${answers.map((answer, index) => `<button class="choice" data-answer="${index}">${answer}</button>`).join('')}</div>`;
+}
+function chatMarkup(item) {
+  const stage = item.dialogue[chatStep];
+  const history = item.dialogue.slice(0, chatStep).map((line, index) => `<div class="message incoming">${line.message}</div><div class="message outgoing">${line.choices[chatAnswers[index]]}</div>`).join('');
+  return `<div class="chat-window"><div class="chat-bar"><span class="chat-avatar">A</span><div><b>Аджай</b><small>в сети</small></div><span class="chat-progress">${chatStep + 1}/${item.dialogue.length}</span></div>${history}<div class="message incoming">${stage.message}</div><div class="chat-hint">Выбери ответ:</div></div>${answersMarkup(stage.choices, 'chat-choices')}`;
+}
+function matchMarkup(item) {
+  const cards = (items, side) => items.map(pair => `<button class="match-card" data-match data-side="${side}" data-key="${pair.key}">${side === 'hi' ? pair.hi : pair.ru}</button>`).join('');
+  return `<div class="match-grid"><div class="match-column"><p>Хинди</p>${cards(item.hindi, 'hi')}</div><div class="match-column"><p>Русский</p>${cards(item.russian, 'ru')}</div></div>`;
+}
+function render() {
+  updateHeader();
+  const item = rounds[current];
+  let inner = `<p class="game-label">${item.label}</p><h2 class="game-title">${item.title}</h2><p class="game-description">${item.description}</p>`;
+  if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
+  if (item.type === 'choice' || item.type === 'opinion') inner += answersMarkup(item.choices, item.type === 'opinion' ? 'opinion' : 'choice-grid');
+  if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div><div class="word-options">${item.choices.map((option, index) => `<button class="word-option" data-answer="${index}">${option}</button>`).join('')}</div>`;
+  if (item.type === 'match') inner += matchMarkup(item);
+  if (item.type === 'chat') inner += chatMarkup(item);
+  card.innerHTML = inner;
+  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
+  card.querySelectorAll('[data-match]').forEach(button => button.addEventListener('click', () => selectMatch(button)));
+  matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
+}
+function showFeedback(correct, explanation) {
+  const feedback = document.createElement('div');
+  feedback.className = 'feedback';
+  feedback.textContent = correct ? explanation : 'Почти! Посмотри на выделенный правильный вариант — и запомни его.';
+  card.append(feedback);
+}
+function addNext(label, callback) {
+  const next = document.createElement('button');
+  next.className = 'next';
+  next.textContent = label;
+  next.addEventListener('click', () => {
+    callback();
+    requestAnimationFrame(() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start', inline: 'nearest' });
+    });
+  });
+  card.append(next);
+  requestAnimationFrame(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    next.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center', inline: 'nearest' });
+  });
+}
+function updateScoreText() {
+  document.querySelector('#score-text').textContent = `${score} ${scoreWord(score)}`;
+}
+function rememberMistake() {
+  if (mistakeKeys.has(current)) return;
+  mistakeKeys.add(current);
+  mistakes.push(current);
+}
+function selectMatch(button) {
+  if (matchLocked || button.disabled) return;
+  const candidate = { side: button.dataset.side, key: button.dataset.key, button };
+  if (!matchSelection || matchSelection.side === candidate.side) {
+    card.querySelectorAll('.match-card.selected').forEach(cardButton => cardButton.classList.remove('selected'));
+    matchSelection = candidate;
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed', 'true');
+    return;
+  }
+  matchLocked = true;
+  if (matchSelection.key === candidate.key) {
+    matchedPairs.add(candidate.key);
+    card.querySelectorAll(`[data-key="${candidate.key}"]`).forEach(cardButton => { cardButton.classList.remove('selected'); cardButton.classList.add('matched'); cardButton.setAttribute('aria-pressed', 'false'); cardButton.disabled = true; });
+    matchSelection = null;
+    matchLocked = false;
+    if (matchedPairs.size === rounds[current].pairs.length) {
+      score++;
+      completed.add(current);
+      document.querySelectorAll('.round')[current].classList.add('done');
+      showFeedback(true, 'Все пары собраны. Отличная работа!');
+      addNext('Следующее задание →', () => { current++; render(); });
+      updateHeader();
+    }
+    return;
+  }
+  matchSelection.button.classList.add('wrong');
+  button.classList.add('wrong');
+  window.setTimeout(() => {
+    matchSelection?.button.classList.remove('selected', 'wrong');
+    matchSelection?.button.setAttribute('aria-pressed', 'false');
+    button.classList.remove('wrong');
+    matchSelection = null;
+    matchLocked = false;
+  }, 550);
+}
+function answer(selected, button) {
+  const item = rounds[current];
+  const stage = item.type === 'chat' ? item.dialogue[chatStep] : item;
+  const correct = selected === stage.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === stage.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) score++;
+  if (item.type !== 'chat') {
+    if (!correct) rememberMistake();
+    if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+    showFeedback(correct, stage.explanation);
+    addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+      if (completingPending) { finish(); return; }
+      if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+    });
+    updateHeader();
+    return;
+  }
+  if (correct) {
+    chatAnswers[chatStep] = selected;
+    const response = document.createElement('div');
+    response.className = 'message outgoing';
+    response.textContent = stage.choices[selected];
+    card.querySelector('.chat-window').append(response);
+  }
+  showFeedback(correct, stage.explanation);
+  const finalLine = chatStep === item.dialogue.length - 1;
+  addNext(correct ? (finalLine ? 'Посмотреть результат →' : 'Продолжить чат →') : 'Попробовать ещё раз →', () => {
+    if (!correct) { render(); return; }
+    if (finalLine) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); startReviewOrFinish(); }
+    else { chatStep++; render(); }
+  });
+  updateHeader();
+}
+function startReviewOrFinish() {
+  if (!mistakes.length) { finish(); return; }
+  reviewIndex = 0;
+  renderReview();
+}
+function renderReview() {
+  const item = rounds[mistakes[reviewIndex]];
+  progress.style.width = '100%';
+  document.querySelector('#progress-text').textContent = `Повтор ошибок · ${reviewIndex + 1} из ${mistakes.length}`;
+  updateScoreText();
+  let inner = `<p class="game-label">Финальный раунд · повтор</p><h2 class="game-title">Закрепим ещё раз</h2><p class="game-description">Эта карточка уже встречалась. Выбери правильный ответ — и урок будет пройден.</p>`;
+  if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
+  if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div>`;
+  inner += answersMarkup(item.choices, item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid');
+  card.innerHTML = inner;
+  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
+}
+function reviewAnswer(selected, button, item) {
+  const correct = selected === item.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === item.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) { score++; completed.add(mistakes[reviewIndex]); }
+  showFeedback(correct, correct ? 'Готово — теперь этот ответ закреплён.' : 'Правильный вариант уже выделен. Запомни его и двигайся дальше.');
+  addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+    if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+  });
+  updateScoreText();
+}
+function finish() {
+  const pending = rounds.findIndex((_, index) => !completed.has(index));
+  if (pending !== -1) {
+    completingPending = true;
+    card.innerHTML = `<p class="game-label">Ещё не всё</p><h2 class="game-title">Осталось одно дело</h2><div class="finish">Чтобы завершить урок и сохранить результат, пройди все задания.</div><button class="next restart" id="continue-lesson">К незавершённому заданию</button>`;
+    document.querySelector('#continue-lesson').addEventListener('click', () => { current = pending; render(); });
+    return;
+  }
+  completingPending = false;
+  saveCompletedLesson();
+  progress.style.width = '100%';
+  document.querySelector('#progress-text').textContent = 'Урок пройден';
+  card.innerHTML = `<p class="game-label">Готово · Урок ${activeLesson.data.id}</p><h2 class="game-title">Хорошая практика!</h2><div class="finish">Твой результат: <strong>${score} из ${totalPoints()}</strong>.<br>Нажми «Пройти ещё раз» — попадутся другие фразы и порядок ответов.</div><div class="finish-actions"><button class="next restart" id="restart">Пройти ещё раз</button><button class="next catalog" id="all-lessons">Ко всем урокам</button></div>`;
+  document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(); resetProgress(); renderNavigation(); render(); });
+  document.querySelector('#all-lessons').addEventListener('click', () => openCatalog());
+}
+function openLesson(lessonId) {
+  activeLesson = lessons[lessonId];
+  saveLastOpenedLesson(lessonId);
+  rounds = activeLesson.createRounds();
+  resetProgress();
+  updateLessonChrome();
+  renderNavigation();
+  appShell.classList.remove('selecting');
+  render();
+}
+function openCatalog(event) {
+  event?.preventDefault();
+  appShell.classList.add('selecting');
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+lessonCards.forEach(cardButton => cardButton.addEventListener('click', () => openLesson(cardButton.dataset.lesson)));
+continueLesson.addEventListener('click', () => openLesson(learningProgress.lastLessonId || '17'));
+brand.addEventListener('click', openCatalog);
+appShell.classList.add('selecting');
+updateLessonChrome();
+renderNavigation();
+updateCatalogProgress();
+render();
+
+    </script>
+  </body>
+</html>
