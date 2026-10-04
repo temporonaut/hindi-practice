@@ -440,6 +440,7 @@ function recordPracticeResult(item, correct) {
   const entry = lessonStats[item.trainingTag] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
   entry.attempts++;
   if (!correct) entry.mistakes++;
+  if (correct && mode === 'practice') entry.mistakes = Math.max(0, entry.mistakes - 1);
   entry.lastSeen = Date.now();
   savePracticeProgress();
   updateCatalogProgress();
