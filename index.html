@@ -47,7 +47,9 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.match-column{display:grid;gap:9px}.match-column p{margin:0 0 2px;color:#6d8891;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match-card{min-height:56px;border:1.5px solid #dce5e5;border-radius:13px;padding:11px 13px;background:#fff;color:var(--ink-dark);text-align:center;cursor:pointer;font-weight:800;font-size:16px;transition:.18s}.match-column:first-child .match-card{font-family:"Noto Sans Devanagari";font-size:18px}.match-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.match-card.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.match-card.matched{background:#effaf5;border-color:var(--green);color:var(--green);cursor:default}.match-card.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
 @media(max-width:600px){body{background:var(--cream)}body::before,body::after{display:none}.app-shell{padding:0 18px 36px;box-shadow:none}.topbar{height:65px}.topbar p{font-size:14px}.lesson-pill{font-size:11px;padding:7px 9px}.lesson-pill span{display:none}.hero{padding:38px 4px 27px}.mandala-one{right:-125px;top:3px}.mandala-two{display:none}.rounds{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;margin-right:-18px;scrollbar-width:none}.rounds::-webkit-scrollbar{display:none}.round{flex:0 0 auto;padding:9px 11px}.game-card{border-radius:18px;min-height:0}.game-title{font-size:29px}.choice-grid{grid-template-columns:1fr}.sentence{font-size:21px}.intro{font-size:15px}.match-grid{gap:9px}.match-card{padding:10px 7px;font-size:14px}.match-column:first-child .match-card{font-size:16px}}
 .semantic-board{position:relative;padding:2px 0 0}.semantic-hint{margin:0 0 14px;color:#6d8891;text-align:center;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.semantic-center{position:relative;z-index:1;width:min(184px,56vw);aspect-ratio:1;display:grid;place-items:center;margin:0 auto 19px;border:2px solid var(--ink);border-radius:50%;background:#e7f0ed;color:var(--ink);box-shadow:0 10px 0 rgba(25,83,107,.08)}.semantic-center::before,.semantic-center::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;pointer-events:none;z-index:0}.semantic-center::before{inset:-9px}.semantic-center::after{inset:-17px;opacity:.58}.semantic-center span{position:relative;z-index:1;display:block;max-width:78%;font-family:"Noto Sans Devanagari";font-size:28px;font-weight:800;line-height:1.25;text-align:center}.semantic-cloud{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 9px;max-width:650px;margin:0 auto}.semantic-chip{border:1.5px solid #dce5e5;border-radius:999px;padding:10px 14px;background:#fff;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.15;transition:.18s}.semantic-chip:nth-child(3n+2){transform:translateY(4px)}.semantic-chip:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(2px)}.semantic-chip.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.semantic-chip.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.semantic-chip.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.semantic-chip.missed{box-shadow:0 0 0 3px rgba(40,132,101,.13)}.semantic-chip:disabled{cursor:default}.semantic-check{display:block;margin:25px auto 0;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.semantic-check:hover:not(:disabled){transform:translateY(-1px)}.semantic-check:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}.semantic-check:disabled{cursor:default;opacity:.46;box-shadow:none}
+.order-board{max-width:690px;margin:0 auto}.order-slots{display:grid;gap:8px;min-height:74px;padding:13px;background:#f7f4ee;border:1px dashed #d9d0c5;border-radius:16px}.order-empty{margin:auto;color:#758d96;font-size:14px;font-weight:800}.order-slot,.order-card{border:1.5px solid #dce5e5;border-radius:13px;background:#fff;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.4;text-align:left}.order-slot{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer}.order-slot span{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font-family:"Nunito Sans",sans-serif;font-size:12px;font-weight:900}.order-slot:hover:not(:disabled){border-color:var(--pink)}.order-slot.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.order-slot.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.order-bank{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.order-card{min-height:64px;padding:12px 14px;cursor:pointer;transition:.18s}.order-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.order-card.chosen{opacity:.38;cursor:default}.order-solution{display:grid;gap:6px;margin-top:18px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.order-solution span{font-family:"Noto Sans Devanagari";font-size:16px}
 @media(max-width:600px){.semantic-center{width:138px;margin-bottom:18px}.semantic-center span{font-size:24px}.semantic-cloud{gap:8px}.semantic-chip{padding:9px 12px;font-size:15px}.semantic-chip:nth-child(3n+2){transform:none}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(-2px)}}
+@media(max-width:600px){.order-bank{grid-template-columns:1fr}.order-card{min-height:54px;font-size:16px}.order-slot{font-size:16px}}
 
     </style>
   </head>
@@ -71,12 +73,12 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
         <div class="lesson-list">
           <button class="lesson-card available" data-lesson="17" type="button">
             <span class="lesson-number">17</span>
-            <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>5 заданий · 3-7 минут</small></span>
+            <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>7 заданий · 4-8 минут</small></span>
             <span class="lesson-arrow">→</span>
           </button>
           <button class="lesson-card available" data-lesson="18" type="button">
             <span class="lesson-number">18</span>
-            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>6 заданий · 3-7 минут</small></span>
+            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>7 заданий · 4-8 минут</small></span>
             <span class="lesson-arrow">→</span>
           </button>
           <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
@@ -89,7 +91,7 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 
       <section class="hero">
         <div class="mandala mandala-one"></div><div class="mandala mandala-two"></div>
-        <p class="eyebrow" id="lesson-task-count">Мини-игра · 6 заданий</p>
+        <p class="eyebrow" id="lesson-task-count">Мини-игра · 7 заданий</p>
         <h1>Закрепи урок<br /><em>играюче</em></h1>
         <p class="intro" id="lesson-subtitle">Научимся просить, отказывать и выражать своё мнение.</p>
         <div class="progress-wrap"><div class="progress-label"><span id="progress-text">Задание 1 из 5</span><span id="score-text">0 баллов</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
@@ -111,8 +113,9 @@ const lesson18 = {
   id: '18',
   title: 'Как попросить, отказаться, рассказать о своём мнении',
   subtitle: 'Научимся просить, отказывать и выражать своё мнение.',
-  taskCount: 6,
-  maxScore: 8,
+  taskCount: 7,
+  duration: '4-8 минут',
+  maxScore: 9,
   requestPool: [
     { scenario: 'Ты хочешь узнать у друга, во сколько начинается фильм.', correct: 'पूछना', other: 'माँगना' },
     { scenario: 'Ты просишь у друга помочь тебе с переездом.', correct: 'माँगना', other: 'पूछना' },
@@ -129,6 +132,11 @@ const lesson18 = {
     { scenario: '«В Индии есть только 28 языков».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Да. मुझ को शक है — буквально «у меня есть сомнение», то есть «я сомневаюсь».' },
     { scenario: '«Хинди и урду — это один и тот же язык».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Верно: эта фраза выражает сомнение в утверждении.' },
     { scenario: '«Мыть волосы мылом — лучший способ».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Точно. Для осторожного несогласия подходит «я сомневаюсь».' }
+  ],
+  tonePool: [
+    { scenario: 'Коллега предлагает идею, и ты с ней полностью согласен.', correct: 'मैं आप से सहमत हूँ ।', other: ['मैं इस चीज़ से इंकार करता हूँ ।', 'चलेगा!'], explanation: 'Верно. मैं आप से सहमत हूँ — ясное «я с вами согласен».' },
+    { scenario: 'Предложение тебе не подходит, и ты хочешь вежливо, но определённо отказаться.', correct: 'मैं इस चीज़ से इंकार करता हूँ ।', other: ['मैं आप से सहमत हूँ ।', 'चलेगा!'], explanation: 'Верно. Эта фраза прямо, но спокойно выражает отказ.' },
+    { scenario: 'Вариант не вызывает восторга, но в целом тебя устраивает.', correct: 'चलेगा!', other: ['मैं इस चीज़ से इंकार करता हूँ ।', 'मैं आप की बात मानता हूँ ।'], explanation: 'Точно. चलेगा! — это лёгкое «пойдёт», без сильного согласия или отказа.' }
   ],
   matchingRound: {
     type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини слова', description: 'Нажми карточку на хинди и её русский перевод. Можно начинать с любой стороны.',
@@ -182,6 +190,7 @@ function createLesson18Rounds() {
   const request = pick(lesson18.requestPool);
   const fill = pick(lesson18.fillPool);
   const opinion = pick(lesson18.opinionPool);
+  const tone = pick(lesson18.tonePool);
   const matchingPairs = pickSome(lesson18.matchingRound.pairs, 4);
   const semanticCorrect = pickSome(lesson18.semanticRound.correctOptions, 5 + Math.floor(Math.random() * 4));
   const semantic = {
@@ -201,7 +210,8 @@ function createLesson18Rounds() {
     { type: 'choice', label: 'Задание 3 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
     { type: 'fill', label: 'Задание 4 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
     { type: 'opinion', label: 'Задание 5 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
-    { ...chat, label: 'Задание 6 · отказ в общении' }
+    { type: 'choice', label: 'Задание 6 · градус согласия', title: 'Выбери тон', description: 'Выбери фразу, которая точнее всего передаёт твою позицию.', ...tone, ...options(tone.correct, tone.other) },
+    { ...chat, label: 'Задание 7 · отказ в общении' }
   ];
 }
 
@@ -212,8 +222,9 @@ const lesson17 = {
   id: '17',
   title: 'Как начать и закончить разговор',
   subtitle: 'Научимся здороваться, поддерживать small talk и уместно прощаться.',
-  taskCount: 6,
-  maxScore: 8,
+  taskCount: 7,
+  duration: '4-8 минут',
+  maxScore: 9,
   matchingRound: {
     type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини фразы', description: 'Нажми фразу на хинди и её русский смысл. Можно начинать с любой стороны.',
     pairs: [
@@ -262,6 +273,28 @@ const lesson17 = {
     { scenario: 'Ты долго не увидишь друга: он уезжает в другую страну.', correct: 'अलविदा', other: ['टाटा', 'हाय'], explanation: 'Верно. अलविदा уместно при долгой разлуке, когда следующая встреча маловероятна.' },
     { scenario: 'Ты в северной Индии во время Холи и хочешь поздороваться или попрощаться.', correct: 'राधे-राधे', other: ['सलाम', 'काम-धंधा कैसा है?'], explanation: 'Да. राधे-राधे используют и как приветствие, и как прощание.' }
   ],
+  orderPool: [
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: от приветствия к прощанию.',
+      lines: [
+        { key: 'hello', text: 'हाय!' },
+        { key: 'question', text: 'सब कैसा चल रहा है?' },
+        { key: 'reply', text: 'बहुत बढ़िया!' },
+        { key: 'goodbye', text: 'ठीक है, फिर मिलेंगे!' }
+      ],
+      explanation: 'Верно! У разговора получился естественный ритм: приветствие, вопрос, ответ и прощание.'
+    },
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: от приветствия к прощанию.',
+      lines: [
+        { key: 'hello', text: 'नमस्कार!' },
+        { key: 'question', text: 'काम-धंधा कैसा है?' },
+        { key: 'reply', text: 'हाँ, भगवान की कृपा है।' },
+        { key: 'goodbye', text: 'ठीक है, चलते हैं।' }
+      ],
+      explanation: 'Верно! Здесь сначала приветствие и small talk, а затем уместное прощание.'
+    }
+  ],
   chatPool: [
     {
       type: 'chat', label: 'Задание 5 · мини-чат', title: 'Начни разговор', description: 'Поздоровайся, поддержи короткий разговор и заверши его естественно.',
@@ -294,6 +327,7 @@ function createLesson17Rounds() {
   const context = pick(lesson17.contextPool);
   const fill = pick(lesson17.fillPool);
   const goodbye = pick(lesson17.goodbyePool);
+  const orderSource = pick(lesson17.orderPool);
   const matchingPairs = pickSome(lesson17.matchingRound.pairs, 4);
   const semanticSource = pick(lesson17.semanticRoundPool);
   const semanticCorrect = pickSome(semanticSource.correctOptions, 5 + Math.floor(Math.random() * 4));
@@ -305,6 +339,7 @@ function createLesson17Rounds() {
     ])
   };
   const chatSource = pick(lesson17.chatPool);
+  const order = { ...orderSource, lines: shuffle(orderSource.lines), answer: orderSource.lines.map(line => line.key) };
   const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
   return [
     { ...lesson17.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
@@ -312,7 +347,8 @@ function createLesson17Rounds() {
     { type: 'choice', label: 'Задание 3 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
     { type: 'fill', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
     { type: 'choice', label: 'Задание 5 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
-    { ...chat, label: 'Задание 6 · мини-чат' }
+    order,
+    { ...chat, label: 'Задание 7 · мини-чат' }
   ];
 }
 
@@ -338,6 +374,7 @@ let matchSelection = null;
 let matchedPairs = new Set();
 let matchLocked = false;
 let semanticSelection = new Set();
+let orderSelection = [];
 let completingPending = false;
 const card = document.querySelector('#game-card');
 const progress = document.querySelector('#progress-fill');
@@ -365,7 +402,7 @@ function updateCatalogProgress() {
     const meta = cardButton.querySelector('small');
     const lesson = lessons[cardButton.dataset.lesson].data;
     cardButton.classList.toggle('completed', Boolean(entry?.completed));
-    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : `${lesson.taskCount} заданий · 3-7 минут`;
+    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : `${lesson.taskCount} заданий · ${lesson.duration}`;
   });
   const lastId = learningProgress.lastLessonId || '17';
   const lastLesson = lessons[lastId]?.data;
@@ -390,7 +427,7 @@ function saveCompletedLesson() {
   updateCatalogProgress();
 }
 function resetProgress() {
-  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); completingPending = false;
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false;
 }
 function updateLessonChrome() {
   const { id, title, subtitle, taskCount } = activeLesson.data;
@@ -429,6 +466,10 @@ function matchMarkup(item) {
 function semanticMarkup(item) {
   return `<div class="semantic-board"><div class="semantic-center"><span>${item.center}</span></div><div class="semantic-cloud">${item.options.map((option, index) => `<button class="semantic-chip" type="button" data-semantic="${index}" aria-pressed="false">${option.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-semantic-check disabled>Проверить</button></div>`;
 }
+function orderMarkup(item) {
+  const chosen = orderSelection.map(index => item.lines[index]);
+  return `<div class="order-board"><div class="order-slots">${chosen.length ? chosen.map((line, index) => `<button class="order-slot" type="button" data-order-remove="${orderSelection[index]}"><span>${index + 1}</span>${line.text}</button>`).join('') : '<p class="order-empty">Нажимай реплики в естественном порядке.</p>'}</div><div class="order-bank">${item.lines.map((line, index) => `<button class="order-card${orderSelection.includes(index) ? ' chosen' : ''}" type="button" data-order="${index}" ${orderSelection.includes(index) ? 'disabled' : ''}>${line.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-order-check ${orderSelection.length === item.lines.length ? '' : 'disabled'}>Проверить</button></div>`;
+}
 function render() {
   updateHeader();
   const item = rounds[current];
@@ -438,12 +479,14 @@ function render() {
   if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div><div class="word-options">${item.choices.map((option, index) => `<button class="word-option" data-answer="${index}">${option}</button>`).join('')}</div>`;
   if (item.type === 'match') inner += matchMarkup(item);
   if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
+  if (item.type === 'order') { orderSelection = []; inner += orderMarkup(item); }
   if (item.type === 'chat') inner += chatMarkup(item);
   card.innerHTML = inner;
   card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
   card.querySelectorAll('[data-match]').forEach(button => button.addEventListener('click', () => selectMatch(button)));
   card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
   card.querySelector('[data-semantic-check]')?.addEventListener('click', () => checkSemantic(item));
+  if (item.type === 'order') bindOrder(item);
   matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
 }
 function showFeedback(correct, explanation, wrongExplanation) {
@@ -564,6 +607,52 @@ function checkSemantic(item, isReview = false) {
   });
   updateHeader();
 }
+function bindOrder(item, isReview = false) {
+  card.querySelectorAll('[data-order]').forEach(button => button.addEventListener('click', () => {
+    orderSelection.push(Number(button.dataset.order));
+    refreshOrder(item, isReview);
+  }));
+  card.querySelectorAll('[data-order-remove]').forEach(button => button.addEventListener('click', () => {
+    orderSelection = orderSelection.filter(index => index !== Number(button.dataset.orderRemove));
+    refreshOrder(item, isReview);
+  }));
+  card.querySelector('[data-order-check]').addEventListener('click', () => checkOrder(item, isReview));
+}
+function refreshOrder(item, isReview) {
+  card.querySelector('.order-board').outerHTML = orderMarkup(item);
+  bindOrder(item, isReview);
+}
+function checkOrder(item, isReview = false) {
+  const chosenKeys = orderSelection.map(index => item.lines[index].key);
+  const correct = item.answer.every((key, index) => chosenKeys[index] === key);
+  card.querySelectorAll('[data-order], [data-order-remove]').forEach(button => button.disabled = true);
+  card.querySelectorAll('[data-order-remove]').forEach((button, index) => button.classList.add(chosenKeys[index] === item.answer[index] ? 'correct' : 'wrong'));
+  card.querySelector('[data-order-check]').remove();
+  if (!correct) {
+    const solution = document.createElement('div');
+    solution.className = 'order-solution';
+    solution.innerHTML = `<b>Правильный порядок:</b>${item.answer.map((key, index) => `<span>${index + 1}. ${item.lines.find(line => line.key === key).text}</span>`).join('')}`;
+    card.querySelector('.order-board').append(solution);
+  }
+  if (correct) score++;
+  if (isReview) {
+    if (correct) completed.add(mistakes[reviewIndex]);
+    showFeedback(correct, 'Готово — разговор теперь звучит естественно.', 'Правильный порядок уже показан. Прочитай диалог целиком и запомни ритм разговора.');
+    addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+      if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+    });
+    updateScoreText();
+    return;
+  }
+  if (!correct) rememberMistake();
+  if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+  showFeedback(correct, item.explanation, 'Правильный порядок уже показан. Прочитай диалог целиком и запомни ритм разговора.');
+  addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateHeader();
+}
 function answer(selected, button) {
   const item = rounds[current];
   const stage = item.type === 'chat' ? item.dialogue[chatStep] : item;
@@ -615,12 +704,14 @@ function renderReview() {
   if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
   if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div>`;
   if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
+  else if (item.type === 'order') { orderSelection = []; inner += orderMarkup(item); }
   else inner += answersMarkup(item.choices, item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid');
   card.innerHTML = inner;
   if (item.type === 'semantic') {
     card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
     card.querySelector('[data-semantic-check]').addEventListener('click', () => checkSemantic(item, true));
-  } else card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
+  } else if (item.type === 'order') bindOrder(item, true);
+  else card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
 }
 function reviewAnswer(selected, button, item) {
   const correct = selected === item.answer;
