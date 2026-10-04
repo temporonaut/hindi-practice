@@ -45,6 +45,8 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 .chat-window{border:1px solid #dce5e5;border-radius:16px;overflow:hidden;background:#f7f6f1;margin-bottom:16px}.chat-bar{display:flex;align-items:center;gap:10px;padding:12px 15px;background:white;border-bottom:1px solid #e5e6e2}.chat-avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-weight:900}.chat-bar b{display:block;font-size:14px}.chat-bar small{display:block;font-size:11px;color:var(--green);font-weight:800}.chat-progress{margin-left:auto;color:#78919b;font-size:12px;font-weight:900}.message{max-width:79%;padding:12px 14px;margin:16px;font-family:"Noto Sans Devanagari";font-size:17px;line-height:1.5}.incoming{border-radius:4px 14px 14px;background:white;box-shadow:0 2px 8px rgba(22,71,90,.07)}.outgoing{margin-left:auto;border-radius:14px 4px 14px 14px;background:#dff0e8;color:#20674f}.chat-hint{padding:0 16px 14px;color:#6d8891;font-size:12px;font-weight:800}.chat-choices{display:grid;gap:10px}.chat-choices .choice{font-size:17px}.chat-choices .choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.chat-choices .choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.match-column{display:grid;gap:9px}.match-column p{margin:0 0 2px;color:#6d8891;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match-card{min-height:56px;border:1.5px solid #dce5e5;border-radius:13px;padding:11px 13px;background:#fff;color:var(--ink-dark);text-align:center;cursor:pointer;font-weight:800;font-size:16px;transition:.18s}.match-column:first-child .match-card{font-family:"Noto Sans Devanagari";font-size:18px}.match-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.match-card.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.match-card.matched{background:#effaf5;border-color:var(--green);color:var(--green);cursor:default}.match-card.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
 @media(max-width:600px){.app-shell{padding:0 18px 36px}.topbar{height:65px}.topbar p{font-size:14px}.lesson-pill{font-size:11px;padding:7px 9px}.lesson-pill span{display:none}.hero{padding:38px 4px 27px}.mandala-one{right:-125px;top:3px}.mandala-two{display:none}.rounds{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;margin-right:-18px;scrollbar-width:none}.rounds::-webkit-scrollbar{display:none}.round{flex:0 0 auto;padding:9px 11px}.game-card{border-radius:18px;min-height:0}.game-title{font-size:29px}.choice-grid{grid-template-columns:1fr}.sentence{font-size:21px}.intro{font-size:15px}.match-grid{gap:9px}.match-card{padding:10px 7px;font-size:14px}.match-column:first-child .match-card{font-size:16px}}
+.semantic-board{position:relative;padding:2px 0 0}.semantic-hint{margin:0 0 14px;color:#6d8891;text-align:center;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.semantic-center{position:relative;z-index:1;width:min(184px,56vw);aspect-ratio:1;display:grid;place-items:center;margin:0 auto 19px;border:2px solid var(--ink);border-radius:50%;background:#e7f0ed;color:var(--ink);box-shadow:0 10px 0 rgba(25,83,107,.08)}.semantic-center::before,.semantic-center::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;pointer-events:none;z-index:0}.semantic-center::before{inset:-9px}.semantic-center::after{inset:-17px;opacity:.58}.semantic-center span{position:relative;z-index:1;font-family:"Noto Sans Devanagari";font-size:28px;font-weight:800}.semantic-cloud{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 9px;max-width:650px;margin:0 auto}.semantic-chip{border:1.5px solid #dce5e5;border-radius:999px;padding:10px 14px;background:#fff;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.15;transition:.18s}.semantic-chip:nth-child(3n+2){transform:translateY(4px)}.semantic-chip:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(2px)}.semantic-chip.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.semantic-chip.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.semantic-chip.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.semantic-chip.missed{box-shadow:0 0 0 3px rgba(40,132,101,.13)}.semantic-chip:disabled{cursor:default}.semantic-check{display:block;margin:25px auto 0;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.semantic-check:hover:not(:disabled){transform:translateY(-1px)}.semantic-check:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}.semantic-check:disabled{cursor:default;opacity:.46;box-shadow:none}
+@media(max-width:600px){.semantic-center{width:138px;margin-bottom:18px}.semantic-center span{font-size:24px}.semantic-cloud{gap:8px}.semantic-chip{padding:9px 12px;font-size:15px}.semantic-chip:nth-child(3n+2){transform:none}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(-2px)}}
 
     </style>
   </head>
@@ -73,7 +75,7 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
           </button>
           <button class="lesson-card available" data-lesson="18" type="button">
             <span class="lesson-number">18</span>
-            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>5 заданий · 3-7 минут</small></span>
+            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>6 заданий · 3-7 минут</small></span>
             <span class="lesson-arrow">→</span>
           </button>
           <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
@@ -86,7 +88,7 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 
       <section class="hero">
         <div class="mandala mandala-one"></div><div class="mandala mandala-two"></div>
-        <p class="eyebrow">Мини-игра · 5 заданий</p>
+        <p class="eyebrow" id="lesson-task-count">Мини-игра · 6 заданий</p>
         <h1>Закрепи урок<br /><em>играюче</em></h1>
         <p class="intro" id="lesson-subtitle">Научимся просить, отказывать и выражать своё мнение.</p>
         <div class="progress-wrap"><div class="progress-label"><span id="progress-text">Задание 1 из 5</span><span id="score-text">0 баллов</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
@@ -108,7 +110,8 @@ const lesson18 = {
   id: '18',
   title: 'Как попросить, отказаться, рассказать о своём мнении',
   subtitle: 'Научимся просить, отказывать и выражать своё мнение.',
-  maxScore: 7,
+  taskCount: 6,
+  maxScore: 8,
   requestPool: [
     { scenario: 'Ты хочешь узнать у друга, во сколько начинается фильм.', correct: 'पूछना', other: 'माँगना' },
     { scenario: 'Ты просишь у друга помочь тебе с переездом.', correct: 'माँगना', other: 'पूछना' },
@@ -143,6 +146,19 @@ const lesson18 = {
       { key: 'certain', hi: 'पक्का', ru: 'точно!' }
     ]
   },
+  semanticRound: {
+    type: 'semantic', label: 'Задание 2 · кто тут свой?', title: 'Кто тут свой?', description: 'Нажми на выражения, которые естественно продолжают मुझ को. Среди них спрятались чужаки.', center: 'मुझ को',
+    correctOptions: [
+      'लगता है', 'पता है', 'मालूम है', 'अंदाज़ा है', 'भरोसा है', 'विश्वास है',
+      'यक़ीन है', 'शक है', 'मंज़ूर है', 'दुविधा है', 'कशमकश है', 'फ़र्क नहीं पड़ता'
+    ],
+    distractorPool: [
+      'तस्वीर', 'पड़ोसी', 'तौलिया', 'बादल', 'मेहमान', 'खिड़की', 'दुकानदार',
+      'चश्मा', 'कहानी', 'मकान', 'मौसम', 'सफ़र', 'रसोई', 'कपड़ा', 'दवाइयाँ',
+      'बाज़ार', 'तरीका', 'त्योहार', 'कुर्सी', 'किताब'
+    ],
+    explanation: 'Верно! Это все выражения, которые образуют с मुझ को естественные фразы о мнении, знании, сомнении или отношении.'
+  },
   chatRound: {
     type: 'chat', label: 'Задание 5 · отказ в общении', title: 'Поставь границу', description: 'Незнакомец продолжает писать. Отвечай спокойно и твёрдо.',
     dialogue: [
@@ -166,16 +182,25 @@ function createLesson18Rounds() {
   const fill = pick(lesson18.fillPool);
   const opinion = pick(lesson18.opinionPool);
   const matchingPairs = pickSome(lesson18.matchingRound.pairs, 4);
+  const semanticCorrect = pickSome(lesson18.semanticRound.correctOptions, 5 + Math.floor(Math.random() * 4));
+  const semantic = {
+    ...lesson18.semanticRound,
+    options: shuffle([
+      ...semanticCorrect.map(text => ({ text, correct: true })),
+      ...pickSome(lesson18.semanticRound.distractorPool, 16 - semanticCorrect.length).map(text => ({ text, correct: false }))
+    ])
+  };
   const chat = {
     ...lesson18.chatRound,
     dialogue: lesson18.chatRound.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) }))
   };
   return [
     { ...lesson18.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
-    { type: 'choice', label: 'Задание 2 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
-    { type: 'fill', label: 'Задание 3 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
-    { type: 'opinion', label: 'Задание 4 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
-    chat
+    semantic,
+    { type: 'choice', label: 'Задание 3 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
+    { type: 'fill', label: 'Задание 4 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'opinion', label: 'Задание 5 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
+    { ...chat, label: 'Задание 6 · отказ в общении' }
   ];
 }
 
@@ -186,6 +211,7 @@ const lesson17 = {
   id: '17',
   title: 'Как начать и закончить разговор',
   subtitle: 'Научимся здороваться, поддерживать small talk и уместно прощаться.',
+  taskCount: 5,
   maxScore: 7,
   matchingRound: {
     type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини фразы', description: 'Нажми фразу на хинди и её русский смысл. Можно начинать с любой стороны.',
@@ -286,6 +312,7 @@ let reviewIndex = 0;
 let matchSelection = null;
 let matchedPairs = new Set();
 let matchLocked = false;
+let semanticSelection = new Set();
 let completingPending = false;
 const card = document.querySelector('#game-card');
 const progress = document.querySelector('#progress-fill');
@@ -313,7 +340,7 @@ function updateCatalogProgress() {
     const meta = cardButton.querySelector('small');
     const lesson = lessons[cardButton.dataset.lesson].data;
     cardButton.classList.toggle('completed', Boolean(entry?.completed));
-    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : '5 заданий · 3-7 минут';
+    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : `${lesson.taskCount} заданий · 3-7 минут`;
   });
   const lastId = learningProgress.lastLessonId || '17';
   const lastLesson = lessons[lastId]?.data;
@@ -338,12 +365,13 @@ function saveCompletedLesson() {
   updateCatalogProgress();
 }
 function resetProgress() {
-  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; completingPending = false;
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); completingPending = false;
 }
 function updateLessonChrome() {
-  const { id, title, subtitle } = activeLesson.data;
+  const { id, title, subtitle, taskCount } = activeLesson.data;
   lessonPill.innerHTML = `Урок ${id} <span>·</span> ${title}`;
   lessonSubtitle.textContent = subtitle;
+  document.querySelector('#lesson-task-count').textContent = `Мини-игра · ${taskCount} заданий`;
   document.title = `Закрепи урок играюче — урок ${id}`;
 }
 function renderNavigation() {
@@ -373,6 +401,9 @@ function matchMarkup(item) {
   const cards = (items, side) => items.map(pair => `<button class="match-card" data-match data-side="${side}" data-key="${pair.key}">${side === 'hi' ? pair.hi : pair.ru}</button>`).join('');
   return `<div class="match-grid"><div class="match-column"><p>Хинди</p>${cards(item.hindi, 'hi')}</div><div class="match-column"><p>Русский</p>${cards(item.russian, 'ru')}</div></div>`;
 }
+function semanticMarkup(item) {
+  return `<div class="semantic-board"><p class="semantic-hint">Отметь все подходящие продолжения</p><div class="semantic-center"><span>मुझ को</span></div><div class="semantic-cloud">${item.options.map((option, index) => `<button class="semantic-chip" type="button" data-semantic="${index}" aria-pressed="false">${option.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-semantic-check disabled>Проверить</button></div>`;
+}
 function render() {
   updateHeader();
   const item = rounds[current];
@@ -381,16 +412,19 @@ function render() {
   if (item.type === 'choice' || item.type === 'opinion') inner += answersMarkup(item.choices, item.type === 'opinion' ? 'opinion' : 'choice-grid');
   if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div><div class="word-options">${item.choices.map((option, index) => `<button class="word-option" data-answer="${index}">${option}</button>`).join('')}</div>`;
   if (item.type === 'match') inner += matchMarkup(item);
+  if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
   if (item.type === 'chat') inner += chatMarkup(item);
   card.innerHTML = inner;
   card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
   card.querySelectorAll('[data-match]').forEach(button => button.addEventListener('click', () => selectMatch(button)));
+  card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
+  card.querySelector('[data-semantic-check]')?.addEventListener('click', () => checkSemantic(item));
   matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
 }
-function showFeedback(correct, explanation) {
+function showFeedback(correct, explanation, wrongExplanation) {
   const feedback = document.createElement('div');
   feedback.className = 'feedback';
-  feedback.textContent = correct ? explanation : 'Почти! Посмотри на выделенный правильный вариант — и запомни его.';
+  feedback.textContent = correct ? explanation : wrongExplanation || 'Почти! Посмотри на выделенный правильный вариант — и запомни его.';
   card.append(feedback);
 }
 function addNext(label, callback) {
@@ -454,6 +488,57 @@ function selectMatch(button) {
     matchLocked = false;
   }, 550);
 }
+function selectSemantic(button) {
+  const index = Number(button.dataset.semantic);
+  if (semanticSelection.has(index)) {
+    semanticSelection.delete(index);
+    button.classList.remove('selected');
+    button.setAttribute('aria-pressed', 'false');
+  } else {
+    semanticSelection.add(index);
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed', 'true');
+  }
+  const check = card.querySelector('[data-semantic-check]');
+  check.disabled = semanticSelection.size === 0;
+  check.textContent = semanticSelection.size ? `Проверить · ${semanticSelection.size}` : 'Проверить';
+}
+function markSemanticAnswer(item) {
+  const correctIndexes = item.options.map((option, index) => option.correct ? index : null).filter(index => index !== null);
+  const correct = correctIndexes.length === semanticSelection.size && correctIndexes.every(index => semanticSelection.has(index));
+  card.querySelectorAll('[data-semantic]').forEach((button, index) => {
+    const isCorrect = item.options[index].correct;
+    const isSelected = semanticSelection.has(index);
+    button.disabled = true;
+    button.setAttribute('aria-pressed', 'false');
+    if (isCorrect) button.classList.add('correct');
+    if (isSelected && !isCorrect) button.classList.add('wrong');
+    if (isCorrect && !isSelected) button.classList.add('missed');
+  });
+  card.querySelector('[data-semantic-check]')?.remove();
+  return correct;
+}
+function checkSemantic(item, isReview = false) {
+  const correct = markSemanticAnswer(item);
+  if (correct) score++;
+  if (isReview) {
+    if (correct) completed.add(mistakes[reviewIndex]);
+    showFeedback(correct, 'Готово — теперь эта языковая модель закрепилась.', 'Зелёным отмечены нужные продолжения, а розовым — чужаки, которых ты выбрал.');
+    addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+      if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+    });
+    updateScoreText();
+    return;
+  }
+  if (!correct) rememberMistake();
+  if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+  showFeedback(correct, item.explanation, 'Зелёным отмечены выражения из урока, а розовым — чужаки, которых ты выбрал.');
+  addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateHeader();
+}
 function answer(selected, button) {
   const item = rounds[current];
   const stage = item.type === 'chat' ? item.dialogue[chatStep] : item;
@@ -504,9 +589,13 @@ function renderReview() {
   let inner = `<p class="game-label">Финальный раунд · повтор</p><h2 class="game-title">Закрепим ещё раз</h2><p class="game-description">Эта карточка уже встречалась. Выбери правильный ответ — и урок будет пройден.</p>`;
   if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
   if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div>`;
-  inner += answersMarkup(item.choices, item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid');
+  if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
+  else inner += answersMarkup(item.choices, item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid');
   card.innerHTML = inner;
-  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
+  if (item.type === 'semantic') {
+    card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
+    card.querySelector('[data-semantic-check]').addEventListener('click', () => checkSemantic(item, true));
+  } else card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
 }
 function reviewAnswer(selected, button, item) {
   const correct = selected === item.answer;
