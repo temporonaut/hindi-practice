@@ -33,10 +33,11 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 .brand { width:45px; height:45px; flex:0 0 45px; aspect-ratio:1; display:grid; place-items:center; border:1.5px solid var(--ink); border-radius:50%; color:var(--ink); font-family:"Noto Sans Devanagari"; font-size:20px; text-decoration:none; }
 .topbar p { margin:0; font-weight:900; letter-spacing:.02em; }
 .lesson-pill { margin-left:auto; padding:9px 14px; border-radius:999px; background:#e7f0ed; font-size:13px; font-weight:800; color:var(--ink); }.lesson-pill span{opacity:.5;padding:0 4px}
-.lesson-picker{padding:58px 8px 30px;max-width:660px}.lesson-picker h1{font-family:"Baloo 2",sans-serif;margin:0;color:var(--ink);font-size:clamp(43px,8vw,72px);line-height:.91;letter-spacing:-.04em}.lesson-picker h1 em{font-style:normal;color:var(--pink)}.lesson-list{display:grid;gap:12px;margin-top:28px}.lesson-card{width:100%;display:flex;align-items:center;gap:15px;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);text-align:left;color:var(--ink-dark)}.lesson-card.available{cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.lesson-card.available:hover{border-color:var(--pink);transform:translateY(-2px)}.lesson-number{width:43px;height:43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-weight:900}.lesson-card-copy{display:grid;gap:2px}.lesson-card-copy b{font-size:16px}.lesson-card-copy small{color:#6e8993;font-size:12px;font-weight:800}.lesson-arrow{margin-left:auto;font-size:27px;color:var(--pink);font-weight:900}.coming-soon{opacity:.58;background:#f8f3ec}.coming-soon .lesson-number{background:#b6c4c7}.soon-label{margin-left:auto;border-radius:999px;padding:5px 9px;background:#e9e1d6;color:#788b8e;font-size:11px;font-weight:900}
+.lesson-picker{padding:58px 8px 30px;max-width:660px}.lesson-picker h1{font-family:"Baloo 2",sans-serif;margin:0;color:var(--ink);font-size:clamp(43px,8vw,72px);line-height:.91;letter-spacing:-.04em}.lesson-picker h1 em{font-style:normal;color:var(--pink)}.lesson-list{display:grid;gap:12px;margin-top:28px}.lesson-entry{display:flex;align-items:stretch;gap:8px}.lesson-entry .lesson-card{flex:1;min-width:0}.lesson-card{width:100%;display:flex;align-items:center;gap:15px;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);text-align:left;color:var(--ink-dark)}.lesson-card.available{cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.lesson-card.available:hover{border-color:var(--pink);transform:translateY(-2px)}.lesson-number{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-weight:900}.lesson-card-copy{display:grid;gap:2px}.lesson-card-copy b{font-size:16px}.lesson-card-copy small{color:#6e8993;font-size:12px;font-weight:800}.practice-count{margin-left:auto;white-space:nowrap;border-radius:999px;padding:5px 8px;background:#dff0e8;color:var(--green);font-size:11px;font-weight:900}.lesson-arrow{margin-left:auto;font-size:27px;color:var(--pink);font-weight:900}.practice-count+.lesson-arrow{margin-left:0}.coming-soon{opacity:.58;background:#f8f3ec}.coming-soon .lesson-number{background:#b6c4c7}.soon-label{margin-left:auto;border-radius:999px;padding:5px 9px;background:#e9e1d6;color:#788b8e;font-size:11px;font-weight:900}
 .lesson-card.completed{border-color:#b9decf}.lesson-card.completed .lesson-number{background:var(--green)}.lesson-card.completed .lesson-arrow{color:var(--green)}
 .continue-card{width:100%;display:flex;align-items:center;gap:14px;margin:25px 0 0;padding:16px;border:0;border-radius:16px;background:var(--ink);color:white;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.16);transition:.18s}.continue-card:hover{transform:translateY(-2px);background:var(--ink-dark)}.continue-icon{width:42px;height:42px;flex:0 0 42px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--pink);font-size:23px;font-weight:900}.continue-copy{display:grid;gap:2px}.continue-copy small{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.72}.continue-copy b{font-size:16px}.continue-card .lesson-arrow{margin-left:auto;color:#fff}
-.practice-card{width:100%;display:flex;align-items:center;gap:12px;margin-top:-4px;padding:12px 16px;border:1.5px dashed #b9decf;border-radius:14px;background:#f5fbf8;color:var(--ink);text-align:left;cursor:pointer;transition:.18s}.practice-card:hover{border-color:var(--green);transform:translateY(-1px)}.practice-card span:nth-child(2){display:grid;gap:1px}.practice-card b{font-size:14px}.practice-card small{font-size:12px;color:#6e8993;font-weight:800}.practice-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:50%;background:#dff0e8;color:var(--green);font-size:18px;font-weight:900}.practice-card .lesson-arrow{font-size:22px;color:var(--green)}
+.practice-card{width:52px;flex:0 0 52px;display:grid;place-items:center;border:1.5px dashed #b9decf;border-radius:16px;background:#f5fbf8;color:var(--green);cursor:pointer;transition:.18s}.practice-card:hover{border-color:var(--green);transform:translateY(-1px)}.practice-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#dff0e8;font-size:18px;font-weight:900}
+.practice-card[hidden]{display:none}
 .hero { padding:58px 8px 35px; position:relative; max-width:660px; }.eyebrow { color:var(--pink); font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.12em; margin:0 0 12px; }.hero h1 { font-family:"Baloo 2", sans-serif; margin:0; color:var(--ink); font-size:clamp(43px,8vw,72px); line-height:.91; letter-spacing:-.04em; }.hero h1 em{font-style:normal;color:var(--pink)}.intro { max-width:550px; font-size:17px; line-height:1.5; margin:18px 0 28px; color:#416b7b; font-weight:700; }
 .lesson-picker{display:none}.selecting .lesson-picker{display:block}.selecting .hero,.selecting .rounds,.selecting .game-card{display:none}
 .progress-wrap{max-width:515px}.progress-label{display:flex;justify-content:space-between;color:#547583;font-weight:800;font-size:13px;margin-bottom:8px}.progress-track{height:9px;background:#f0e4d7;border-radius:8px;overflow:hidden}.progress-fill{height:100%;width:33.3%;background:var(--pink);border-radius:8px;transition:width .35s ease}
@@ -73,26 +74,28 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
           <span class="lesson-arrow">→</span>
         </button>
         <div class="lesson-list">
-          <button class="lesson-card available" data-lesson="17" type="button">
-            <span class="lesson-number">17</span>
-            <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>7 заданий · 4-8 минут</small></span>
-            <span class="lesson-arrow">→</span>
-          </button>
-          <button class="practice-card" data-practice="17" type="button" hidden>
-            <span class="practice-icon">↻</span>
-            <span><b>Повторить трудное</b><small>Ошибки этого урока</small></span>
-            <span class="lesson-arrow">→</span>
-          </button>
-          <button class="lesson-card available" data-lesson="18" type="button">
-            <span class="lesson-number">18</span>
-            <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>7 заданий · 4-8 минут</small></span>
-            <span class="lesson-arrow">→</span>
-          </button>
-          <button class="practice-card" data-practice="18" type="button" hidden>
-            <span class="practice-icon">↻</span>
-            <span><b>Повторить трудное</b><small>Ошибки этого урока</small></span>
-            <span class="lesson-arrow">→</span>
-          </button>
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="17" type="button">
+              <span class="lesson-number">17</span>
+              <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>7 заданий · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="17" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="17" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="18" type="button">
+              <span class="lesson-number">18</span>
+              <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>7 заданий · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="18" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="18" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
           <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
             <span class="lesson-number">19</span>
             <span class="lesson-card-copy"><b>Следующий урок</b><small>Скоро появится</small></span>
@@ -355,7 +358,7 @@ function createLesson17Rounds() {
   const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
   return [
     { ...lesson17.matchingRound, trainingTag: 'приветствия и прощания', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
-    { ...semantic, trainingTag: semanticSource.center === 'मिलते समय' ? 'приветствия' : 'прощания' },
+    { ...semantic, trainingTag: 'кто тут свой?' },
     { type: 'choice', trainingTag: 'фраза по ситуации', label: 'Задание 3 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
     { type: 'fill', trainingTag: 'прощания в разговоре', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
     { type: 'choice', trainingTag: 'уместное прощание', label: 'Задание 5 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
@@ -403,6 +406,7 @@ const continueLesson = document.querySelector('#continue-lesson');
 const continueKicker = document.querySelector('#continue-kicker');
 const continueTitle = document.querySelector('#continue-title');
 const practiceCards = document.querySelectorAll('[data-practice]');
+const practiceCounters = document.querySelectorAll('[data-practice-count]');
 const progressStorageKey = 'hindi-practice-progress-v1';
 const practiceStorageKey = 'hindi-practice-practice-v1';
 let learningProgress = loadLearningProgress();
@@ -415,7 +419,25 @@ function loadLearningProgress() {
   catch { return {}; }
 }
 function loadPracticeProgress() {
-  try { return JSON.parse(localStorage.getItem(practiceStorageKey)) || {}; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(practiceStorageKey)) || {};
+    const lesson17Stats = saved['17'];
+    if (lesson17Stats) {
+      const legacySemantic = ['приветствия', 'прощания'].map(key => lesson17Stats[key]).filter(Boolean);
+      if (legacySemantic.length) {
+        const merged = lesson17Stats['кто тут свой?'] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+        legacySemantic.forEach(entry => {
+          merged.attempts += entry.attempts || 0;
+          merged.mistakes = Math.max(merged.mistakes, entry.mistakes ? 1 : 0);
+          merged.lastSeen = Math.max(merged.lastSeen || 0, entry.lastSeen || 0);
+        });
+        delete lesson17Stats['приветствия'];
+        delete lesson17Stats['прощания'];
+      }
+      Object.entries(lesson17Stats).forEach(([key, entry]) => { if (key !== '_blitz' && entry.mistakes) entry.mistakes = 1; });
+    }
+    return saved;
+  }
   catch { return {}; }
 }
 function savePracticeProgress() {
@@ -423,7 +445,7 @@ function savePracticeProgress() {
   catch { /* Тренировка остаётся рабочей, если браузер запретил локальное хранилище. */ }
 }
 function practiceSummary(lessonId) {
-  return Object.entries(practiceProgress[lessonId] || {}).filter(([key]) => key !== '_blitz').reduce((sum, [, entry]) => sum + (entry.mistakes || 0), 0);
+  return Object.entries(practiceProgress[lessonId] || {}).filter(([key, entry]) => key !== '_blitz' && entry.mistakes > 0).length;
 }
 function recordPracticeResult(item, correct) {
   if (!item?.trainingTag || trackedResults.has(current)) return;
@@ -431,7 +453,7 @@ function recordPracticeResult(item, correct) {
   const lessonStats = practiceProgress[activeLesson.data.id] ||= {};
   const entry = lessonStats[item.trainingTag] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
   entry.attempts++;
-  if (!correct) entry.mistakes++;
+  if (!correct) entry.mistakes = 1;
   if (correct && mode === 'practice') entry.mistakes = Math.max(0, entry.mistakes - 1);
   entry.lastSeen = Date.now();
   savePracticeProgress();
@@ -448,7 +470,10 @@ function updateCatalogProgress() {
   practiceCards.forEach(button => {
     const count = practiceSummary(button.dataset.practice);
     button.hidden = count === 0;
-    button.querySelector('small').textContent = count === 1 ? '1 ошибка ждёт повторения' : `${count} ошибок ждут повторения`;
+    const label = count === 1 ? '1 трудное' : `${count} трудных`;
+    button.setAttribute('aria-label', `Повторить трудное: ${label}`);
+    const counter = [...practiceCounters].find(item => item.dataset.practiceCount === button.dataset.practice);
+    if (counter) { counter.hidden = count === 0; counter.textContent = label; }
   });
   const lastId = learningProgress.lastLessonId || '17';
   const lastLesson = lessons[lastId]?.data;
