@@ -36,9 +36,12 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 .lesson-picker{padding:58px 8px 30px;max-width:660px}.lesson-picker h1{font-family:"Baloo 2",sans-serif;margin:0;color:var(--ink);font-size:clamp(43px,8vw,72px);line-height:.91;letter-spacing:-.04em}.lesson-picker h1 em{font-style:normal;color:var(--pink)}.lesson-list{display:grid;gap:12px;margin-top:28px}.lesson-card{width:100%;display:flex;align-items:center;gap:15px;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);text-align:left;color:var(--ink-dark)}.lesson-card.available{cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.lesson-card.available:hover{border-color:var(--pink);transform:translateY(-2px)}.lesson-number{width:43px;height:43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-weight:900}.lesson-card-copy{display:grid;gap:2px}.lesson-card-copy b{font-size:16px}.lesson-card-copy small{color:#6e8993;font-size:12px;font-weight:800}.lesson-arrow{margin-left:auto;font-size:27px;color:var(--pink);font-weight:900}.coming-soon{opacity:.58;background:#f8f3ec}.coming-soon .lesson-number{background:#b6c4c7}.soon-label{margin-left:auto;border-radius:999px;padding:5px 9px;background:#e9e1d6;color:#788b8e;font-size:11px;font-weight:900}
 .lesson-card.completed{border-color:#b9decf}.lesson-card.completed .lesson-number{background:var(--green)}.lesson-card.completed .lesson-arrow{color:var(--green)}
 .continue-card{width:100%;display:flex;align-items:center;gap:14px;margin:25px 0 0;padding:16px;border:0;border-radius:16px;background:var(--ink);color:white;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.16);transition:.18s}.continue-card:hover{transform:translateY(-2px);background:var(--ink-dark)}.continue-icon{width:42px;height:42px;flex:0 0 42px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--pink);font-size:23px;font-weight:900}.continue-copy{display:grid;gap:2px}.continue-copy small{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.72}.continue-copy b{font-size:16px}.continue-card .lesson-arrow{margin-left:auto;color:#fff}
+.practice-card{width:100%;display:flex;align-items:center;gap:12px;margin-top:-4px;padding:12px 16px;border:1.5px dashed #b9decf;border-radius:14px;background:#f5fbf8;color:var(--ink);text-align:left;cursor:pointer;transition:.18s}.practice-card:hover{border-color:var(--green);transform:translateY(-1px)}.practice-card span:nth-child(2){display:grid;gap:1px}.practice-card b{font-size:14px}.practice-card small{font-size:12px;color:#6e8993;font-weight:800}.practice-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:50%;background:#dff0e8;color:var(--green);font-size:18px;font-weight:900}.practice-card .lesson-arrow{font-size:22px;color:var(--green)}
 .hero { padding:58px 8px 35px; position:relative; max-width:660px; }.eyebrow { color:var(--pink); font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.12em; margin:0 0 12px; }.hero h1 { font-family:"Baloo 2", sans-serif; margin:0; color:var(--ink); font-size:clamp(43px,8vw,72px); line-height:.91; letter-spacing:-.04em; }.hero h1 em{font-style:normal;color:var(--pink)}.intro { max-width:550px; font-size:17px; line-height:1.5; margin:18px 0 28px; color:#416b7b; font-weight:700; }
-.lesson-picker{display:none}.selecting .lesson-picker{display:block}.selecting .hero,.selecting .rounds,.selecting .game-card{display:none}
+.lesson-picker{display:none}.selecting .lesson-picker{display:block}.selecting .hero,.selecting .blitz-panel,.selecting .rounds,.selecting .game-card{display:none}
 .progress-wrap{max-width:515px}.progress-label{display:flex;justify-content:space-between;color:#547583;font-weight:800;font-size:13px;margin-bottom:8px}.progress-track{height:9px;background:#f0e4d7;border-radius:8px;overflow:hidden}.progress-fill{height:100%;width:33.3%;background:var(--pink);border-radius:8px;transition:width .35s ease}
+.blitz-panel{max-width:660px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 8px 24px;padding:17px 19px;border:1px solid #d7e4df;border-radius:17px;background:#eef7f3}.blitz-panel .eyebrow{margin-bottom:3px;font-size:11px;color:var(--green)}.blitz-panel b{display:block;color:var(--ink);font-size:18px}.blitz-panel small{display:block;margin-top:3px;color:#587684;font-weight:700}.blitz-start{flex:0 0 auto;cursor:pointer;border:0;border-radius:11px;padding:11px 14px;background:var(--ink);color:white;font-weight:900;box-shadow:0 4px 0 var(--ink-dark)}.blitz-start:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink-dark)}
+.blitzing .rounds,.blitzing .blitz-panel{display:none}.blitz-status{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.blitz-stat{padding:8px 11px;border-radius:999px;background:#e7f0ed;color:var(--ink);font-size:13px;font-weight:900}.blitz-stat.hot{background:#fff0f3;color:var(--pink)}.blitz-done{padding:18px;border-radius:14px;background:#eef7f3;color:#276b55;font-weight:800;line-height:1.5}
 .mandala{position:absolute;border:1px solid var(--peach);border-radius:50%;opacity:.75;pointer-events:none}.mandala::before,.mandala::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;inset:13px}.mandala::after{inset:28px}.mandala-one{width:174px;height:174px;right:-120px;top:25px}.mandala-two{width:72px;height:72px;right:34px;bottom:20px}
 .rounds { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:22px; }.round { display:flex; align-items:center; gap:10px; cursor:pointer; border:1px solid var(--line); border-radius:13px; padding:12px; background:transparent; color:#688491; text-align:left; transition:.2s; }.round span { width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#f0e7dc;font-size:13px;font-weight:900; }.round b {font-size:13px}.round.active{background:var(--ink);color:white;border-color:var(--ink)}.round.active span{background:var(--pink);color:white}.round.done{border-color:#b9decf;color:var(--green)}.round.done span{background:#dff0e8}
 .game-card { background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:clamp(25px,5vw,48px); box-shadow:0 16px 40px rgba(22,71,90,.07); min-height:400px; }.game-label{font-size:13px;color:var(--pink);font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}.game-title{font-family:"Nunito Sans",sans-serif;font-size:33px;font-weight:900;line-height:1.08;margin:0 0 10px;letter-spacing:-.035em}.game-description{color:#587684;font-weight:700;margin:0 0 30px;line-height:1.55}.scenario{background:#fff4f6;border-left:4px solid var(--pink);padding:17px 20px;border-radius:0 12px 12px 0;margin:0 0 26px;font-weight:800;line-height:1.5}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{cursor:pointer;background:white;border:1.5px solid #dce5e5;border-radius:14px;padding:17px;text-align:left;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:20px;font-weight:600;transition:.18s}.choice small{display:block;font-family:"Nunito Sans";font-size:12px;margin-top:3px;color:#718d98;font-weight:800}.choice:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.choice:disabled{cursor:default}.feedback{margin-top:22px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.next{margin-top:22px;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.next:hover{transform:translateY(-1px)}.next:active{transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}
@@ -46,6 +49,7 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
 .chat-window{border:1px solid #dce5e5;border-radius:16px;overflow:hidden;background:#f7f6f1;margin-bottom:16px}.chat-bar{display:flex;align-items:center;gap:10px;padding:12px 15px;background:white;border-bottom:1px solid #e5e6e2}.chat-avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-weight:900}.chat-bar b{display:block;font-size:14px}.chat-bar small{display:block;font-size:11px;color:var(--green);font-weight:800}.chat-progress{margin-left:auto;color:#78919b;font-size:12px;font-weight:900}.message{max-width:79%;padding:12px 14px;margin:16px;font-family:"Noto Sans Devanagari";font-size:17px;line-height:1.5}.incoming{border-radius:4px 14px 14px;background:white;box-shadow:0 2px 8px rgba(22,71,90,.07)}.outgoing{margin-left:auto;border-radius:14px 4px 14px 14px;background:#dff0e8;color:#20674f}.chat-hint{padding:0 16px 14px;color:#6d8891;font-size:12px;font-weight:800}.chat-choices{display:grid;gap:10px}.chat-choices .choice{font-size:17px}.chat-choices .choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.chat-choices .choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.match-column{display:grid;gap:9px}.match-column p{margin:0 0 2px;color:#6d8891;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match-card{min-height:56px;border:1.5px solid #dce5e5;border-radius:13px;padding:11px 13px;background:#fff;color:var(--ink-dark);text-align:center;cursor:pointer;font-weight:800;font-size:16px;transition:.18s}.match-column:first-child .match-card{font-family:"Noto Sans Devanagari";font-size:18px}.match-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.match-card.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.match-card.matched{background:#effaf5;border-color:var(--green);color:var(--green);cursor:default}.match-card.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
 @media(max-width:600px){body{background:var(--cream)}body::before,body::after{display:none}.app-shell{padding:0 18px 36px;box-shadow:none}.topbar{height:65px}.topbar p{font-size:14px}.lesson-pill{font-size:11px;padding:7px 9px}.lesson-pill span{display:none}.hero{padding:38px 4px 27px}.mandala-one{right:-125px;top:3px}.mandala-two{display:none}.rounds{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;margin-right:-18px;scrollbar-width:none}.rounds::-webkit-scrollbar{display:none}.round{flex:0 0 auto;padding:9px 11px}.game-card{border-radius:18px;min-height:0}.game-title{font-size:29px}.choice-grid{grid-template-columns:1fr}.sentence{font-size:21px}.intro{font-size:15px}.match-grid{gap:9px}.match-card{padding:10px 7px;font-size:14px}.match-column:first-child .match-card{font-size:16px}}
+@media(max-width:600px){.blitz-panel{margin:0 4px 20px;align-items:flex-start}.blitz-panel small{font-size:12px;line-height:1.35}.blitz-start{padding:10px 11px;font-size:13px}}
 .semantic-board{position:relative;padding:2px 0 0}.semantic-hint{margin:0 0 14px;color:#6d8891;text-align:center;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.semantic-center{position:relative;z-index:1;width:min(184px,56vw);aspect-ratio:1;display:grid;place-items:center;margin:0 auto 19px;border:2px solid var(--ink);border-radius:50%;background:#e7f0ed;color:var(--ink);box-shadow:0 10px 0 rgba(25,83,107,.08)}.semantic-center::before,.semantic-center::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;pointer-events:none;z-index:0}.semantic-center::before{inset:-9px}.semantic-center::after{inset:-17px;opacity:.58}.semantic-center span{position:relative;z-index:1;display:block;max-width:78%;font-family:"Noto Sans Devanagari";font-size:28px;font-weight:800;line-height:1.25;text-align:center}.semantic-cloud{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 9px;max-width:650px;margin:0 auto}.semantic-chip{border:1.5px solid #dce5e5;border-radius:999px;padding:10px 14px;background:#fff;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.15;transition:.18s}.semantic-chip:nth-child(3n+2){transform:translateY(4px)}.semantic-chip:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(2px)}.semantic-chip.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.semantic-chip.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.semantic-chip.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.semantic-chip.missed{box-shadow:0 0 0 3px rgba(40,132,101,.13)}.semantic-chip:disabled{cursor:default}.semantic-check{display:block;margin:25px auto 0;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.semantic-check:hover:not(:disabled){transform:translateY(-1px)}.semantic-check:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}.semantic-check:disabled{cursor:default;opacity:.46;box-shadow:none}
 .order-board{max-width:690px;margin:0 auto}.order-slots{display:grid;gap:8px;min-height:74px;padding:13px;background:#f7f4ee;border:1px dashed #d9d0c5;border-radius:16px}.order-empty{margin:auto;color:#758d96;font-size:14px;font-weight:800}.order-slot,.order-card{border:1.5px solid #dce5e5;border-radius:13px;background:#fff;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.4;text-align:left}.order-slot{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer}.order-slot span{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font-family:"Nunito Sans",sans-serif;font-size:12px;font-weight:900}.order-slot:hover:not(:disabled){border-color:var(--pink)}.order-slot.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.order-slot.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.order-bank{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.order-card{min-height:64px;padding:12px 14px;cursor:pointer;transition:.18s}.order-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.order-card.chosen{opacity:.38;cursor:default}.order-solution{display:grid;gap:6px;margin-top:18px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.order-solution span{font-family:"Noto Sans Devanagari";font-size:16px}
 @media(max-width:600px){.semantic-center{width:138px;margin-bottom:18px}.semantic-center span{font-size:24px}.semantic-cloud{gap:8px}.semantic-chip{padding:9px 12px;font-size:15px}.semantic-chip:nth-child(3n+2){transform:none}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(-2px)}}
@@ -76,9 +80,19 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
             <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>7 заданий · 4-8 минут</small></span>
             <span class="lesson-arrow">→</span>
           </button>
+          <button class="practice-card" data-practice="17" type="button" hidden>
+            <span class="practice-icon">↻</span>
+            <span><b>Повторить трудное</b><small>Ошибки этого урока</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
           <button class="lesson-card available" data-lesson="18" type="button">
             <span class="lesson-number">18</span>
             <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>7 заданий · 4-8 минут</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
+          <button class="practice-card" data-practice="18" type="button" hidden>
+            <span class="practice-icon">↻</span>
+            <span><b>Повторить трудное</b><small>Ошибки этого урока</small></span>
             <span class="lesson-arrow">→</span>
           </button>
           <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
@@ -95,6 +109,11 @@ button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-of
         <h1>Закрепи урок<br /><em>играюче</em></h1>
         <p class="intro" id="lesson-subtitle">Научимся просить, отказывать и выражать своё мнение.</p>
         <div class="progress-wrap"><div class="progress-label"><span id="progress-text">Задание 1 из 5</span><span id="score-text">0 баллов</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
+      </section>
+
+      <section class="blitz-panel" aria-label="Быстрая тренировка">
+        <div><p class="eyebrow">На скорость</p><b>Минутный блиц</b><small>Быстрые вопросы, серия правильных ответов и личный рекорд.</small></div>
+        <button class="blitz-start" id="blitz-start" type="button">Начать блиц →</button>
       </section>
 
       <nav class="rounds" aria-label="Задания">
@@ -205,13 +224,13 @@ function createLesson18Rounds() {
     dialogue: lesson18.chatRound.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) }))
   };
   return [
-    { ...lesson18.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
-    semantic,
-    { type: 'choice', label: 'Задание 3 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
-    { type: 'fill', label: 'Задание 4 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
-    { type: 'opinion', label: 'Задание 5 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
-    { type: 'choice', label: 'Задание 6 · градус согласия', title: 'Выбери тон', description: 'Выбери фразу, которая точнее всего передаёт твою позицию.', ...tone, ...options(tone.correct, tone.other) },
-    { ...chat, label: 'Задание 7 · отказ в общении' }
+    { ...lesson18.matchingRound, trainingTag: 'слова о просьбе и мнении', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { ...semantic, trainingTag: 'выражения с मुझ को' },
+    { type: 'choice', trainingTag: 'спросить или попросить', label: 'Задание 3 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
+    { type: 'fill', trainingTag: 'форма глагола माँगना', label: 'Задание 4 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'opinion', trainingTag: 'выражение сомнения', label: 'Задание 5 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
+    { type: 'choice', trainingTag: 'согласие и отказ', label: 'Задание 6 · градус согласия', title: 'Выбери тон', description: 'Выбери фразу, которая точнее всего передаёт твою позицию.', ...tone, ...options(tone.correct, tone.other) },
+    { ...chat, trainingTag: 'границы в диалоге', label: 'Задание 7 · отказ в общении' }
   ];
 }
 
@@ -342,13 +361,13 @@ function createLesson17Rounds() {
   const order = { ...orderSource, lines: shuffle(orderSource.lines), answer: orderSource.lines.map(line => line.key) };
   const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
   return [
-    { ...lesson17.matchingRound, pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
-    semantic,
-    { type: 'choice', label: 'Задание 3 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
-    { type: 'fill', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
-    { type: 'choice', label: 'Задание 5 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
-    order,
-    { ...chat, label: 'Задание 7 · мини-чат' }
+    { ...lesson17.matchingRound, trainingTag: 'приветствия и прощания', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { ...semantic, trainingTag: semanticSource.center === 'मिलते समय' ? 'приветствия' : 'прощания' },
+    { type: 'choice', trainingTag: 'фраза по ситуации', label: 'Задание 3 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
+    { type: 'fill', trainingTag: 'прощания в разговоре', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'choice', trainingTag: 'уместное прощание', label: 'Задание 5 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
+    { ...order, trainingTag: 'порядок разговора' },
+    { ...chat, trainingTag: 'диалог и прощание', label: 'Задание 7 · мини-чат' }
   ];
 }
 
@@ -376,6 +395,9 @@ let matchLocked = false;
 let semanticSelection = new Set();
 let orderSelection = [];
 let completingPending = false;
+let mode = 'lesson';
+let trackedResults = new Set();
+let blitz = null;
 const card = document.querySelector('#game-card');
 const progress = document.querySelector('#progress-fill');
 const appShell = document.querySelector('.app-shell');
@@ -387,14 +409,40 @@ const roundsNav = document.querySelector('.rounds');
 const continueLesson = document.querySelector('#continue-lesson');
 const continueKicker = document.querySelector('#continue-kicker');
 const continueTitle = document.querySelector('#continue-title');
+const practiceCards = document.querySelectorAll('[data-practice]');
+const blitzStart = document.querySelector('#blitz-start');
 const progressStorageKey = 'hindi-practice-progress-v1';
+const practiceStorageKey = 'hindi-practice-practice-v1';
 let learningProgress = loadLearningProgress();
+let practiceProgress = loadPracticeProgress();
 
 function totalPoints() { return rounds.reduce((sum, round) => sum + (round.type === 'chat' ? round.dialogue.length : 1), 0); }
 function total() { return rounds.length; }
 function loadLearningProgress() {
   try { return JSON.parse(localStorage.getItem(progressStorageKey)) || {}; }
   catch { return {}; }
+}
+function loadPracticeProgress() {
+  try { return JSON.parse(localStorage.getItem(practiceStorageKey)) || {}; }
+  catch { return {}; }
+}
+function savePracticeProgress() {
+  try { localStorage.setItem(practiceStorageKey, JSON.stringify(practiceProgress)); }
+  catch { /* Тренировка остаётся рабочей, если браузер запретил локальное хранилище. */ }
+}
+function practiceSummary(lessonId) {
+  return Object.entries(practiceProgress[lessonId] || {}).filter(([key]) => key !== '_blitz').reduce((sum, [, entry]) => sum + (entry.mistakes || 0), 0);
+}
+function recordPracticeResult(item, correct) {
+  if (!item?.trainingTag || trackedResults.has(current)) return;
+  trackedResults.add(current);
+  const lessonStats = practiceProgress[activeLesson.data.id] ||= {};
+  const entry = lessonStats[item.trainingTag] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+  entry.attempts++;
+  if (!correct) entry.mistakes++;
+  entry.lastSeen = Date.now();
+  savePracticeProgress();
+  updateCatalogProgress();
 }
 function updateCatalogProgress() {
   lessonCards.forEach(cardButton => {
@@ -403,6 +451,11 @@ function updateCatalogProgress() {
     const lesson = lessons[cardButton.dataset.lesson].data;
     cardButton.classList.toggle('completed', Boolean(entry?.completed));
     meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${lesson.maxScore} баллов` : `${lesson.taskCount} заданий · ${lesson.duration}`;
+  });
+  practiceCards.forEach(button => {
+    const count = practiceSummary(button.dataset.practice);
+    button.hidden = count === 0;
+    button.querySelector('small').textContent = count === 1 ? '1 ошибка ждёт повторения' : `${count} ошибок ждут повторения`;
   });
   const lastId = learningProgress.lastLessonId || '17';
   const lastLesson = lessons[lastId]?.data;
@@ -427,7 +480,7 @@ function saveCompletedLesson() {
   updateCatalogProgress();
 }
 function resetProgress() {
-  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false;
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false; trackedResults = new Set();
 }
 function updateLessonChrome() {
   const { id, title, subtitle, taskCount } = activeLesson.data;
@@ -538,6 +591,7 @@ function selectMatch(button) {
     matchLocked = false;
     if (matchedPairs.size === rounds[current].pairs.length) {
       score++;
+      recordPracticeResult(rounds[current], true);
       completed.add(current);
       document.querySelectorAll('.round')[current].classList.add('done');
       showFeedback(true, 'Все пары собраны. Отличная работа!');
@@ -546,6 +600,7 @@ function selectMatch(button) {
     }
     return;
   }
+  recordPracticeResult(rounds[current], false);
   matchSelection.button.classList.add('wrong');
   button.classList.add('wrong');
   window.setTimeout(() => {
@@ -599,6 +654,7 @@ function checkSemantic(item, isReview = false) {
     return;
   }
   if (!correct) rememberMistake();
+  recordPracticeResult(item, correct);
   if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
   showFeedback(correct, item.explanation, 'Зелёным отмечены выражения из урока, а розовым — чужаки, которых ты выбрал.');
   addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
@@ -645,6 +701,7 @@ function checkOrder(item, isReview = false) {
     return;
   }
   if (!correct) rememberMistake();
+  recordPracticeResult(item, correct);
   if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
   showFeedback(correct, item.explanation, 'Правильный порядок уже показан. Прочитай диалог целиком и запомни ритм разговора.');
   addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
@@ -665,6 +722,7 @@ function answer(selected, button) {
   if (correct) score++;
   if (item.type !== 'chat') {
     if (!correct) rememberMistake();
+    recordPracticeResult(item, correct);
     if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
     showFeedback(correct, stage.explanation);
     addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
@@ -674,6 +732,8 @@ function answer(selected, button) {
     updateHeader();
     return;
   }
+  if (!correct) recordPracticeResult(item, false);
+  if (correct && chatStep === item.dialogue.length - 1) recordPracticeResult(item, true);
   if (correct) {
     chatAnswers[chatStep] = selected;
     const response = document.createElement('div');
@@ -736,6 +796,14 @@ function finish() {
     return;
   }
   completingPending = false;
+  if (mode === 'practice') {
+    progress.style.width = '100%';
+    document.querySelector('#progress-text').textContent = 'Трудное повторено';
+    card.innerHTML = `<p class="game-label">Готово · повторение</p><h2 class="game-title">Слабые места стали сильнее</h2><div class="finish">Ты повторил темы, в которых раньше были ошибки. При следующем прохождении набор обновится.</div><div class="finish-actions"><button class="next restart" id="restart-practice">Ещё раз</button><button class="next catalog" id="all-lessons">Ко всем урокам</button></div>`;
+    document.querySelector('#restart-practice').addEventListener('click', () => startPractice(activeLesson.data.id));
+    document.querySelector('#all-lessons').addEventListener('click', () => openCatalog());
+    return;
+  }
   saveCompletedLesson();
   progress.style.width = '100%';
   document.querySelector('#progress-text').textContent = 'Урок пройден';
@@ -743,23 +811,119 @@ function finish() {
   document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(); resetProgress(); renderNavigation(); render(); });
   document.querySelector('#all-lessons').addEventListener('click', () => openCatalog());
 }
+function buildPracticeRounds(lessonId) {
+  const stats = practiceProgress[lessonId] || {};
+  const tags = Object.entries(stats)
+    .filter(([tag, entry]) => tag !== '_blitz' && entry.mistakes)
+    .sort(([, a], [, b]) => (b.mistakes / b.attempts) - (a.mistakes / a.attempts) || b.mistakes - a.mistakes)
+    .slice(0, 4)
+    .map(([tag]) => tag);
+  const selected = [];
+  tags.forEach(tag => {
+    for (let attempt = 0; attempt < 12; attempt++) {
+      const candidate = lessons[lessonId].createRounds().find(round => round.trainingTag === tag);
+      if (candidate) { selected.push(candidate); break; }
+    }
+  });
+  return selected;
+}
+function startPractice(lessonId) {
+  activeLesson = lessons[lessonId];
+  const practiceRounds = buildPracticeRounds(lessonId);
+  if (!practiceRounds.length) return;
+  mode = 'practice';
+  rounds = practiceRounds;
+  resetProgress();
+  updateLessonChrome();
+  document.querySelector('#lesson-task-count').textContent = `Персональная тренировка · ${rounds.length} задания`;
+  renderNavigation();
+  appShell.classList.remove('selecting', 'blitzing');
+  render();
+}
+function quickRounds(lessonId) {
+  const candidates = [];
+  for (let index = 0; index < 4; index++) candidates.push(...lessons[lessonId].createRounds().filter(round => ['choice', 'fill', 'opinion'].includes(round.type)));
+  return candidates.sort(() => Math.random() - .5);
+}
+function renderBlitzQuestion() {
+  if (!blitz || blitz.seconds <= 0) return finishBlitz();
+  const item = blitz.items[blitz.index % blitz.items.length];
+  const answerClass = item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid';
+  const task = item.type === 'fill' ? `<div class="sentence">${item.sentence}</div>` : item.scenario ? `<div class="scenario">${item.scenario}</div>` : '';
+  card.innerHTML = `<p class="game-label">Минутный блиц</p><h2 class="game-title">Не думай слишком долго</h2><div class="blitz-status"><span class="blitz-stat hot" id="blitz-clock">${blitz.seconds} сек</span><span class="blitz-stat">Серия: ${blitz.streak}</span><span class="blitz-stat">Верно: ${blitz.correct}</span></div>${task}${answersMarkup(item.choices, answerClass)}`;
+  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answerBlitz(Number(button.dataset.answer), button, item)));
+}
+function answerBlitz(selected, button, item) {
+  if (!blitz || blitz.locked) return;
+  blitz.locked = true;
+  const correct = selected === item.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === item.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) { blitz.correct++; blitz.streak++; blitz.bestStreak = Math.max(blitz.bestStreak, blitz.streak); }
+  else blitz.streak = 0;
+  showFeedback(correct, correct ? 'Верно! Серия продолжается.' : 'Ничего страшного — серия начинается заново.');
+  addNext('Следующий вопрос →', () => { blitz.index++; blitz.locked = false; renderBlitzQuestion(); });
+}
+function finishBlitz() {
+  if (!blitz) return;
+  window.clearInterval(blitz.timer);
+  const lessonStats = practiceProgress[activeLesson.data.id] ||= {};
+  const priorBest = lessonStats._blitz?.bestStreak || 0;
+  const isRecord = blitz.bestStreak > priorBest;
+  lessonStats._blitz = { bestStreak: Math.max(priorBest, blitz.bestStreak) };
+  savePracticeProgress();
+  card.innerHTML = `<p class="game-label">Время вышло</p><h2 class="game-title">Блиц завершён</h2><div class="blitz-done">Правильных ответов: <strong>${blitz.correct}</strong>.<br>Лучшая серия: <strong>${blitz.bestStreak}</strong>${isRecord ? ' — новый личный рекорд!' : ` · рекорд: ${priorBest}`}</div><div class="finish-actions"><button class="next restart" id="restart-blitz">Ещё один блиц</button><button class="next catalog" id="all-lessons">Ко всем урокам</button></div>`;
+  blitz = null;
+  document.querySelector('#restart-blitz').addEventListener('click', () => startBlitz());
+  document.querySelector('#all-lessons').addEventListener('click', () => openCatalog());
+}
+function startBlitz() {
+  mode = 'blitz';
+  resetProgress();
+  appShell.classList.remove('selecting');
+  appShell.classList.add('blitzing');
+  document.querySelector('#progress-text').textContent = 'Минутный блиц';
+  document.querySelector('#score-text').textContent = '60 секунд';
+  progress.style.width = '100%';
+  blitz = { items: quickRounds(activeLesson.data.id), index: 0, seconds: 60, correct: 0, streak: 0, bestStreak: 0, locked: false, timer: null };
+  blitz.timer = window.setInterval(() => {
+    if (!blitz) return;
+    blitz.seconds--;
+    const clock = document.querySelector('#blitz-clock');
+    if (clock) clock.textContent = `${blitz.seconds} сек`;
+    if (blitz.seconds <= 0) finishBlitz();
+  }, 1000);
+  renderBlitzQuestion();
+}
 function openLesson(lessonId) {
+  if (blitz) window.clearInterval(blitz.timer);
+  blitz = null;
+  mode = 'lesson';
   activeLesson = lessons[lessonId];
   saveLastOpenedLesson(lessonId);
   rounds = activeLesson.createRounds();
   resetProgress();
   updateLessonChrome();
   renderNavigation();
-  appShell.classList.remove('selecting');
+  appShell.classList.remove('selecting', 'blitzing');
   render();
 }
 function openCatalog(event) {
   event?.preventDefault();
+  if (blitz) window.clearInterval(blitz.timer);
+  blitz = null;
+  mode = 'lesson';
+  appShell.classList.remove('blitzing');
   appShell.classList.add('selecting');
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 }
 lessonCards.forEach(cardButton => cardButton.addEventListener('click', () => openLesson(cardButton.dataset.lesson)));
+practiceCards.forEach(cardButton => cardButton.addEventListener('click', () => startPractice(cardButton.dataset.practice)));
 continueLesson.addEventListener('click', () => openLesson(learningProgress.lastLessonId || '17'));
+blitzStart.addEventListener('click', startBlitz);
 brand.addEventListener('click', openCatalog);
 appShell.classList.add('selecting');
 updateLessonChrome();
