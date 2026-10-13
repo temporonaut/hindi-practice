@@ -213,12 +213,38 @@ const lesson3 = {
       { key: 'cunning', hi: 'चालाक', ru: 'хитрый' }
     ]
   },
-  semanticRound: {
-    type: 'semantic', label: 'Задание 2 · кто тут свой?', title: 'Кто тут свой?', description: 'Выбери качества, которыми приятно описать хорошего человека.', center: 'अच्छे गुण',
-    correctOptions: ['ईमानदार', 'उदार', 'मेहनती', 'संस्कारी', 'होशियार', 'बहादुर', 'दयालु', 'शांत'],
-    distractorPool: ['झूठा', 'कंजूस', 'आलसी', 'बेशरम', 'पागल', 'डरपोक', 'ज़ालिम', 'मतलबी', 'ख़तरनाक', 'शराबी', 'चालाक', 'लापरवाह', 'नादां', 'पहलवान', 'व्यस्त'],
-    explanation: 'Верно! Это качества, которыми обычно хочется описать хорошего человека.'
-  },
+  portraitPool: [
+    {
+      center: 'गीता',
+      scenario: 'Гита всегда говорит правду, с радостью помогает людям и не боится большой работы.',
+      correctOptions: ['ईमानदार', 'दयालु', 'मेहनती'],
+      explanation: 'Верно! По описанию к Гите подходят ईमानदार, दयालु и मेहनती.'
+    },
+    {
+      center: 'विक्रम',
+      scenario: 'Викрам выступает на соревнованиях по борьбе, не пасует перед трудностями и даже в напряжённый момент сохраняет спокойствие.',
+      correctOptions: ['पहलवान', 'बहादुर', 'शांत'],
+      explanation: 'Верно! По описанию к Викраму подходят पहलवान, बहादुर и शांत.'
+    },
+    {
+      center: 'राहुल',
+      scenario: 'Рахул очень быстро соображает и умеет находить выход из сложных ситуаций, но в любой сделке прежде всего думает о собственной выгоде.',
+      correctOptions: ['होशियार', 'चालाक', 'मतलबी'],
+      explanation: 'Верно! По описанию к Рахулу подходят होशियार, चालाक и मतलबी.'
+    },
+    {
+      center: 'नंदिनी',
+      scenario: 'Нандини только начинает самостоятельную жизнь: она доверчивая и простая, но очень вежливая и уважает семейные традиции.',
+      correctOptions: ['नादां', 'संस्कारी'],
+      explanation: 'Верно! По описанию к Нандини подходят नादां и संस्कारी.'
+    },
+    {
+      center: 'मोहन',
+      scenario: 'Мохан обещает выполнить работу, но часто врёт. Он не любит работать и даже не извиняется, когда подводит других.',
+      correctOptions: ['झूठा', 'आलसी', 'बेशरम'],
+      explanation: 'Верно! По описанию к Мохану подходят झूठा, आलसी и बेशरम.'
+    }
+  ],
   emojiPool: [
     { emoji: '🤪', label: 'сумасшедший', correct: 'पागल', other: ['शांत', 'होशियार'], explanation: 'Верно. पागल — «сумасшедший».' },
     { emoji: '🍾', label: 'пьяница', correct: 'शराबी', other: ['होशियार', 'दयालु'], explanation: 'Точно. शराबी — «пьяница».' },
@@ -322,12 +348,13 @@ function createLesson3Rounds() {
   const trait = pick(lesson3.traitPool);
   const orderSource = pick(lesson3.orderPool);
   const matchingPairs = pickFreshMatchingPairs();
-  const semanticCorrect = pickSome(lesson3.semanticRound.correctOptions, 5 + Math.floor(Math.random() * 4));
+  const portrait = pick(lesson3.portraitPool);
   const semantic = {
-    ...lesson3.semanticRound,
+    type: 'semantic', label: 'Задание 2 · собери портрет', title: 'Собери портрет', description: 'Прочитай описание и отметь слова, которые действительно подходят этому человеку.',
+    ...portrait,
     options: shuffle([
-      ...semanticCorrect.map(text => ({ text, correct: true })),
-      ...pickSome(lesson3.semanticRound.distractorPool, 16 - semanticCorrect.length).map(text => ({ text, correct: false }))
+      ...portrait.correctOptions.map(text => ({ text, correct: true })),
+      ...pickSome(lesson3.flashcards.map(card => card.hi).filter(text => !portrait.correctOptions.includes(text)), 16 - portrait.correctOptions.length).map(text => ({ text, correct: false }))
     ])
   };
   const chatSource = pick(lesson3.chatPool);
@@ -335,7 +362,7 @@ function createLesson3Rounds() {
   const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
   return [
     { ...lesson3.matchingRound, trainingTag: 'качества и переводы', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
-    { ...semantic, trainingTag: 'хорошие качества' },
+    { ...semantic, trainingTag: 'портрет человека' },
     { type: 'emoji', trainingTag: 'эмодзи и качество', label: 'Задание 3 · слово по эмодзи', title: 'Какое это качество?', description: 'Угадай три качества по эмодзи. После каждого ответа появится следующий.', emojiSeries },
     { type: 'fill', trainingTag: 'качество по описанию', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери качество, которое естественно завершает фразу.', ...fill, ...options(fill.correct, fill.other) },
     { type: 'choice', trainingTag: 'характер по ситуации', label: 'Задание 5 · опиши человека', title: 'Какой он?', description: 'Выбери качество по описанию человека.', ...trait, ...options(trait.correct, trait.other) },
@@ -718,6 +745,15 @@ function loadPracticeProgress() {
         delete lesson17Stats['прощания'];
       }
       Object.entries(lesson17Stats).forEach(([key, entry]) => { if (key !== '_blitz' && entry.mistakes) entry.mistakes = 1; });
+    }
+    const lesson3Stats = saved['3'];
+    if (lesson3Stats?.['хорошие качества']) {
+      const legacy = lesson3Stats['хорошие качества'];
+      const portrait = lesson3Stats['портрет человека'] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+      portrait.attempts += legacy.attempts || 0;
+      portrait.mistakes = Math.max(portrait.mistakes, legacy.mistakes ? 1 : 0);
+      portrait.lastSeen = Math.max(portrait.lastSeen || 0, legacy.lastSeen || 0);
+      delete lesson3Stats['хорошие качества'];
     }
     return saved;
   }
