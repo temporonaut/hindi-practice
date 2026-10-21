@@ -903,6 +903,7 @@ let selectedDifficulty = 'warmup';
 let digitSeriesIndex = 0;
 let digitSeriesHadError = false;
 let digitComposeSelection = [];
+let lastDigitKeyOrder = '';
 const card = document.querySelector('#game-card');
 const progress = document.querySelector('#progress-fill');
 const appShell = document.querySelector('.app-shell');
@@ -1115,7 +1116,15 @@ function digitSeriesMarkup(item) {
 }
 function digitComposeMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
-  const glyphs = devanagariDigits.flashcards.map(({ hi, ru }) => `<button class="digit-key" type="button" data-digit-key="${hi}" aria-label="Добавить цифру ${ru}">${hi}</button>`).join('');
+  const digitKeys = shuffleCards(devanagariDigits.flashcards);
+  const orderedKeys = devanagariDigits.flashcards.map(({ hi }) => hi).join('');
+  const unwantedOrder = () => [lastDigitKeyOrder, orderedKeys].includes(digitKeys.map(({ hi }) => hi).join(''));
+  if (unwantedOrder() && digitKeys.length > 2) {
+    [digitKeys[0], digitKeys[1]] = [digitKeys[1], digitKeys[0]];
+    if (unwantedOrder()) [digitKeys[1], digitKeys[2]] = [digitKeys[2], digitKeys[1]];
+  }
+  lastDigitKeyOrder = digitKeys.map(({ hi }) => hi).join('');
+  const glyphs = digitKeys.map(({ hi, ru }) => `<button class="digit-key" type="button" data-digit-key="${hi}" aria-label="Добавить цифру ${ru}">${hi}</button>`).join('');
   const answer = digitComposeSelection.map(glyph => `<span lang="hi">${glyph}</span>`).join('') || '<span class="digit-compose-placeholder">＿</span>';
   return `<div class="digit-compose"><p class="digit-progress">Число ${digitSeriesIndex + 1} из ${item.questions.length}</p><p class="digit-prompt">${stage.prompt}</p><div class="digit-target">${stage.value}</div><div class="digit-compose-answer" aria-live="polite">${answer}</div><div class="digit-keypad">${glyphs}</div><div class="digit-compose-actions"><button class="digit-edit" type="button" data-digit-back ${digitComposeSelection.length ? '' : 'disabled'}>← Стереть</button><button class="digit-edit" type="button" data-digit-clear ${digitComposeSelection.length ? '' : 'disabled'}>Очистить</button></div><button class="semantic-check digit-submit" type="button" data-digit-submit ${digitComposeSelection.length === stage.correct.length ? '' : 'disabled'}>Проверить</button></div>`;
 }
