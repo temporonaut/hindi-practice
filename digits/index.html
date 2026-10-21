@@ -1,0 +1,1839 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Цифры деванагари — игровая практика</title>
+    <meta name="description" content="Отдельная игровая практика для запоминания цифр деванагари." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://temporonaut.github.io/hindi-practice/digits/" />
+    <meta property="og:title" content="Цифры деванагари — игровая практика" />
+    <meta property="og:description" content="Отдельная игровая практика для запоминания цифр деванагари." />
+    <meta property="og:image" content="https://temporonaut.github.io/hindi-practice/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Игровая практика по цифрам деванагари" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Цифры деванагари — игровая практика" />
+    <meta name="twitter:description" content="Отдельная игровая практика для запоминания цифр деванагари." />
+    <meta name="twitter:image" content="https://temporonaut.github.io/hindi-practice/social-preview.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2319536b'/%3E%3Cpath d='M18 32h28M24 19v26M40 19v26' stroke='%23ff3b73' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='sans-serif' font-size='21' fill='white'%3Eहिं%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet" />
+      <style>
+:root { --ink:#19536b; --ink-dark:#123f53; --cream:#fff9f1; --paper:#fffdf9; --pink:#fa2f6a; --pink-dark:#df1551; --peach:#f6dec9; --line:#e7d9ca; --green:#288465; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; color:var(--ink-dark); font-family:"Nunito Sans", sans-serif; background:var(--ink-dark); position:relative; overflow-x:hidden; }
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 10% 18%,transparent 0 66px,rgba(255,249,241,.16) 67px 68px,transparent 69px),radial-gradient(circle at 10% 18%,transparent 0 43px,rgba(255,249,241,.12) 44px 45px,transparent 46px),radial-gradient(circle at 89% 72%,transparent 0 92px,rgba(255,249,241,.14) 93px 94px,transparent 95px),radial-gradient(circle at 89% 72%,transparent 0 60px,rgba(255,249,241,.1) 61px 62px,transparent 63px)}body::after{background:linear-gradient(90deg,rgba(250,47,106,.1),transparent 25%,transparent 75%,rgba(246,222,201,.1));opacity:.8}
+button { font:inherit; }
+button:focus-visible,a:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
+.app-shell { max-width:1000px; min-height:100vh; margin:0 auto; padding:0 30px 64px; position:relative; z-index:1; overflow:hidden; background:var(--cream); box-shadow:0 0 56px rgba(7,36,49,.27); }
+.topbar { height:80px; display:flex; align-items:center; gap:16px; border-bottom:1px solid rgba(25,83,107,.14); }
+.brand { width:45px; height:45px; flex:0 0 45px; aspect-ratio:1; display:grid; place-items:center; border:1.5px solid var(--ink); border-radius:50%; color:var(--ink); font-family:"Noto Sans Devanagari"; font-size:20px; text-decoration:none; }
+.topbar p { margin:0; font-weight:900; letter-spacing:.02em; }
+.lesson-pill { margin-left:auto; padding:9px 14px; border-radius:999px; background:#e7f0ed; font-size:13px; font-weight:800; color:var(--ink); }.lesson-pill span{opacity:.5;padding:0 4px}
+.lesson-picker{padding:58px 8px 30px;max-width:660px}.lesson-picker h1{font-family:"Baloo 2",sans-serif;margin:0;color:var(--ink);font-size:clamp(43px,8vw,72px);line-height:.91;letter-spacing:-.04em}.lesson-picker h1 em{font-style:normal;color:var(--pink)}.lesson-list{display:grid;gap:12px;margin-top:28px}.lesson-entry{display:flex;align-items:stretch;gap:8px}.lesson-entry .lesson-card{flex:1;min-width:0}.lesson-card{width:100%;display:flex;align-items:center;gap:15px;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);text-align:left;color:var(--ink-dark)}.lesson-card.available{cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.lesson-card.available:hover{border-color:var(--pink);transform:translateY(-2px)}.lesson-number{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-weight:900}.lesson-card-copy{display:grid;gap:2px}.lesson-card-copy b{font-size:16px}.lesson-card-copy small{color:#6e8993;font-size:12px;font-weight:800}.practice-count{margin-left:auto;white-space:nowrap;border-radius:999px;padding:5px 8px;background:#dff0e8;color:var(--green);font-size:11px;font-weight:900}.lesson-arrow{margin-left:auto;font-size:27px;color:var(--pink);font-weight:900}.practice-count+.lesson-arrow{margin-left:0}.coming-soon{opacity:.58;background:#f8f3ec}.coming-soon .lesson-number{background:#b6c4c7}.soon-label{margin-left:auto;border-radius:999px;padding:5px 9px;background:#e9e1d6;color:#788b8e;font-size:11px;font-weight:900}
+.lesson-card.completed{border-color:#b9decf}.lesson-card.completed .lesson-number{background:var(--green)}.lesson-card.completed .lesson-arrow{color:var(--green)}
+.continue-card{width:100%;display:flex;align-items:center;gap:14px;margin:25px 0 0;padding:16px;border:0;border-radius:16px;background:var(--ink);color:white;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.16);transition:.18s}.continue-card:hover{transform:translateY(-2px);background:var(--ink-dark)}.continue-icon{width:42px;height:42px;flex:0 0 42px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--pink);font-size:23px;font-weight:900}.continue-copy{display:grid;gap:2px}.continue-copy small{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.72}.continue-copy b{font-size:16px}.continue-card .lesson-arrow{margin-left:auto;color:#fff}
+.practice-card{width:52px;flex:0 0 52px;display:grid;place-items:center;border:1.5px dashed #b9decf;border-radius:16px;background:#f5fbf8;color:var(--green);cursor:pointer;transition:.18s}.practice-card:hover{border-color:var(--green);transform:translateY(-1px)}.practice-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#dff0e8;font-size:18px;font-weight:900}
+.practice-card[hidden]{display:none}
+.hero { padding:58px 8px 35px; position:relative; max-width:660px; }.eyebrow { color:var(--pink); font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.12em; margin:0 0 12px; }.hero h1 { font-family:"Baloo 2", sans-serif; margin:0; color:var(--ink); font-size:clamp(43px,8vw,72px); line-height:.91; letter-spacing:-.04em; }.hero h1 em{font-style:normal;color:var(--pink)}.intro { max-width:550px; font-size:17px; line-height:1.5; margin:18px 0 28px; color:#416b7b; font-weight:700; }
+.lesson-picker{display:none}.selecting .lesson-picker{display:block}.selecting .hero,.selecting .rounds,.selecting .game-card{display:none}
+.mode-picker{display:none;max-width:660px;padding:58px 8px 30px}.choosing-mode .mode-picker{display:block}.choosing-mode .lesson-picker,.choosing-mode .hero,.choosing-mode .rounds,.choosing-mode .game-card{display:none}.mode-picker h1{margin:0;color:var(--ink);font-family:"Baloo 2",sans-serif;font-size:clamp(40px,7vw,64px);line-height:.95;letter-spacing:-.04em}.back-link{margin:0 0 28px;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer;font-weight:900}.mode-options{display:grid;gap:12px;margin-top:28px}.mode-option{display:flex;align-items:center;gap:15px;width:100%;padding:18px;border:1.5px solid var(--line);border-radius:17px;background:var(--paper);color:var(--ink-dark);text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(22,71,90,.06);transition:.18s}.mode-option:hover{transform:translateY(-2px);border-color:var(--pink)}.mode-option span:nth-child(2){display:grid;gap:3px}.mode-option b{font-size:18px}.mode-option small{color:#6e8993;font-size:13px;font-weight:800}.mode-icon{width:47px;height:47px;flex:0 0 47px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font-size:22px;font-weight:900}.flashcard-mode .mode-icon{background:#dff0e8;color:var(--green)}
+.progress-wrap{max-width:515px}.progress-label{display:flex;justify-content:space-between;color:#547583;font-weight:800;font-size:13px;margin-bottom:8px}.progress-track{height:9px;background:#f0e4d7;border-radius:8px;overflow:hidden}.progress-fill{height:100%;width:33.3%;background:var(--pink);border-radius:8px;transition:width .35s ease}
+.blitz-button{background:var(--green);box-shadow:0 5px 0 #1d664f}.blitz-button:active{box-shadow:0 2px 0 #1d664f}.blitzing .rounds{display:none}.blitz-status{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.blitz-stat{padding:8px 11px;border-radius:999px;background:#e7f0ed;color:var(--ink);font-size:13px;font-weight:900}.blitz-stat.hot{background:#fff0f3;color:var(--pink)}.blitz-done{padding:18px;border-radius:14px;background:#eef7f3;color:#276b55;font-weight:800;line-height:1.5}
+.flashcards .rounds{display:none}.flashcard-controls{display:flex;justify-content:center;gap:7px;margin:0 0 22px}.flashcard-direction{cursor:pointer;border:1.5px solid var(--line);border-radius:999px;padding:9px 12px;background:#fff;color:#6e8993;font-size:13px;font-weight:900;transition:.18s}.flashcard-direction.active{border-color:var(--ink);background:var(--ink);color:#fff}.flashcard{position:relative;display:block;width:min(100%,560px);height:300px;margin:0 auto;border:0;background:transparent;cursor:pointer;perspective:1100px}.flashcard::after{content:"";position:absolute;inset:-6px;border:2px solid var(--pink);border-radius:27px;opacity:0;pointer-events:none}.flashcard.flip-flash::after{animation:flashcard-reveal .78s ease-out}.flashcard-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .56s cubic-bezier(.2,.75,.25,1)}.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}.flashcard-face{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:14px;padding:32px;border:1.5px solid var(--line);border-radius:22px;backface-visibility:hidden;box-shadow:0 16px 35px rgba(22,71,90,.1);pointer-events:none}.flashcard-face.hi,.flashcard-face.ru{background:var(--paper);color:var(--ink-dark)}.flashcard-face.ru{transform:rotateY(180deg)}.flashcard-face span{font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;opacity:.65}.flashcard-face b{max-width:92%;font-family:"Noto Sans Devanagari";font-size:clamp(30px,5.5vw,51px);line-height:1.28;text-align:center}.flashcard-face.ru b{font-family:"Nunito Sans",sans-serif;font-size:clamp(25px,4vw,37px);line-height:1.25}.flashcard-face small{font-family:"Nunito Sans",sans-serif;color:#66808b;font-size:13px;font-weight:800}.flashcard-actions{display:flex;justify-content:center;gap:10px;margin-top:28px}.flashcard-actions .next{margin-top:0}.flashcard-previous{background:#e7f0ed;color:var(--ink);box-shadow:0 5px 0 #bfd4cd}.flashcard-previous:disabled{cursor:default;opacity:.48;box-shadow:none}.flashcard-finish{max-width:560px;margin:0 auto;padding:20px;border-radius:16px;background:#eef7f3;color:#276b55;font-weight:800;line-height:1.55}@keyframes flashcard-reveal{0%{opacity:0;box-shadow:0 0 0 rgba(250,47,106,0)}35%{opacity:1;box-shadow:0 0 0 7px rgba(250,47,106,.14)}100%{opacity:0;box-shadow:0 0 0 14px rgba(250,47,106,0)}}
+.mandala{position:absolute;border:1px solid var(--peach);border-radius:50%;opacity:.75;pointer-events:none}.mandala::before,.mandala::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;inset:13px}.mandala::after{inset:28px}.mandala-one{width:174px;height:174px;right:-120px;top:25px}.mandala-two{width:72px;height:72px;right:34px;bottom:20px}
+.rounds { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:22px; }.round { display:flex; align-items:center; gap:10px; cursor:pointer; border:1px solid var(--line); border-radius:13px; padding:12px; background:transparent; color:#688491; text-align:left; transition:.2s; }.round span { width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#f0e7dc;font-size:13px;font-weight:900; }.round b {font-size:13px}.round.active{background:var(--ink);color:white;border-color:var(--ink)}.round.active span{background:var(--pink);color:white}.round.done{border-color:#b9decf;color:var(--green)}.round.done span{background:#dff0e8}
+.game-card { background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:clamp(25px,5vw,48px); box-shadow:0 16px 40px rgba(22,71,90,.07); min-height:400px; }.game-label{font-size:13px;color:var(--pink);font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}.game-title{font-family:"Nunito Sans",sans-serif;font-size:33px;font-weight:900;line-height:1.08;margin:0 0 10px;letter-spacing:-.035em}.game-description{color:#587684;font-weight:700;margin:0 0 30px;line-height:1.55}.scenario{background:#fff4f6;border-left:4px solid var(--pink);padding:17px 20px;border-radius:0 12px 12px 0;margin:0 0 26px;font-weight:800;line-height:1.5}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{cursor:pointer;background:white;border:1.5px solid #dce5e5;border-radius:14px;padding:17px;text-align:left;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:20px;font-weight:600;transition:.18s}.choice small{display:block;font-family:"Nunito Sans";font-size:12px;margin-top:3px;color:#718d98;font-weight:800}.choice:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.choice:disabled{cursor:default}.feedback{margin-top:22px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.next{margin-top:22px;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.next:hover{transform:translateY(-1px)}.next:active{transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}
+.sentence{font-family:"Noto Sans Devanagari";font-size:24px;line-height:1.7;background:#f7f4ee;border-radius:14px;padding:18px;margin-bottom:20px}.word-options{display:flex;gap:10px;flex-wrap:wrap}.word-option{border:1.5px solid var(--ink);border-radius:999px;background:white;padding:10px 16px;color:var(--ink);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;transition:.18s}.word-option:hover:not(:disabled){background:#e7f0ed}.word-option.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.word-option.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.opinion{display:grid;gap:12px}.opinion button{border:1.5px solid #dce5e5;background:#fff;border-radius:13px;text-align:left;padding:15px 18px;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:600}.finish{padding:15px;background:#fff4df;border-radius:13px;font-weight:800;line-height:1.5}.finish-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.finish-actions .next{margin-top:0}.restart{background:var(--ink);box-shadow:0 5px 0 var(--ink-dark)}.catalog{background:#e7f0ed;color:var(--ink);box-shadow:0 5px 0 #bfd4cd}.catalog:active{box-shadow:0 2px 0 #bfd4cd}
+.chat-window{border:1px solid #dce5e5;border-radius:16px;overflow:hidden;background:#f7f6f1;margin-bottom:16px}.chat-bar{display:flex;align-items:center;gap:10px;padding:12px 15px;background:white;border-bottom:1px solid #e5e6e2}.chat-avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:white;font-weight:900}.chat-bar b{display:block;font-size:14px}.chat-bar small{display:block;font-size:11px;color:var(--green);font-weight:800}.chat-progress{margin-left:auto;color:#78919b;font-size:12px;font-weight:900}.chat-messages{height:clamp(230px,31vw,300px);overflow-y:auto;overscroll-behavior:contain;padding:1px 0;scrollbar-width:none}.chat-messages::-webkit-scrollbar{display:none}.message{max-width:79%;padding:12px 14px;margin:16px;font-family:"Noto Sans Devanagari";font-size:17px;line-height:1.5}.incoming{border-radius:4px 14px 14px;background:white;box-shadow:0 2px 8px rgba(22,71,90,.07)}.outgoing{margin-left:auto;border-radius:14px 4px 14px 14px;background:#dff0e8;color:#20674f}.chat-hint{padding:0 16px 14px;color:#6d8891;font-size:12px;font-weight:800}.chat-hint.typing{color:#78919b;font-style:italic}.chat-choices{display:grid;gap:10px}.chat-choices .choice{font-size:17px}.chat-choices .choice.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.chat-choices .choice.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
+.message.outgoing.is-sent,.message.incoming.is-received{animation:chat-message-in .18s cubic-bezier(.2,.75,.25,1) both}@keyframes chat-message-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.match-column{display:grid;gap:9px}.match-column p{margin:0 0 2px;color:#6d8891;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.match-card{min-height:56px;border:1.5px solid #dce5e5;border-radius:13px;padding:11px 13px;background:#fff;color:var(--ink-dark);text-align:center;cursor:pointer;font-weight:800;font-size:16px;transition:.18s}.match-column:first-child .match-card{font-family:"Noto Sans Devanagari";font-size:18px}.match-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.match-card.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.match-card.matched{background:#effaf5;border-color:var(--green);color:var(--green);cursor:default}.match-card.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}
+.mode-options[hidden],.difficulty-picker[hidden]{display:none!important}.difficulty-picker{display:grid;gap:10px;margin-top:24px}.difficulty-intro{margin:0 0 5px;color:#587684;font-size:14px;font-weight:800;line-height:1.5}.difficulty-option{display:flex;align-items:center;gap:14px;width:100%;padding:15px 17px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink-dark);text-align:left;cursor:pointer;box-shadow:0 8px 20px rgba(22,71,90,.05);transition:.18s}.difficulty-option:hover{transform:translateY(-2px);border-color:var(--pink)}.difficulty-option>span:nth-child(2){display:grid;gap:2px}.difficulty-option b{font-size:17px}.difficulty-option small{color:#6e8993;font-size:12px;font-weight:800}.difficulty-badge{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:50%;background:#e7f0ed;color:var(--ink);font-weight:900}.pahalvaan-option .difficulty-badge{background:#fff0f3;color:var(--pink);font-size:20px}.digits-number{width:54px;flex-basis:54px;font-family:"Noto Sans Devanagari";font-size:16px}.digit-tools{display:flex;justify-content:flex-end;margin:-14px 0 20px}.digit-cheat-button{border:1px solid var(--line);border-radius:999px;padding:8px 13px;background:#fff;color:var(--ink);font-size:13px;font-weight:900;cursor:pointer;transition:.18s}.digit-cheat-button:hover{border-color:var(--pink);color:var(--pink)}.digit-progress{margin:0 0 12px;text-align:center;color:#6d8891;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.digit-prompt{margin:0 0 14px;text-align:center;color:#547583;font-weight:900;line-height:1.45}.digit-display{display:grid;place-items:center;min-height:142px;margin:0 auto 22px;color:var(--ink);font-family:"Noto Sans Devanagari";font-size:clamp(66px,13vw,100px);font-weight:800;line-height:1.35;text-align:center}.digit-choices .choice{text-align:center;font-size:24px}.digit-context{max-width:640px;margin:0 auto 22px;text-align:center}.digit-compose{max-width:600px;margin:0 auto}.digit-target{margin:0 auto 12px;color:var(--ink);font-size:clamp(34px,8vw,52px);font-weight:900;text-align:center;letter-spacing:.08em}.digit-compose-answer{display:flex;align-items:center;justify-content:center;gap:7px;min-height:70px;margin:0 auto 17px;padding:10px 15px;border:1.5px dashed #c8d8d8;border-radius:15px;background:#f7f4ee;color:var(--ink);font-family:"Noto Sans Devanagari";font-size:32px;font-weight:800;letter-spacing:.1em}.digit-compose-answer.correct{border-style:solid;border-color:var(--green);background:#effaf5;color:var(--green)}.digit-compose-answer.wrong{border-style:solid;border-color:var(--pink);background:#fff0f3;color:var(--pink)}.digit-compose-answer small{display:block;margin-left:8px;font-family:"Nunito Sans",sans-serif;font-size:12px;letter-spacing:0}.digit-compose-placeholder{color:#a9babd}.digit-keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.digit-key{min-height:58px;border:1.5px solid #dce5e5;border-radius:13px;background:#fff;color:var(--ink);font-family:"Noto Sans Devanagari";font-size:25px;font-weight:800;cursor:pointer;transition:.18s}.digit-key:hover{border-color:var(--pink);transform:translateY(-1px)}.digit-compose-actions{display:flex;justify-content:center;gap:9px;margin-top:12px}.digit-edit{border:0;border-radius:999px;padding:8px 13px;background:#e7f0ed;color:var(--ink);font-size:12px;font-weight:900;cursor:pointer}.digit-edit:disabled{opacity:.45;cursor:default}.digit-submit{margin-top:16px}.digit-cheat-overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(11,38,50,.64);backdrop-filter:blur(4px)}.digit-cheat-dialog{position:relative;width:min(100%,430px);max-height:min(90vh,700px);overflow:auto;padding:27px 24px 24px;border:1px solid var(--line);border-radius:22px;background:var(--cream);box-shadow:0 24px 80px rgba(0,0,0,.25)}.digit-cheat-dialog h2{margin:0 40px 19px 0;color:var(--ink);font-family:"Nunito Sans",sans-serif;font-size:26px;font-weight:900;line-height:1.1}.digit-cheat-close{position:absolute;top:17px;right:17px;width:34px;height:34px;border:0;border-radius:50%;background:#e7f0ed;color:var(--ink);font-size:24px;line-height:1;cursor:pointer}.digit-cheat-table{display:grid;gap:6px}.digit-cheat-table>div{display:grid;grid-template-columns:1fr 1fr;align-items:center;text-align:center}.digit-cheat-table>div:first-child{padding:8px;color:#6d8891;font-size:12px}.digit-cheat-table>div:not(:first-child){padding:5px 8px;border-radius:10px;background:#fff}.digit-cheat-table span:first-child{color:var(--ink);font-family:"Noto Sans Devanagari";font-size:24px;font-weight:800}.digit-cheat-table span:last-child{font-size:19px;font-weight:900}.cheat-joke{margin:4px 0 14px;color:#587684;font-size:16px;font-weight:800;line-height:1.5}.cheat-joke-glyph{text-align:center;font-size:74px}.blitz-reaction{margin-top:17px;padding:11px 15px;border-radius:12px;text-align:center;font-size:18px;font-weight:900;animation:blitz-pop .16s ease-out both}.blitz-reaction.correct{background:#effaf5;color:var(--green)}.blitz-reaction.wrong{background:#fff0f3;color:var(--pink)}.blitz-digit{min-height:100px;margin-bottom:12px}@keyframes blitz-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back-to-lessons{display:none!important}body[data-digits-only="true"] .app-shell.digits-boot .hero,body[data-digits-only="true"] .app-shell.digits-boot .rounds,body[data-digits-only="true"] .app-shell.digits-boot .game-card{display:none!important}body[data-digits-only="true"] .app-shell.digits-boot .mode-picker{display:block!important}
+@media(max-width:600px){.digit-tools{margin:-8px 0 18px}.digit-display{min-height:110px}.digit-key{min-height:54px}.digit-cheat-dialog{padding:24px 18px 19px}.digit-compose-answer{font-size:27px}.digit-keypad{gap:6px}}
+@media(max-width:600px){body{background:var(--cream)}body::before,body::after{display:none}.app-shell{padding:0 18px 36px;box-shadow:none}.topbar{height:65px}.topbar p{font-size:14px}.lesson-pill{font-size:11px;padding:7px 9px}.lesson-pill span{display:none}.hero{padding:38px 4px 27px}.mandala-one{right:-125px;top:3px}.mandala-two{display:none}.rounds{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;margin-right:-18px;scrollbar-width:none}.rounds::-webkit-scrollbar{display:none}.round{flex:0 0 auto;padding:9px 11px}.game-card{border-radius:18px;min-height:0}.game-title{font-size:29px}.choice-grid{grid-template-columns:1fr}.sentence{font-size:21px}.intro{font-size:15px}.match-grid{gap:9px}.match-card{padding:10px 7px;font-size:14px}.match-column:first-child .match-card{font-size:16px}}
+@media(max-width:600px){.mode-picker{padding:38px 4px 27px}.mode-option{padding:15px}.mode-option b{font-size:16px}.mode-option small{font-size:12px}.flashcard{height:270px}.flashcard-face{padding:24px}.flashcard-face b{font-size:32px}.flashcard-face.ru b{font-size:25px}}
+.semantic-board{position:relative;padding:2px 0 0}.semantic-hint{margin:0 0 14px;color:#6d8891;text-align:center;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.semantic-center{position:relative;z-index:1;width:min(184px,56vw);aspect-ratio:1;display:grid;place-items:center;margin:0 auto 19px;border:2px solid var(--ink);border-radius:50%;background:#e7f0ed;color:var(--ink);box-shadow:0 10px 0 rgba(25,83,107,.08)}.semantic-center::before,.semantic-center::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;pointer-events:none;z-index:0}.semantic-center::before{inset:-9px}.semantic-center::after{inset:-17px;opacity:.58}.semantic-center span{position:relative;z-index:1;display:block;max-width:78%;font-family:"Noto Sans Devanagari";font-size:28px;font-weight:800;line-height:1.25;text-align:center}.semantic-cloud{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 9px;max-width:650px;margin:0 auto}.semantic-chip{border:1.5px solid #dce5e5;border-radius:999px;padding:10px 14px;background:#fff;color:var(--ink-dark);cursor:pointer;font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.15;transition:.18s}.semantic-chip:nth-child(3n+2){transform:translateY(4px)}.semantic-chip:hover:not(:disabled){border-color:var(--pink);transform:translateY(-2px)}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(2px)}.semantic-chip.selected{border-color:var(--ink);background:#e7f0ed;box-shadow:0 0 0 3px rgba(25,83,107,.1)}.semantic-chip.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.semantic-chip.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.semantic-chip.missed{box-shadow:0 0 0 3px rgba(40,132,101,.13)}.semantic-chip:disabled{cursor:default}.semantic-check{display:block;margin:25px auto 0;cursor:pointer;border:0;border-radius:12px;padding:14px 20px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 5px 0 var(--pink-dark);transition:.15s}.semantic-check:hover:not(:disabled){transform:translateY(-1px)}.semantic-check:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 var(--pink-dark)}.semantic-check:disabled{cursor:default;opacity:.46;box-shadow:none}
+.order-board{max-width:690px;margin:0 auto}.order-slots{display:grid;gap:8px;min-height:74px;padding:13px;background:#f7f4ee;border:1px dashed #d9d0c5;border-radius:16px}.order-empty{margin:auto;color:#758d96;font-size:14px;font-weight:800}.order-slot,.order-card{border:1.5px solid #dce5e5;border-radius:13px;background:#fff;color:var(--ink-dark);font-family:"Noto Sans Devanagari";font-size:17px;font-weight:700;line-height:1.4;text-align:left}.order-slot{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer}.order-slot span{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;font-family:"Nunito Sans",sans-serif;font-size:12px;font-weight:900}.order-slot:hover:not(:disabled){border-color:var(--pink)}.order-slot.correct{background:#effaf5;border-color:var(--green);color:var(--green)}.order-slot.wrong{background:#fff0f3;border-color:var(--pink);color:var(--pink)}.order-bank{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.order-card{min-height:64px;padding:12px 14px;cursor:pointer;transition:.18s}.order-card:hover:not(:disabled){border-color:var(--pink);transform:translateY(-1px)}.order-card.chosen{opacity:.38;cursor:default}.order-solution{display:grid;gap:6px;margin-top:18px;padding:14px 17px;border-radius:12px;background:#edf7f4;color:#276b55;font-weight:800;line-height:1.45}.order-solution span{font-family:"Noto Sans Devanagari";font-size:16px}
+.semantic-chip small{display:block;margin-top:4px;font-family:"Nunito Sans",sans-serif;font-size:11px;font-weight:900;line-height:1.25;opacity:.78}
+@media(max-width:600px){.semantic-center{width:138px;margin-bottom:18px}.semantic-center span{font-size:24px}.semantic-cloud{gap:8px}.semantic-chip{padding:9px 12px;font-size:15px}.semantic-chip:nth-child(3n+2){transform:none}.semantic-chip:nth-child(3n+2):hover:not(:disabled){transform:translateY(-2px)}}
+@media(max-width:600px){.order-bank{grid-template-columns:1fr}.order-card{min-height:54px;font-size:16px}.order-slot{font-size:16px}}
+.flashcard::after{content:none}
+ .emoji-series{margin:-3px 0 25px;text-align:center}.emoji-progress{margin:0 0 14px;color:#6d8891;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.emoji-orb{position:relative;width:min(184px,56vw);aspect-ratio:1;display:grid;place-items:center;margin:0 auto;border:2px solid var(--ink);border-radius:50%;background:#e7f0ed;box-shadow:0 10px 0 rgba(25,83,107,.08);font-size:clamp(72px,14vw,112px);line-height:1}.emoji-orb::before,.emoji-orb::after{content:"";position:absolute;border:1px solid var(--peach);border-radius:50%;pointer-events:none}.emoji-orb::before{inset:-9px}.emoji-orb::after{inset:-17px;opacity:.58}
+@media (prefers-reduced-motion:reduce){.message.outgoing.is-sent,.message.incoming.is-received{animation:none}.chat-messages{scroll-behavior:auto}}
+@media (hover:none) and (pointer:coarse){.flashcard,.flashcard-inner,.flashcard-face{-webkit-transform-style:preserve-3d}.flashcard-inner{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}.flashcard.flipped .flashcard-inner{-webkit-transform:rotateY(180deg) translateZ(0);transform:rotateY(180deg) translateZ(0)}.flashcard-face{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(.1px);transform:translateZ(.1px)}.flashcard-face.ru{-webkit-transform:rotateY(180deg) translateZ(.1px);transform:rotateY(180deg) translateZ(.1px)}}
+.flashcard{-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+
+    </style>
+  </head>
+  <body data-digits-only="true">
+    <main class="app-shell digits-boot">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Хинди-практика, на главную"><span>हिं</span></a>
+        <p>Хинди-практика</p>
+        <div class="lesson-pill" id="lesson-pill">Урок 3 <span>·</span> Качества человека</div>
+      </header>
+
+      <section class="lesson-picker" id="lesson-picker" aria-labelledby="picker-title">
+        <p class="eyebrow">Хинди-практика</p>
+        <h1 id="picker-title">Выбери<br /><em>урок</em></h1>
+        <p class="intro">Короткие игровые практики по материалам занятий.</p>
+        <button class="continue-card" id="continue-lesson" type="button" hidden>
+          <span class="continue-icon">↻</span>
+          <span class="continue-copy"><small id="continue-kicker">Продолжить урок</small><b id="continue-title"></b></span>
+          <span class="lesson-arrow">→</span>
+        </button>
+        <div class="lesson-list">
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="3" type="button">
+              <span class="lesson-number">3</span>
+              <span class="lesson-card-copy"><b>Качества человека</b><small>7 заданий · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="3" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="3" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="17" type="button">
+              <span class="lesson-number">17</span>
+              <span class="lesson-card-copy"><b>Начать и закончить разговор</b><small>7 заданий · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="17" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="17" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="18" type="button">
+              <span class="lesson-number">18</span>
+              <span class="lesson-card-copy"><b>Просьбы и мнение</b><small>7 заданий · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="18" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="18" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
+          <div class="lesson-entry">
+            <button class="lesson-card available" data-lesson="digits" type="button">
+              <span class="lesson-number digits-number">०–९</span>
+              <span class="lesson-card-copy"><b>Цифры деванагари</b><small>Дополнительный урок · 4-8 минут</small></span>
+              <span class="practice-count" data-practice-count="digits" hidden></span>
+              <span class="lesson-arrow">→</span>
+            </button>
+            <button class="practice-card" data-practice="digits" type="button" hidden aria-label="Повторить трудное">
+              <span class="practice-icon">↻</span>
+            </button>
+          </div>
+          <div class="lesson-card coming-soon" aria-label="Урок 19, скоро">
+            <span class="lesson-number">19</span>
+            <span class="lesson-card-copy"><b>Следующий урок</b><small>Скоро появится</small></span>
+            <span class="soon-label">скоро</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-picker" id="mode-picker" aria-labelledby="mode-title">
+        <button class="back-link" id="back-to-lessons" type="button">← Все уроки</button>
+        <p class="eyebrow" id="mode-kicker">Урок</p>
+        <h1 id="mode-title">Как позанимаемся?</h1>
+        <p class="intro" id="mode-subtitle"></p>
+        <div class="mode-options">
+          <button class="mode-option game-mode" id="start-game" type="button">
+            <span class="mode-icon">✦</span>
+            <span><b>Игровая практика</b><small>Ситуации, диалоги и семь коротких заданий</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
+          <button class="mode-option flashcard-mode" id="start-flashcards" type="button">
+            <span class="mode-icon">↻</span>
+            <span><b>Слово за словом</b><small>Переворачивай карточки в своём темпе</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
+        </div>
+        <div class="difficulty-picker" id="digits-flashcard-counts" hidden>
+          <p class="difficulty-intro">Каждый круг покажет все 10 цифр в новом случайном порядке — выберите длину серии.</p>
+          <button class="difficulty-option" data-flashcard-count="10" type="button"><span class="difficulty-badge">10</span><span><b>10 карточек</b><small>Один круг цифр</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option" data-flashcard-count="20" type="button"><span class="difficulty-badge">20</span><span><b>20 карточек</b><small>Два перемешанных круга</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option pahalvaan-option" data-flashcard-count="30" type="button"><span class="difficulty-badge">30</span><span><b>30 карточек</b><small>Три перемешанных круга</small></span><span class="lesson-arrow">→</span></button>
+        </div>
+        <div class="difficulty-picker" id="digits-difficulty" hidden>
+          <p class="difficulty-intro">Выбирай по настроению — шпаргалка всегда рядом.</p>
+          <button class="difficulty-option" data-digit-level="warmup" type="button"><span class="difficulty-badge">1</span><span><b>Разминка</b><small>4 пары · по 3 вопроса в сериях</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option" data-digit-level="drive" type="button"><span class="difficulty-badge">2</span><span><b>Разгон</b><small>6 пар · по 6 вопросов в сериях</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option pahalvaan-option" data-digit-level="pahalvaan" type="button"><span class="difficulty-badge">💪</span><span><b>Pahalvaan</b><small>10 пар · по 10 вопросов в сериях</small></span><span class="lesson-arrow">→</span></button>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="mandala mandala-one"></div><div class="mandala mandala-two"></div>
+        <p class="eyebrow" id="lesson-task-count">Мини-игра · 7 заданий</p>
+        <h1 id="hero-title">Игровая<br /><em>практика</em></h1>
+        <p class="intro" id="lesson-subtitle">Научимся описывать характер: от доброго и смелого до хитрого и опасного.</p>
+        <div class="progress-wrap"><div class="progress-label"><span id="progress-text">Задание 1 из 5</span><span id="score-text">0 баллов</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
+      </section>
+
+      <nav class="rounds" aria-label="Задания">
+        <button class="round active" data-round="0"><span>1</span><b>Найти пару</b></button>
+        <button class="round" data-round="1"><span>2</span><b>Попросить</b></button>
+        <button class="round" data-round="2"><span>3</span><b>Вставить слово</b></button>
+        <button class="round" data-round="3"><span>4</span><b>Своё мнение</b></button>
+        <button class="round" data-round="4"><span>5</span><b>Мини-чат</b></button>
+      </nav>
+
+      <section class="game-card" id="game-card" aria-live="polite"></section>
+    </main>
+      <script type="module">
+{
+const lesson3 = {
+  id: '3',
+  title: 'Качества человека',
+  subtitle: 'Научимся описывать характер: от доброго и смелого до хитрого и опасного.',
+  taskCount: 7,
+  duration: '4-8 минут',
+  maxScore: 11,
+  flashcards: [
+    { hi: 'ईमानदार', ru: 'честный' },
+    { hi: 'उदार', ru: 'щедрый' },
+    { hi: 'मेहनती', ru: 'трудолюбивый' },
+    { hi: 'संस्कारी', ru: 'воспитанный, традиционный' },
+    { hi: 'होशियार', ru: 'смышлёный' },
+    { hi: 'बहादुर', ru: 'смелый' },
+    { hi: 'दयालु', ru: 'добрый' },
+    { hi: 'नादां', ru: 'наивный, простой' },
+    { hi: 'शांत', ru: 'спокойный' },
+    { hi: 'लापरवाह', ru: 'беззаботный' },
+    { hi: 'पहलवान', ru: 'борец, качок' },
+    { hi: 'झूठा', ru: 'лживый' },
+    { hi: 'कंजूस', ru: 'жадный' },
+    { hi: 'आलसी', ru: 'ленивый' },
+    { hi: 'बेशरम', ru: 'бесстыжий' },
+    { hi: 'पागल', ru: 'сумасшедший' },
+    { hi: 'डरपोक', ru: 'трусливый' },
+    { hi: 'ज़ालिम', ru: 'жестокий' },
+    { hi: 'मतलबी', ru: 'эгоистичный' },
+    { hi: 'ख़तरनाक', ru: 'опасный' },
+    { hi: 'व्यस्त', ru: 'занятой' },
+    { hi: 'शराबी', ru: 'пьяница' },
+    { hi: 'चालाक', ru: 'хитрый' }
+  ],
+  matchingRound: {
+    type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини качества', description: 'Нажми слово на хинди и его русский смысл. Можно начинать с любой стороны.',
+    pairs: [
+      { key: 'honest', hi: 'ईमानदार', ru: 'честный' },
+      { key: 'generous', hi: 'उदार', ru: 'щедрый' },
+      { key: 'hardworking', hi: 'मेहनती', ru: 'трудолюбивый' },
+      { key: 'smart', hi: 'होशियार', ru: 'смышлёный' },
+      { key: 'brave', hi: 'बहादुर', ru: 'смелый' },
+      { key: 'kind', hi: 'दयालु', ru: 'добрый' },
+      { key: 'calm', hi: 'शांत', ru: 'спокойный' },
+      { key: 'liar', hi: 'झूठा', ru: 'лживый' },
+      { key: 'lazy', hi: 'आलसी', ru: 'ленивый' },
+      { key: 'cowardly', hi: 'डरपोक', ru: 'трусливый' },
+      { key: 'selfish', hi: 'मतलबी', ru: 'эгоистичный' },
+      { key: 'cunning', hi: 'चालाक', ru: 'хитрый' }
+    ]
+  },
+  portraitPool: [
+    {
+      center: 'गीता',
+      scenario: 'Гита всегда говорит правду, с радостью помогает людям и не боится большой работы.',
+      correctOptions: ['ईमानदार', 'दयालु', 'मेहनती'],
+      explanation: 'Верно! По описанию к Гите подходят ईमानदार, दयालु и मेहनती.'
+    },
+    {
+      center: 'विक्रम',
+      scenario: 'Викрам выступает на соревнованиях по борьбе, не пасует перед трудностями и даже в напряжённый момент сохраняет спокойствие.',
+      correctOptions: ['पहलवान', 'बहादुर', 'शांत'],
+      explanation: 'Верно! По описанию к Викраму подходят पहलवान, बहादुर и शांत.'
+    },
+    {
+      center: 'राहुल',
+      scenario: 'Рахул очень быстро соображает и умеет находить выход из сложных ситуаций, но в любой сделке прежде всего думает о собственной выгоде.',
+      correctOptions: ['होशियार', 'चालाक', 'मतलबी'],
+      explanation: 'Верно! По описанию к Рахулу подходят होशियार, चालाक и मतलबी.'
+    },
+    {
+      center: 'नंदिनी',
+      scenario: 'Нандини только начинает самостоятельную жизнь: она доверчивая и простая, но очень вежливая и уважает семейные традиции.',
+      correctOptions: ['नादां', 'संस्कारी'],
+      explanation: 'Верно! По описанию к Нандини подходят नादां и संस्कारी.'
+    },
+    {
+      center: 'मोहन',
+      scenario: 'Мохан обещает выполнить работу, но часто врёт. Он не любит работать и даже не извиняется, когда подводит других.',
+      correctOptions: ['झूठा', 'आलसी', 'बेशरम'],
+      explanation: 'Верно! По описанию к Мохану подходят झूठा, आलसी и बेशरम.'
+    }
+  ],
+  emojiPool: [
+    { emoji: '🤪', label: 'сумасшедший', correct: 'पागल', other: ['शांत', 'होशियार'], explanation: 'Верно. पागल — «сумасшедший».' },
+    { emoji: '🍾', label: 'пьяница', correct: 'शराबी', other: ['होशियार', 'दयालु'], explanation: 'Точно. शराबी — «пьяница».' },
+    { emoji: '😨', label: 'трусливый', correct: 'डरपोक', other: ['बहादुर', 'उदार'], explanation: 'Точно. डरपोक — «трусливый».' },
+    { emoji: '🧑‍🎓', label: 'смышлёный', correct: 'होशियार', other: ['आलसी', 'शराबी'], explanation: 'Верно. होशियार — «смышлёный».' },
+    { emoji: '🧘', label: 'спокойный', correct: 'शांत', other: ['पागल', 'व्यस्त'], explanation: 'Да. शांत — «спокойный».' },
+    { emoji: '👺', label: 'жестокий', correct: 'ज़ालिम', other: ['दयालु', 'संस्कारी'], explanation: 'Верно. ज़ालिम — «жестокий».' },
+    { emoji: '💪', label: 'силач', correct: 'पहलवान', other: ['कंजूस', 'लापरवाह'], explanation: 'Верно. पहलवान — силач, борец или качок.' }
+  ],
+  fillPool: [
+    { sentence: 'गीता एक बहुत ______ महिला हैं ।', correct: 'संस्कारी', other: ['मतलबी', 'आलसी'], explanation: 'Точно. В примере из урока Гита — संस्कारी, воспитанная женщина.' },
+    { sentence: 'मेरा दोस्त सबकी मदद करता है: वह बहुत ______ है ।', correct: 'दयालु', other: ['ज़ालिम', 'कंजूस'], explanation: 'Верно. दयालु — добрый, отзывчивый.' },
+    { sentence: 'वह रोज़ काम करता है और कभी हार नहीं मानता: वह बहुत ______ है ।', correct: 'मेहनती', other: ['आलसी', 'लापरवाह'], explanation: 'Да. मेहनती — трудолюбивый.' },
+    { sentence: 'अकेले जंगल में जाना उसे डराता नहीं: वह ______ है ।', correct: 'बहादुर', other: ['डरपोक', 'शांत'], explanation: 'Верно. बहादुर — смелый.' }
+  ],
+  traitPool: [
+    { scenario: 'Человек обещает помочь, а потом постоянно нарушает обещания. Как его можно назвать?', correct: 'झूठा', other: ['ईमानदार', 'दयालु'], explanation: 'Верно. झूठा — лживый; в упражнении урока так описывают человека, который нарушает обещания.' },
+    { scenario: 'Он думает только о своей выгоде и пользуется людьми. Какое качество подходит?', correct: 'मतलबी', other: ['उदार', 'संस्कारी'], explanation: 'Да. मतलबी — эгоистичный, корыстный.' },
+    { scenario: 'Она быстро понимает, как всё устроено, и находит выход из сложных ситуаций.', correct: 'होशियार', other: ['नादां', 'डरपोक'], explanation: 'Верно. होशियार — смышлёный.' },
+    { scenario: 'Он всегда говорит правду, даже когда это не очень удобно.', correct: 'ईमानदार', other: ['चालाक', 'झूठा'], explanation: 'Точно. ईमानदार — честный.' }
+  ],
+  orderPool: [
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: вопрос, ответ, уточнение, ответ.',
+      lines: [
+        { key: 'question', text: 'तुम्हारा नया सहकर्मी कैसा है?' },
+        { key: 'answer', text: 'वह बहुत होशियार और मेहनती है।' },
+        { key: 'followup', text: 'क्या वह लोगों की मदद करता है?' },
+        { key: 'reply', text: 'हाँ, वह बहुत दयालु है।' }
+      ],
+      explanation: 'Верно! Сначала спрашиваем о человеке, затем уточняем ещё одно качество.'
+    },
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: вопрос, ответ, уточнение, ответ.',
+      lines: [
+        { key: 'question', text: 'राहुल कैसा है?' },
+        { key: 'answer', text: 'वह शांत और संस्कारी है।' },
+        { key: 'followup', text: 'क्या वह पढ़ाई भी करता है?' },
+        { key: 'reply', text: 'हाँ, वह बहुत मेहनती है।' }
+      ],
+      explanation: 'Отлично! Получился естественный разговор о характере Рахула.'
+    }
+  ],
+  chatPool: [
+    {
+      type: 'chat', label: 'Задание 7 · мини-чат', title: 'Опиши Барфи', description: 'Ответь Аджая, используя качества человека из урока.',
+      dialogue: [
+        { message: 'कल मैंने बर्फ़ी फिल्म देखी। तुम्हें बर्फ़ी कैसा लगता है?', correct: 'मुझे लगता है कि बर्फ़ी बहुत होशियार और बहादुर है।', other: ['बर्फ़ी बहुत ज़ालिम है।', 'बर्फ़ी बहुत शराबी है।'], explanation: 'Отлично! Так можно начать своё описание героя: «мне кажется, Барфи очень смышлёный и смелый».' },
+        { message: 'हाँ, वह मुश्किल में भी मुस्कुराता है।', correct: 'बिल्कुल, वह बहुत शांत भी है।', other: ['नहीं, वह बहुत कंजूस है।', 'वह बहुत डरपोक है।'], explanation: 'Верно. शांत — спокойный; это уместное продолжение портрета героя.' },
+        { message: 'और तुम्हारा दोस्त अमन कैसा है?', correct: 'वह बहुत मेहनती और दयालु है।', other: ['वह बहुत झूठा और मतलबी है।', 'वह बहुत ख़तरनाक है।'], explanation: 'Идеально: ты описал друга двумя качествами из урока.' }
+      ]
+    },
+    {
+      type: 'chat', label: 'Задание 7 · мини-чат', title: 'Расскажи о друге', description: 'Поддержи короткий разговор о характере человека.',
+      dialogue: [
+        { message: 'तुम्हारी बहन कैसी है?', correct: 'वह बहुत ईमानदार और उदार है।', other: ['वह बहुत झूठी और कंजूस है।', 'वह बहुत शराबी है।'], explanation: 'Отлично. ईमानदार — честный, а उदार — щедрый.' },
+        { message: 'क्या वह बहुत काम करती है?', correct: 'हाँ, वह बहुत मेहनती है।', other: ['नहीं, वह बहुत आलसी है।', 'वह बहुत डरपोक है।'], explanation: 'Верно. मेहनती — трудолюбивый.' },
+        { message: 'तो वह सच में अच्छी इंसान है!', correct: 'हाँ, वह बहुत दयालु है।', other: ['हाँ, वह बहुत ज़ालिम है।', 'हाँ, वह बहुत बेशरम है।'], explanation: 'Да. दयालु — добрый, отзывчивый.' }
+      ]
+    }
+  ]
+};
+
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const options = (correct, other) => {
+  const choices = shuffle([correct, ...other]);
+  return { choices, answer: choices.indexOf(correct) };
+};
+
+// A new run should feel new even if Math.random repeats the same four words.
+let previousMatchingSignature = '';
+const pickFreshMatchingPairs = () => {
+  const source = lesson3.matchingRound.pairs;
+  let pairs = pickSome(source, 4);
+  let signature = pairs.map(pair => pair.key).sort().join('|');
+  let attempts = 0;
+
+  while (signature === previousMatchingSignature && attempts < 12) {
+    pairs = pickSome(source, 4);
+    signature = pairs.map(pair => pair.key).sort().join('|');
+    attempts += 1;
+  }
+
+  // Extremely unlikely fallback: replace one word so the set still changes.
+  if (signature === previousMatchingSignature && source.length > pairs.length) {
+    const kept = pairs.slice(0, -1);
+    const replacement = pickSome(source.filter(pair => !kept.some(item => item.key === pair.key)), 1)[0];
+    pairs = [...kept, replacement];
+    signature = pairs.map(pair => pair.key).sort().join('|');
+  }
+
+  previousMatchingSignature = signature;
+  return pairs;
+};
+
+function createLesson3Rounds() {
+  const emojiSeries = pickSome(lesson3.emojiPool, 3).map(emoji => ({ ...emoji, ...options(emoji.correct, emoji.other) }));
+  const fill = pick(lesson3.fillPool);
+  const trait = pick(lesson3.traitPool);
+  const orderSource = pick(lesson3.orderPool);
+  const matchingPairs = pickFreshMatchingPairs();
+  const portrait = pick(lesson3.portraitPool);
+  const semantic = {
+    type: 'semantic', label: 'Задание 2 · собери портрет', title: 'Собери портрет', description: 'Прочитай описание и отметь слова, которые действительно подходят этому человеку.',
+    ...portrait,
+    options: shuffle([
+      ...portrait.correctOptions.map(text => ({ text, correct: true })),
+      ...pickSome(lesson3.flashcards.map(card => card.hi).filter(text => !portrait.correctOptions.includes(text)), 16 - portrait.correctOptions.length).map(text => ({ text, correct: false }))
+    ])
+  };
+  const chatSource = pick(lesson3.chatPool);
+  const order = { ...orderSource, lines: shuffle(orderSource.lines), answer: orderSource.lines.map(line => line.key) };
+  const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
+  return [
+    { ...lesson3.matchingRound, trainingTag: 'качества и переводы', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { ...semantic, trainingTag: 'портрет человека' },
+    { type: 'emoji', trainingTag: 'эмодзи и качество', label: 'Задание 3 · слово по эмодзи', title: 'Какое это качество?', description: 'Угадай три качества по эмодзи. После каждого ответа появится следующий.', emojiSeries },
+    { type: 'fill', trainingTag: 'качество по описанию', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери качество, которое естественно завершает фразу.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'choice', trainingTag: 'характер по ситуации', label: 'Задание 5 · опиши человека', title: 'Какой он?', description: 'Выбери качество по описанию человека.', ...trait, ...options(trait.correct, trait.other) },
+    { ...order, trainingTag: 'разговор о характере' },
+    { ...chat, trainingTag: 'описание человека' }
+  ];
+}
+
+Object.assign(globalThis, { lesson3, createLesson3Rounds });
+}
+{
+const lesson17 = {
+  id: '17',
+  title: 'Как начать и закончить разговор',
+  subtitle: 'Научимся здороваться, поддерживать small talk и уместно прощаться.',
+  taskCount: 7,
+  duration: '4-8 минут',
+  maxScore: 9,
+  flashcards: [
+    { hi: 'नमस्ते', ru: 'здравствуйте / до свидания' },
+    { hi: 'नमस्कार', ru: 'официальное приветствие' },
+    { hi: 'राम-राम', ru: 'приветствие, иногда прощание' },
+    { hi: 'प्रणाम', ru: 'здравствуйте; кланяюсь вам' },
+    { hi: 'सत श्री अकाल', ru: 'приветствие сикхов' },
+    { hi: 'सलाम', ru: 'мусульманское приветствие' },
+    { hi: 'राधे-राधे', ru: 'приветствие и прощание в северной Индии' },
+    { hi: 'फिर मिलेंगे', ru: 'до скорой встречи' },
+    { hi: 'अपना ध्यान रखना', ru: 'береги себя' },
+    { hi: 'आपका दिन अच्छा हो', ru: 'хорошего дня' },
+    { hi: 'ठीक है, चलते हैं', ru: 'ну хорошо, расходимся' },
+    { hi: 'टाटा', ru: 'пока' },
+    { hi: 'अलविदा', ru: 'прощай при долгой разлуке' }
+  ],
+  matchingRound: {
+    type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини фразы', description: 'Нажми фразу на хинди и её русский смысл. Можно начинать с любой стороны.',
+    pairs: [
+      { key: 'namaste', hi: 'नमस्ते', ru: 'здравствуйте / до свидания' },
+      { key: 'namaskar', hi: 'नमस्कार', ru: 'официальное приветствие' },
+      { key: 'ram', hi: 'राम-राम', ru: 'приветствие, иногда прощание' },
+      { key: 'pranam', hi: 'प्रणाम', ru: 'здравствуйте; кланяюсь вам' },
+      { key: 'sikh', hi: 'सत श्री अकाल', ru: 'приветствие сикхов' },
+      { key: 'salaam', hi: 'सलाम', ru: 'мусульманское приветствие' },
+      { key: 'radhe', hi: 'राधे-राधे', ru: 'приветствие и прощание в северной Индии' },
+      { key: 'again', hi: 'फिर मिलेंगे', ru: 'до скорой встречи' },
+      { key: 'care', hi: 'अपना ध्यान रखना', ru: 'береги себя' },
+      { key: 'day', hi: 'आपका दिन अच्छा हो', ru: 'хорошего дня' },
+      { key: 'leave', hi: 'ठीक है, चलते हैं', ru: 'ну хорошо, расходимся' },
+      { key: 'tata', hi: 'टाटा', ru: 'пока' },
+      { key: 'goodbye', hi: 'अलविदा', ru: 'прощай при долгой разлуке' }
+    ]
+  },
+  semanticRoundPool: [
+    {
+      type: 'semantic', label: 'Задание 2 · кто тут свой?', title: 'Кто тут свой?', description: 'Выбери выражения, которыми уместно поздороваться.', center: 'मिलते समय',
+      correctOptions: ['राम-राम', 'प्रणाम', 'शुभ प्रभात', 'शुभ रात्री', 'सत श्री अकाल', 'सलाम', 'आदाब', 'राधे-राधे', 'हाय', 'हेलो'],
+      distractorPool: ['फिर मिलेंगे', 'फिर मिलते हैं', 'अपना ख़याल रखना', 'अपना ध्यान रखना', 'आपका दिन अच्छा हो', 'ठीक है, चलते हैं', 'ख़ुदा हाफ़िज़', 'टाटा', 'अलविदा', 'दुकान', 'कमीज़', 'बिजली', 'कॉफ़ी', 'परिवार', 'ट्रेन', 'सड़क'],
+      explanation: 'Верно! Это приветствия: они подходят для начала разговора.'
+    },
+    {
+      type: 'semantic', label: 'Задание 2 · кто тут свой?', title: 'Кто тут свой?', description: 'Выбери выражения, которыми уместно попрощаться.', center: 'विदा लेते समय',
+      correctOptions: ['फिर मिलेंगे', 'फिर मिलते हैं', 'अपना ख़याल रखना', 'अपना ध्यान रखना', 'आपका दिन अच्छा हो', 'ठीक है, चलते हैं', 'ख़ुदा हाफ़िज़', 'टाटा', 'अलविदा'],
+      distractorPool: ['प्रणाम', 'शुभ प्रभात', 'शुभ रात्री', 'सत श्री अकाल', 'सलाम', 'आदाब', 'हाय', 'हेलो', 'दुकान', 'कमीज़', 'बिजली', 'कॉफ़ी', 'परिवार', 'ट्रेन', 'सड़क', 'पड़ोसी'],
+      explanation: 'Верно! Это прощания: ими естественно закончить разговор.'
+    }
+  ],
+  contextPool: [
+    { scenario: 'Ты приехал в Пенджаб и заходишь в местный магазин, где стоит мужчина в тюрбане.', correct: 'सत श्री अकाल', other: ['राधे-राधे', 'शुभ प्रभात'], explanation: 'Верно. सत श्री अकाल — традиционное приветствие у сикхов.' },
+    { scenario: 'Ты пишешь современному индийскому сверстнику в чате.', correct: 'हाय, सब कैसा चल रहा है?', other: ['प्रणाम, आप कैसे हैं?', 'शुभ प्रभात, क्या हाल है आपका?'], explanation: 'Да, такое начало звучит естественно и современно.' },
+    { scenario: 'Ты прощаешься с коллегой в офисе и увидишь его завтра утром.', correct: 'टाटा, फिर मिलेंगे!', other: ['अलविदा, अपना खयाल रखना।', 'हेलो, शुभ रात्री।'], explanation: 'Верно. अलविदा говорят при долгой или маловероятной разлуке.' },
+    { scenario: 'Ты прощаешься с мусульманским соседом после короткого разговора.', correct: 'खुदा हाफिज', other: ['सत श्री अकाल', 'शुभ प्रभात'], explanation: 'Верно. खुदा हाफिज — распространённое мусульманское прощание.' }
+  ],
+  fillPool: [
+    { sentence: 'अच्छा, दोपहर की मीटिंग में ______!', correct: 'फिर मिलेंगे', other: ['अलविदा', 'सत श्री अकाल'], explanation: 'Точно: «увидимся на дневной встрече» — फिर मिलेंगे.' },
+    { sentence: 'रात हो गई है, ______। कल सुबह बात करते हैं।', correct: 'ठीक है, चलते हैं', other: ['शुभ प्रभात', 'प्रणाम'], explanation: 'Верно. ठीक है, चलते हैं — «ну хорошо, расходимся».' },
+    { sentence: 'अपना और परिवार का ______।', correct: 'ध्यान रखना', other: ['काम-धंधा', 'क्या हाल है'], explanation: 'Да. Это пожелание: «береги себя и семью».' },
+    { sentence: 'छुट्टी पर जाने से पहले коллега говорит: «______!»', correct: 'आपका दिन अच्छा हो', other: ['काम-धंधा कैसा है', 'बाल-बच्चे कैसे हैं'], explanation: 'Верно. आपका दिन अच्छा हो — доброжелательное «хорошего дня».' }
+  ],
+  goodbyePool: [
+    { scenario: 'Ты долго не увидишь друга: он уезжает в другую страну.', correct: 'अलविदा', other: ['टाटा', 'हाय'], explanation: 'Верно. अलविदा уместно при долгой разлуке, когда следующая встреча маловероятна.' },
+    { scenario: 'Ты в северной Индии во время Холи и хочешь поздороваться или попрощаться.', correct: 'राधे-राधे', other: ['सलाम', 'काम-धंधा कैसा है?'], explanation: 'Да. राधे-राधे используют и как приветствие, и как прощание.' }
+  ],
+  orderPool: [
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: от приветствия к прощанию.',
+      lines: [
+        { key: 'hello', text: 'हाय!' },
+        { key: 'question', text: 'सब कैसा चल रहा है?' },
+        { key: 'reply', text: 'बहुत बढ़िया!' },
+        { key: 'goodbye', text: 'ठीक है, फिर मिलेंगे!' }
+      ],
+      explanation: 'Верно! У разговора получился естественный ритм: приветствие, вопрос, ответ и прощание.'
+    },
+    {
+      type: 'order', label: 'Задание 6 · собери разговор', title: 'Собери разговор', description: 'Нажимай реплики в естественном порядке: от приветствия к прощанию.',
+      lines: [
+        { key: 'hello', text: 'नमस्कार!' },
+        { key: 'question', text: 'काम-धंधा कैसा है?' },
+        { key: 'reply', text: 'हाँ, भगवान की कृपा है।' },
+        { key: 'goodbye', text: 'ठीक है, चलते हैं।' }
+      ],
+      explanation: 'Верно! Здесь сначала приветствие и small talk, а затем уместное прощание.'
+    }
+  ],
+  chatPool: [
+    {
+      type: 'chat', label: 'Задание 5 · мини-чат', title: 'Начни разговор', description: 'Поздоровайся, поддержи короткий разговор и заверши его естественно.',
+      dialogue: [
+        { message: 'हाय! बहुत दिनों बाद मिले!', correct: 'हाय! सब कैसा चल रहा है?', other: ['अलविदा!', 'अपना ध्यान रखना।'], explanation: 'Отличное начало: дружелюбное «Привет! Как у тебя всё?».' },
+        { message: 'सब मस्त है। स्कूल प्रोजेक्ट भी अच्छा चल रहा है।', correct: 'बहुत बढ़िया!', other: ['शुभ रात्री!', 'सत श्री अकाल!'], explanation: 'Верно. बहुत बढ़िया — «очень здорово».' },
+        { message: 'चलो, अब मुझे जाना है।', correct: 'ठीक है, फिर मिलेंगे!', other: ['अलविदा!', 'प्रणाम!'], explanation: 'Идеально для скорой следующей встречи: «хорошо, увидимся».' }
+      ]
+    },
+    {
+      type: 'chat', label: 'Задание 5 · мини-чат', title: 'Поддержи разговор', description: 'Ответь на вопросы соседей и закончи беседу естественно.',
+      dialogue: [
+        { message: 'नमस्कार! दुकान पर रौनक कैसी है?', correct: 'काम-धंधा अच्छा चल रहा है।', other: ['अलविदा!', 'शुभ रात्री!'], explanation: 'Верно: на вопрос о делах и торговле уместно ответить о работе.' },
+        { message: 'त्योहारों का सीज़न है, तो काम अच्छा है। और घर पर सब ठीक है?', correct: 'हाँ, भगवान की कृपा है।', other: ['सत श्री अकाल!', 'टाटा!'], explanation: 'Да, это естественный ответ на вопрос о семье.' },
+        { message: 'अच्छा, रात हो गई है। कल सुबह बात करते हैं।', correct: 'ठीक है, चलते हैं।', other: ['आप कैसे हैं?', 'प्रणाम!'], explanation: 'Идеально: «ну хорошо, расходимся».' }
+      ]
+    }
+  ]
+};
+
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const options = (correct, other) => {
+  const choices = shuffle([correct, ...other]);
+  return { choices, answer: choices.indexOf(correct) };
+};
+
+function createLesson17Rounds() {
+  const context = pick(lesson17.contextPool);
+  const fill = pick(lesson17.fillPool);
+  const goodbye = pick(lesson17.goodbyePool);
+  const orderSource = pick(lesson17.orderPool);
+  const matchingPairs = pickSome(lesson17.matchingRound.pairs, 4);
+  const semanticSource = pick(lesson17.semanticRoundPool);
+  const semanticCorrect = pickSome(semanticSource.correctOptions, 5 + Math.floor(Math.random() * 4));
+  const semantic = {
+    ...semanticSource,
+    options: shuffle([
+      ...semanticCorrect.map(text => ({ text, correct: true })),
+      ...pickSome(semanticSource.distractorPool, 16 - semanticCorrect.length).map(text => ({ text, correct: false }))
+    ])
+  };
+  const chatSource = pick(lesson17.chatPool);
+  const order = { ...orderSource, lines: shuffle(orderSource.lines), answer: orderSource.lines.map(line => line.key) };
+  const chat = { ...chatSource, dialogue: chatSource.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) })) };
+  return [
+    { ...lesson17.matchingRound, trainingTag: 'приветствия и прощания', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { ...semantic, trainingTag: 'кто тут свой?' },
+    { type: 'choice', trainingTag: 'фраза по ситуации', label: 'Задание 3 · по ситуации', title: 'Что сказать?', description: 'Выбери фразу, которая подходит к ситуации.', ...context, ...options(context.correct, context.other) },
+    { type: 'fill', trainingTag: 'прощания в разговоре', label: 'Задание 4 · закончи фразу', title: 'Заполни пропуск', description: 'Выбери естественное продолжение разговора.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'choice', trainingTag: 'уместное прощание', label: 'Задание 5 · попрощайся', title: 'Как сказать уместно?', description: 'Выбери фразу прощания по контексту.', ...goodbye, ...options(goodbye.correct, goodbye.other) },
+    { ...order, trainingTag: 'порядок разговора' },
+    { ...chat, trainingTag: 'диалог и прощание', label: 'Задание 7 · мини-чат' }
+  ];
+}
+
+Object.assign(globalThis, { lesson17, createLesson17Rounds });
+}
+{
+const lesson18 = {
+  id: '18',
+  title: 'Как попросить, отказаться, рассказать о своём мнении',
+  subtitle: 'Научимся просить, отказывать и выражать своё мнение.',
+  taskCount: 7,
+  duration: '4-8 минут',
+  maxScore: 9,
+  flashcards: [
+    { hi: 'मुझ को लगता है', ru: 'мне кажется' },
+    { hi: 'मुझ को पता है', ru: 'я знаю / мне известно' },
+    { hi: 'मुझ को मालूम है', ru: 'я знаю / мне известно' },
+    { hi: 'मुझ को अंदाज़ा है', ru: 'я предполагаю / у меня есть догадка' },
+    { hi: 'मुझ को भरोसा है', ru: 'я уверен / уверена' },
+    { hi: 'मुझ को विश्वास है', ru: 'я верю / уверена' },
+    { hi: 'मुझ को यक़ीन है', ru: 'я убеждён / убеждена' },
+    { hi: 'मुझ को शक है', ru: 'я сомневаюсь' },
+    { hi: 'मुझ को मंज़ूर है', ru: 'я согласен / согласна' },
+    { hi: 'मुझ को दुविधा है', ru: 'я в сомнении' },
+    { hi: 'मुझ को कशमकश है', ru: 'я колеблюсь' },
+    { hi: 'मुझ को फ़र्क नहीं पड़ता', ru: 'мне всё равно' }
+  ],
+  requestPool: [
+    { scenario: 'Ты хочешь узнать у друга, во сколько начинается фильм.', correct: 'पूछना', other: 'माँगना' },
+    { scenario: 'Ты просишь у друга помочь тебе с переездом.', correct: 'माँगना', other: 'पूछना' },
+    { scenario: 'Тебе нужно спросить маму, какое задание дала работнице.', correct: 'पूछना', other: 'माँगना' }
+  ],
+  fillPool: [
+    { sentence: 'नई झाड़ू चाहिए, तुम मंडी जाकर ______ ।', correct: 'माँगो', other: ['माँगी', 'पूछ रही'], explanation: 'Верно. Здесь просьба во втором лице: «сходи на рынок и попроси».' },
+    { sentence: 'मेरी बीवी ने उच्च गुणवत्ता की नयी साड़ी ______ है ।', correct: 'माँगी', other: ['माँगो', 'पूछ रही'], explanation: 'Точно! मेरी बीवी — женский род, поэтому माँगी: «моя жена попросила».' },
+    { sentence: 'कूड़ा कौन फ़ेंकेगा और कील कौन लगायेगा, मैं तुझ से ______ हूँ ।', correct: 'पूछ रही', other: ['माँगी', 'माँगते'], explanation: 'Верно. Здесь речь о вопросе: «я спрашиваю тебя».' },
+    { sentence: 'लड़केवाले दहेज के लिए एक गाड़ी और सोने के गहने ______ हैं ।', correct: 'माँगते', other: ['माँगो', 'पूछ रही'], explanation: 'Да. लड़केवाले — множественное число, поэтому माँगते.' },
+    { sentence: 'कांग्रेस वाले नेता ने एक करोड़ की रिश्वत ______ थी ।', correct: 'माँगी', other: ['माँगो', 'पूछ रही'], explanation: 'Верно. रिश्वत «попросил» — माँगी.' }
+  ],
+  opinionPool: [
+    { scenario: '«В Индии есть только 28 языков».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Да. मुझ को शक है — буквально «у меня есть сомнение», то есть «я сомневаюсь».' },
+    { scenario: '«Хинди и урду — это один и тот же язык».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Верно: эта фраза выражает сомнение в утверждении.' },
+    { scenario: '«Мыть волосы мылом — лучший способ».', correct: 'मुझ को शक है ।', other: ['मुझ को भरोसा है ।', 'चलेगा!'], explanation: 'Точно. Для осторожного несогласия подходит «я сомневаюсь».' }
+  ],
+  tonePool: [
+    { scenario: 'Коллега предлагает идею, и ты с ней полностью согласен.', correct: 'मैं आप से सहमत हूँ ।', other: ['मैं इस चीज़ से इंकार करता हूँ ।', 'चलेगा!'], explanation: 'Верно. मैं आप से सहमत हूँ — ясное «я с вами согласен».' },
+    { scenario: 'Предложение тебе не подходит, и ты хочешь вежливо, но определённо отказаться.', correct: 'मैं इस चीज़ से इंकार करता हूँ ।', other: ['मैं आप से सहमत हूँ ।', 'चलेगा!'], explanation: 'Верно. Эта фраза прямо, но спокойно выражает отказ.' },
+    { scenario: 'Вариант не вызывает восторга, но в целом тебя устраивает.', correct: 'चलेगा!', other: ['मैं इस चीज़ से इंकार करता हूँ ।', 'मैं आप की बात मानता हूँ ।'], explanation: 'Точно. चलेगा! — это лёгкое «пойдёт», без сильного согласия или отказа.' }
+  ],
+  matchingRound: {
+    type: 'match', label: 'Задание 1 · найди пару', title: 'Соедини слова', description: 'Нажми карточку на хинди и её русский перевод. Можно начинать с любой стороны.',
+    pairs: [
+      { key: 'ask', hi: 'पूछना', ru: 'спросить' },
+      { key: 'request', hi: 'माँगना', ru: 'просить' },
+      { key: 'refuse', hi: 'इंकार करना', ru: 'отказываться' },
+      { key: 'doubt', hi: 'शक है', ru: 'сомневаюсь' },
+      { key: 'forgive', hi: 'माफ़ी माँगना', ru: 'просить прощения' },
+      { key: 'agree', hi: 'सहमत हूँ', ru: 'согласен / согласна' },
+      { key: 'accept', hi: 'मंज़ूर है', ru: 'согласен / согласна' },
+      { key: 'sure', hi: 'भरोसा है', ru: 'уверен / уверена' },
+      { key: 'know', hi: 'मालूम है', ru: 'знаю' },
+      { key: 'seems', hi: 'लगता है', ru: 'мне кажется' },
+      { key: 'doesntmatter', hi: 'फ़र्क नहीं पड़ता', ru: 'мне всё равно' },
+      { key: 'certain', hi: 'पक्का', ru: 'точно!' }
+    ]
+  },
+  semanticRound: {
+    type: 'semantic', label: 'Задание 2 · кто тут свой?', title: 'Кто тут свой?', description: 'Нажми на выражения, которые естественно продолжают मुझ को. Среди них спрятались чужаки.', center: 'मुझ को',
+    correctOptions: [
+      'लगता है', 'पता है', 'मालूम है', 'अंदाज़ा है', 'भरोसा है', 'विश्वास है',
+      'यक़ीन है', 'शक है', 'मंज़ूर है', 'दुविधा है', 'कशमकश है', 'फ़र्क नहीं पड़ता'
+    ],
+    distractorPool: [
+      'तस्वीर', 'पड़ोसी', 'तौलिया', 'बादल', 'मेहमान', 'खिड़की', 'दुकानदार',
+      'चश्मा', 'कहानी', 'मकान', 'मौसम', 'सफ़र', 'रसोई', 'कपड़ा', 'दवाइयाँ',
+      'बाज़ार', 'तरीका', 'त्योहार', 'कुर्सी', 'किताब'
+    ],
+    explanation: 'Верно! Это все выражения, которые образуют с मुझ को естественные фразы о мнении, знании, сомнении или отношении.'
+  },
+  chatRound: {
+    type: 'chat', label: 'Задание 5 · отказ в общении', title: 'Поставь границу', description: 'Незнакомец продолжает писать. Отвечай спокойно и твёрдо.',
+    dialogue: [
+      { message: 'गुड मॉर्निंग स्वीटी । आप कहाँ रहती हो?', correct: 'मुझे आप से बात नहीं करनी है ।', other: ['मैं आप की बात मानती हूँ ।', 'चलेगा!'], explanation: 'Хорошее начало: «Я не хочу с вами разговаривать».' },
+      { message: 'मैं ने आपकी वीडियो देखी, बिंदास है ।', correct: 'कृपया, मुझे मेसेज मत कीजिए ।', other: ['मुझ को भरोसा है ।', 'मैं आप से सहमत हूँ ।'], explanation: 'Верно. Это вежливое, но ясное: «Пожалуйста, не пишите мне».' },
+      { message: 'मेरी गर्लफ्रेंड नहीं है, क्या आप मुझ से दोस्ती करोगी?', correct: 'मैं इस को मना करती हूँ ।', other: ['मैं आप की बात मानती हूँ ।', 'पक्का!'], explanation: 'Отлично. «Я отказываюсь от этого» — финальная и однозначная граница.' }
+    ]
+  }
+};
+
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const options = (correct, other) => {
+  const choices = shuffle([correct, ...other]);
+  return { choices, answer: choices.indexOf(correct) };
+};
+
+function createLesson18Rounds() {
+  const request = pick(lesson18.requestPool);
+  const fill = pick(lesson18.fillPool);
+  const opinion = pick(lesson18.opinionPool);
+  const tone = pick(lesson18.tonePool);
+  const matchingPairs = pickSome(lesson18.matchingRound.pairs, 4);
+  const semanticCorrect = pickSome(lesson18.semanticRound.correctOptions, 5 + Math.floor(Math.random() * 4));
+  const semantic = {
+    ...lesson18.semanticRound,
+    options: shuffle([
+      ...semanticCorrect.map(text => ({ text, correct: true })),
+      ...pickSome(lesson18.semanticRound.distractorPool, 16 - semanticCorrect.length).map(text => ({ text, correct: false }))
+    ])
+  };
+  const chat = {
+    ...lesson18.chatRound,
+    dialogue: lesson18.chatRound.dialogue.map(line => ({ ...line, ...options(line.correct, line.other) }))
+  };
+  return [
+    { ...lesson18.matchingRound, trainingTag: 'слова о просьбе и мнении', pairs: matchingPairs, hindi: shuffle(matchingPairs), russian: shuffle(matchingPairs) },
+    { ...semantic, trainingTag: 'выражения с मुझ को' },
+    { type: 'choice', trainingTag: 'спросить или попросить', label: 'Задание 3 · просьба или вопрос', title: 'Что ты хочешь сделать?', description: 'Выбери глагол, который подходит к ситуации.', ...request, ...options(request.correct, [request.other]), explanation: 'Верно! पूछना используют, когда нужно спросить информацию, совет или дорогу; माँगना — когда просят предмет, помощь или прощение.' },
+    { type: 'fill', trainingTag: 'форма глагола माँगना', label: 'Задание 4 · форма глагола', title: 'Заполни пропуск', description: 'Выбери правильную форму глагола.', ...fill, ...options(fill.correct, fill.other) },
+    { type: 'opinion', trainingTag: 'выражение сомнения', label: 'Задание 5 · своё мнение', title: 'Скажи, что сомневаешься', description: 'Выбери подходящую фразу для ответа на утверждение.', ...opinion, ...options(opinion.correct, opinion.other) },
+    { type: 'choice', trainingTag: 'согласие и отказ', label: 'Задание 6 · градус согласия', title: 'Выбери тон', description: 'Выбери фразу, которая точнее всего передаёт твою позицию.', ...tone, ...options(tone.correct, tone.other) },
+    { ...chat, trainingTag: 'границы в диалоге', label: 'Задание 7 · отказ в общении' }
+  ];
+}
+
+Object.assign(globalThis, { lesson18, createLesson18Rounds });
+}
+{
+const devanagariDigits = {
+  id: 'digits',
+  title: 'Цифры деванагари',
+  shortLabel: 'Дополнительный урок',
+  subtitle: 'Узнавай цифры деванагари, собирай числа и читай их в бытовых ситуациях.',
+  taskCount: 5,
+  duration: '4-8 минут',
+  flashcardTitle: 'Цифра за цифрой',
+  heroTitle: 'Игровая<br /><em>практика</em>',
+  flashcards: [
+    { hi: '०', ru: '0' }, { hi: '१', ru: '1' }, { hi: '२', ru: '2' }, { hi: '३', ru: '3' }, { hi: '४', ru: '4' },
+    { hi: '५', ru: '5' }, { hi: '६', ru: '6' }, { hi: '७', ru: '7' }, { hi: '८', ru: '8' }, { hi: '९', ru: '9' }
+  ]
+};
+
+const digits = devanagariDigits.flashcards.map(({ hi, ru }) => ({ glyph: hi, value: Number(ru) }));
+const levels = {
+  warmup: { pairs: 4, questions: 3, choices: 4, minLength: 2, maxLength: 2, label: 'Разминка' },
+  drive: { pairs: 6, questions: 6, choices: 6, minLength: 2, maxLength: 3, label: 'Разгон' },
+  pahalvaan: { pairs: 10, questions: 10, choices: 10, minLength: 3, maxLength: 4, label: 'Pahalvaan' }
+};
+
+const shuffle = items => [...items].sort(() => Math.random() - .5);
+const pickSome = (items, count) => shuffle(items).slice(0, count);
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const toDevanagari = value => String(value).split('').map(char => digits[Number(char)].glyph).join('');
+const counted = (value, one, few, many) => `${value} ${value % 10 === 1 && value % 100 !== 11 ? one : value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 12 || value % 100 > 14) ? few : many}`;
+
+function makeChoices(correct, pool, count) {
+  return shuffle([correct, ...pickSome(pool.filter(option => option !== correct), count - 1)]);
+}
+
+function randomNumber(length) {
+  const first = String(1 + Math.floor(Math.random() * 9));
+  return first + Array.from({ length: length - 1 }, () => String(Math.floor(Math.random() * 10))).join('');
+}
+
+function randomNumberChoices(correct, count, minLength, maxLength) {
+  const values = new Set([correct]);
+  let attempts = 0;
+  while (values.size < count && attempts < 100) {
+    const length = minLength + Math.floor(Math.random() * (maxLength - minLength + 1));
+    values.add(randomNumber(length));
+    attempts++;
+  }
+  return shuffle([...values]).map(toDevanagari);
+}
+
+function sameLengthNumberChoices(correct, count) {
+  const values = new Set([correct]);
+  while (values.size < count) values.add(randomNumber(correct.length));
+  return shuffle([...values]);
+}
+
+function makeRecognitionQuestions(config) {
+  return pickSome(digits, config.questions).map(digit => {
+    const choices = makeChoices(String(digit.value), digits.map(item => String(item.value)), config.choices);
+    return {
+      prompt: 'Что это за цифра?', display: digit.glyph, choices, answer: choices.indexOf(String(digit.value)),
+      explanation: `${digit.glyph} — это ${digit.value}.`
+    };
+  });
+}
+
+function makeSequenceQuestions(config) {
+  return Array.from({ length: config.questions }, () => {
+    const start = Math.floor(Math.random() * 7);
+    const missing = Math.floor(Math.random() * 4);
+    const values = Array.from({ length: 4 }, (_, index) => start + index);
+    const answerDigit = digits[values[missing]];
+    const sequence = values.map((value, index) => index === missing ? '＿' : digits[value].glyph).join('　');
+    const choices = makeChoices(answerDigit.glyph, digits.map(item => item.glyph), config.choices);
+    return {
+      prompt: 'Какой цифры не хватает в ряду?', display: sequence, choices, answer: choices.indexOf(answerDigit.glyph),
+      explanation: `На месте пропуска должна быть цифра ${answerDigit.glyph} (${answerDigit.value}).`
+    };
+  });
+}
+
+function makeComposeQuestions(config) {
+  return Array.from({ length: config.questions }, () => {
+    const length = config.minLength + Math.floor(Math.random() * (config.maxLength - config.minLength + 1));
+    const value = randomNumber(length);
+    const correct = toDevanagari(value);
+    const choices = randomNumberChoices(value, config.choices, config.minLength, config.maxLength);
+    return {
+      prompt: 'Запиши число цифрами деванагари', value, correct, choices, answer: choices.indexOf(correct),
+      explanation: `${value} записывается так: ${correct}.`
+    };
+  });
+}
+
+function makeContextQuestions(config) {
+  const contexts = [
+    value => `Номер автобусного маршрута: ${toDevanagari(value)}. Как записать его обычными цифрами?`,
+    value => `Номер места в поезде: ${toDevanagari(value)}. Как записать его обычными цифрами?`,
+    value => `Цена на ценнике: ${toDevanagari(value)}. Сколько это в обычной записи?`,
+    value => `Номер кабинета: ${toDevanagari(value)}. Какой это номер?`,
+    value => `На табло указано ${toDevanagari(value)}. Какое число там написано?`
+  ];
+  return Array.from({ length: config.questions }, () => {
+    const length = config.minLength + Math.floor(Math.random() * (config.maxLength - config.minLength + 1));
+    const value = randomNumber(length);
+    const choices = sameLengthNumberChoices(value, config.choices);
+    return {
+      prompt: pick(contexts)(value), choices, answer: choices.indexOf(value), explanation: `Это число ${value}.`
+    };
+  });
+}
+
+function seriesRound(index, title, description, questions, extra = {}) {
+  return {
+    type: 'digit-series', trainingTag: title.toLowerCase(), label: `Задание ${index} · ${title.toLowerCase()}`,
+    title, description, questions, ...extra
+  };
+}
+
+function createDevanagariDigitRounds(level = 'warmup') {
+  const config = levels[level] || levels.warmup;
+  const pairs = pickSome(devanagariDigits.flashcards, config.pairs).map(({ hi, ru }) => ({ key: `digit-${ru}`, hi, ru }));
+  return [
+    {
+      type: 'match', trainingTag: 'найди пару', label: 'Задание 1 · найди пару', title: 'Найди пару',
+      description: `Соедини цифры деванагари с привычной записью. В этом раунде ${counted(config.pairs, 'пара', 'пары', 'пар')}.`,
+      pairs, hindi: shuffle(pairs), russian: shuffle(pairs)
+    },
+    seriesRound(2, 'Узнай цифру', `Определи ${counted(config.questions, 'цифру', 'цифры', 'цифр')} по очереди.`, makeRecognitionQuestions(config)),
+    seriesRound(3, 'Продолжи ряд', `Восстанови ${counted(config.questions, 'ряд', 'ряда', 'рядов')} по очереди.`, makeSequenceQuestions(config)),
+    {
+      type: 'digit-compose', trainingTag: 'собери число', label: 'Задание 4 · собери число', title: 'Собери число',
+      description: `Запиши ${counted(config.questions, 'число', 'числа', 'чисел')} цифрами деванагари, выбирая цифры на клавиатуре.`, questions: makeComposeQuestions(config)
+    },
+    seriesRound(5, 'Цифры вокруг нас', `Прочитай ${counted(config.questions, 'номер', 'номера', 'номеров')} и значения в бытовых ситуациях.`, makeContextQuestions(config))
+  ];
+}
+
+Object.assign(globalThis, { devanagariDigits, createDevanagariDigitRounds });
+}
+const { lesson3, createLesson3Rounds, lesson18, createLesson18Rounds, lesson17, createLesson17Rounds, devanagariDigits, createDevanagariDigitRounds } = globalThis;
+
+const lessons = {
+  '3': { data: lesson3, createRounds: createLesson3Rounds },
+  '17': { data: lesson17, createRounds: createLesson17Rounds },
+  '18': { data: lesson18, createRounds: createLesson18Rounds },
+  digits: { data: devanagariDigits, createRounds: createDevanagariDigitRounds }
+};
+const semanticTranslations = {
+  'ईमानदार': 'честный', 'उदार': 'щедрый', 'मेहनती': 'трудолюбивый', 'संस्कारी': 'воспитанный, традиционный', 'होशियार': 'смышлёный',
+  'बहादुर': 'смелый', 'दयालु': 'добрый', 'नादां': 'наивный, простой', 'शांत': 'спокойный', 'लापरवाह': 'беззаботный',
+  'पहलवान': 'борец, качок', 'झूठा': 'лживый', 'कंजूस': 'жадный', 'आलसी': 'ленивый', 'बेशरम': 'бесстыжий', 'पागल': 'сумасшедший',
+  'डरपोक': 'трусливый', 'ज़ालिम': 'жестокий', 'मतलबी': 'эгоистичный', 'ख़तरनाक': 'опасный', 'व्यस्त': 'занятой', 'शराबी': 'пьяница', 'चालाक': 'хитрый',
+  'राम-राम': 'приветствие, иногда прощание', 'प्रणाम': 'здравствуйте; кланяюсь вам', 'शुभ प्रभात': 'доброе утро', 'शुभ रात्री': 'спокойной ночи',
+  'सत श्री अकाल': 'приветствие сикхов', 'सलाम': 'мусульманское приветствие', 'आदाब': 'вежливое приветствие', 'राधे-राधे': 'приветствие и прощание в северной Индии',
+  'हाय': 'привет', 'हेलो': 'привет', 'फिर मिलेंगे': 'до скорой встречи', 'फिर मिलते हैं': 'ещё увидимся',
+  'अपना ख़याल रखना': 'береги себя', 'अपना ध्यान रखना': 'береги себя', 'आपका दिन अच्छा हो': 'хорошего дня', 'ठीक है, चलते हैं': 'ну хорошо, расходимся',
+  'ख़ुदा हाफ़िज़': 'до свидания', 'टाटा': 'пока', 'अलविदा': 'прощай при долгой разлуке', 'दुकान': 'магазин', 'कमीज़': 'рубашка',
+  'बिजली': 'электричество', 'कॉफ़ी': 'кофе', 'परिवार': 'семья', 'ट्रेन': 'поезд', 'सड़क': 'дорога', 'पड़ोसी': 'сосед',
+  'लगता है': 'мне кажется', 'पता है': 'я знаю / мне известно', 'मालूम है': 'я знаю / мне известно', 'अंदाज़ा है': 'я предполагаю',
+  'भरोसा है': 'я уверен / уверена', 'विश्वास है': 'я верю / уверена', 'यक़ीन है': 'я убеждён / убеждена', 'शक है': 'я сомневаюсь',
+  'मंज़ूर है': 'я согласен / согласна', 'दुविधा है': 'я в сомнении', 'कशमकश है': 'я колеблюсь', 'फ़र्क नहीं पड़ता': 'мне всё равно',
+  'तस्वीर': 'фотография', 'तौलिया': 'полотенце', 'बादल': 'облако', 'मेहमान': 'гость', 'खिड़की': 'окно', 'दुकानदार': 'продавец',
+  'चश्मा': 'очки', 'कहानी': 'история', 'मकान': 'дом', 'मौसम': 'погода', 'सफ़र': 'путешествие', 'रसोई': 'кухня',
+  'कपड़ा': 'ткань / одежда', 'दवाइयाँ': 'лекарства', 'बाज़ार': 'рынок', 'तरीका': 'способ', 'त्योहार': 'праздник', 'कुर्सी': 'стул', 'किताब': 'книга'
+};
+let activeLesson = lessons['3'];
+let rounds = activeLesson.createRounds();
+let current = 0;
+let score = 0;
+let completed = new Set();
+let chatStep = 0;
+let chatAnswers = [];
+let emojiStep = 0;
+let emojiHadError = false;
+let mistakes = [];
+let mistakeKeys = new Set();
+let reviewIndex = 0;
+let matchSelection = null;
+let matchedPairs = new Set();
+let matchLocked = false;
+let semanticSelection = new Set();
+let orderSelection = [];
+let completingPending = false;
+let mode = 'lesson';
+let trackedResults = new Set();
+let blitz = null;
+let flashcardDeck = [];
+let flashcardIndex = 0;
+let flashcardCount = 10;
+let flashcardDirection = 'hi';
+let flashcardFlipped = false;
+let selectedDifficulty = 'warmup';
+let digitSeriesIndex = 0;
+let digitSeriesHadError = false;
+let digitComposeSelection = [];
+const card = document.querySelector('#game-card');
+const progress = document.querySelector('#progress-fill');
+const appShell = document.querySelector('.app-shell');
+const digitsStandalone = document.body.dataset.digitsOnly === 'true';
+const lessonCards = document.querySelectorAll('[data-lesson]');
+const brand = document.querySelector('.brand');
+const lessonPill = document.querySelector('#lesson-pill');
+const lessonSubtitle = document.querySelector('#lesson-subtitle');
+const roundsNav = document.querySelector('.rounds');
+const continueLesson = document.querySelector('#continue-lesson');
+const continueKicker = document.querySelector('#continue-kicker');
+const continueTitle = document.querySelector('#continue-title');
+const modeKicker = document.querySelector('#mode-kicker');
+const modeTitle = document.querySelector('#mode-title');
+const modeSubtitle = document.querySelector('#mode-subtitle');
+const backToLessons = document.querySelector('#back-to-lessons');
+const startGame = document.querySelector('#start-game');
+const startFlashcards = document.querySelector('#start-flashcards');
+const modeOptions = document.querySelector('.mode-options');
+const difficultyPicker = document.querySelector('#digits-difficulty');
+const flashcardCountPicker = document.querySelector('#digits-flashcard-counts');
+const practiceCards = document.querySelectorAll('[data-practice]');
+const practiceCounters = document.querySelectorAll('[data-practice-count]');
+const progressStorageKey = 'hindi-practice-progress-v1';
+const practiceStorageKey = 'hindi-practice-practice-v1';
+let learningProgress = loadLearningProgress();
+let practiceProgress = loadPracticeProgress();
+
+function roundPoints(round) { return round.type === 'chat' ? round.dialogue.length : round.type === 'emoji' ? round.emojiSeries.length : round.type === 'digit-series' || round.type === 'digit-compose' ? round.questions.length : 1; }
+function totalPoints() { return rounds.reduce((sum, round) => sum + roundPoints(round), 0); }
+function total() { return rounds.length; }
+function loadLearningProgress() {
+  try { return JSON.parse(localStorage.getItem(progressStorageKey)) || {}; }
+  catch { return {}; }
+}
+function loadPracticeProgress() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(practiceStorageKey)) || {};
+    const lesson17Stats = saved['17'];
+    if (lesson17Stats) {
+      const legacySemantic = ['приветствия', 'прощания'].map(key => lesson17Stats[key]).filter(Boolean);
+      if (legacySemantic.length) {
+        const merged = lesson17Stats['кто тут свой?'] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+        legacySemantic.forEach(entry => {
+          merged.attempts += entry.attempts || 0;
+          merged.mistakes = Math.max(merged.mistakes, entry.mistakes ? 1 : 0);
+          merged.lastSeen = Math.max(merged.lastSeen || 0, entry.lastSeen || 0);
+        });
+        delete lesson17Stats['приветствия'];
+        delete lesson17Stats['прощания'];
+      }
+      Object.entries(lesson17Stats).forEach(([key, entry]) => { if (key !== '_blitz' && entry.mistakes) entry.mistakes = 1; });
+    }
+    const lesson3Stats = saved['3'];
+    if (lesson3Stats?.['хорошие качества']) {
+      const legacy = lesson3Stats['хорошие качества'];
+      const portrait = lesson3Stats['портрет человека'] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+      portrait.attempts += legacy.attempts || 0;
+      portrait.mistakes = Math.max(portrait.mistakes, legacy.mistakes ? 1 : 0);
+      portrait.lastSeen = Math.max(portrait.lastSeen || 0, legacy.lastSeen || 0);
+      delete lesson3Stats['хорошие качества'];
+    }
+    return saved;
+  }
+  catch { return {}; }
+}
+function savePracticeProgress() {
+  try { localStorage.setItem(practiceStorageKey, JSON.stringify(practiceProgress)); }
+  catch { /* Тренировка остаётся рабочей, если браузер запретил локальное хранилище. */ }
+}
+function practiceSummary(lessonId) {
+  return Object.entries(practiceProgress[lessonId] || {}).filter(([key, entry]) => key !== '_blitz' && entry.mistakes > 0).length;
+}
+function recordPracticeResult(item, correct) {
+  if (!item?.trainingTag || trackedResults.has(current)) return;
+  trackedResults.add(current);
+  const lessonStats = practiceProgress[activeLesson.data.id] ||= {};
+  const entry = lessonStats[item.trainingTag] ||= { attempts: 0, mistakes: 0, lastSeen: 0 };
+  entry.attempts++;
+  if (!correct) entry.mistakes = 1;
+  if (correct && mode === 'practice') entry.mistakes = Math.max(0, entry.mistakes - 1);
+  entry.lastSeen = Date.now();
+  savePracticeProgress();
+  updateCatalogProgress();
+}
+function updateCatalogProgress() {
+  lessonCards.forEach(cardButton => {
+    const entry = learningProgress[cardButton.dataset.lesson];
+    const meta = cardButton.querySelector('small');
+    const lesson = lessons[cardButton.dataset.lesson].data;
+    cardButton.classList.toggle('completed', Boolean(entry?.completed));
+    const lessonLabel = lesson.shortLabel ? `${lesson.shortLabel} · ` : '';
+    meta.textContent = entry?.completed ? `Пройден · ${entry.bestScore}/${entry.maxScore || lesson.maxScore} баллов` : `${lessonLabel}${lesson.taskCount} заданий · ${lesson.duration}`;
+  });
+  practiceCards.forEach(button => {
+    const count = practiceSummary(button.dataset.practice);
+    button.hidden = count === 0;
+    const label = count === 1 ? '1 трудное' : `${count} трудных`;
+    button.setAttribute('aria-label', `Повторить трудное: ${label}`);
+    const counter = [...practiceCounters].find(item => item.dataset.practiceCount === button.dataset.practice);
+    if (counter) { counter.hidden = count === 0; counter.textContent = label; }
+  });
+  const lastId = learningProgress.lastLessonId || '3';
+  const lastLesson = lessons[lastId]?.data;
+  if (lastLesson) {
+    continueLesson.hidden = false;
+    continueKicker.textContent = learningProgress[lastId]?.completed ? 'Повторить урок' : 'Продолжить урок';
+    continueTitle.textContent = lastLesson.shortLabel ? `${lastLesson.shortLabel} · ${lastLesson.title}` : `Урок ${lastLesson.id} · ${lastLesson.title}`;
+  }
+}
+function saveLastOpenedLesson(id) {
+  learningProgress.lastLessonId = id;
+  try { localStorage.setItem(progressStorageKey, JSON.stringify(learningProgress)); }
+  catch { /* Игра остаётся рабочей, если браузер запретил локальное хранилище. */ }
+  updateCatalogProgress();
+}
+function saveCompletedLesson() {
+  const id = activeLesson.data.id;
+  const oldScore = learningProgress[id]?.bestScore || 0;
+  learningProgress[id] = { completed: true, bestScore: Math.max(oldScore, score), maxScore: totalPoints() };
+  try { localStorage.setItem(progressStorageKey, JSON.stringify(learningProgress)); }
+  catch { /* Игра остаётся рабочей, если браузер запретил локальное хранилище. */ }
+  updateCatalogProgress();
+}
+function resetProgress() {
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; emojiStep = 0; emojiHadError = false; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false; trackedResults = new Set(); digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = [];
+}
+function updateLessonChrome() {
+  const { id, title, subtitle, taskCount } = activeLesson.data;
+  lessonPill.innerHTML = activeLesson.data.shortLabel ? `${activeLesson.data.shortLabel} <span>·</span> ${title}` : `Урок ${id} <span>·</span> ${title}`;
+  lessonSubtitle.textContent = subtitle;
+  document.querySelector('#lesson-task-count').textContent = activeLesson.data.shortLabel ? `Дополнительная практика · ${taskCount} заданий` : `Мини-игра · ${taskCount} заданий`;
+  document.querySelector('#hero-title').innerHTML = activeLesson.data.heroTitle || 'Игровая<br /><em>практика</em>';
+  document.title = `Игровая практика — ${activeLesson.data.shortLabel ? title : `урок ${id}`}`;
+}
+function renderNavigation() {
+  roundsNav.innerHTML = rounds.map((round, index) => {
+    const label = round.label.split('·')[1].trim();
+    return `<button class="round${index === current ? ' active' : ''}" data-round="${index}" aria-current="${index === current ? 'step' : 'false'}"><span>${index + 1}</span><b>${label.charAt(0).toUpperCase() + label.slice(1)}</b></button>`;
+  }).join('');
+  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } if (rounds[current].type === 'emoji') { emojiStep = 0; emojiHadError = false; } if (['digit-series', 'digit-compose'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; } render(); }));
+}
+
+function scoreWord(value) { return value === 1 ? 'балл' : value > 1 && value < 5 ? 'балла' : 'баллов'; }
+function wordCountWord(value) {
+  const lastTwo = value % 100;
+  const last = value % 10;
+  if (lastTwo > 10 && lastTwo < 15) return 'слов';
+  if (last === 1) return 'слово';
+  if (last > 1 && last < 5) return 'слова';
+  return 'слов';
+}
+function updateHeader() {
+  document.querySelector('#progress-text').textContent = `Задание ${current + 1} из ${total()}`;
+  document.querySelector('#score-text').textContent = `${score} ${scoreWord(score)}`;
+  progress.style.width = `${(current + 1) / total() * 100}%`;
+  document.querySelectorAll('.round').forEach((button, index) => button.classList.toggle('active', index === current));
+}
+function answersMarkup(answers, className = 'choice-grid') {
+  return `<div class="${className}">${answers.map((answer, index) => `<button class="choice" data-answer="${index}">${answer}</button>`).join('')}</div>`;
+}
+function chatMarkup(item) {
+  const stage = item.dialogue[chatStep];
+  const history = item.dialogue.slice(0, chatStep).map((line, index) => `<div class="message incoming">${line.message}</div><div class="message outgoing">${line.choices[chatAnswers[index]]}</div>`).join('');
+  return `<div class="chat-window"><div class="chat-bar"><span class="chat-avatar">A</span><div><b>Аджай</b><small>в сети</small></div><span class="chat-progress">${chatStep + 1}/${item.dialogue.length}</span></div><div class="chat-messages">${history}<div class="message incoming">${stage.message}</div></div><div class="chat-hint">Выбери ответ:</div></div>${answersMarkup(stage.choices, 'chat-choices')}`;
+}
+function matchMarkup(item) {
+  const cards = (items, side) => items.map(pair => `<button class="match-card" data-match data-side="${side}" data-key="${pair.key}">${side === 'hi' ? pair.hi : pair.ru}</button>`).join('');
+  return `<div class="match-grid"><div class="match-column"><p>Хинди</p>${cards(item.hindi, 'hi')}</div><div class="match-column"><p>Русский</p>${cards(item.russian, 'ru')}</div></div>`;
+}
+function semanticMarkup(item) {
+  return `<div class="semantic-board"><div class="semantic-center"><span>${item.center}</span></div><div class="semantic-cloud">${item.options.map((option, index) => `<button class="semantic-chip" type="button" data-semantic="${index}" aria-pressed="false">${option.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-semantic-check disabled>Проверить</button></div>`;
+}
+function emojiMarkup(item, stage) {
+  return `<div class="emoji-series"><p class="emoji-progress">Эмодзи ${emojiStep + 1} из ${item.emojiSeries.length}</p><div class="emoji-orb" role="img" aria-label="${stage.label}">${stage.emoji}</div></div>`;
+}
+function orderMarkup(item) {
+  const chosen = orderSelection.map(index => item.lines[index]);
+  return `<div class="order-board"><div class="order-slots">${chosen.length ? chosen.map((line, index) => `<button class="order-slot" type="button" data-order-remove="${orderSelection[index]}"><span>${index + 1}</span>${line.text}</button>`).join('') : '<p class="order-empty">Нажимай реплики в естественном порядке.</p>'}</div><div class="order-bank">${item.lines.map((line, index) => `<button class="order-card${orderSelection.includes(index) ? ' chosen' : ''}" type="button" data-order="${index}" ${orderSelection.includes(index) ? 'disabled' : ''}>${line.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-order-check ${orderSelection.length === item.lines.length ? '' : 'disabled'}>Проверить</button></div>`;
+}
+function digitCheatMarkup() {
+  return `<div class="digit-tools"><button class="digit-cheat-button" data-digit-cheat type="button">▦ Шпаргалка</button></div>`;
+}
+function bindDigitCheat() {
+  card.querySelector('[data-digit-cheat]')?.addEventListener('click', () => {
+    const isPahalvaan = selectedDifficulty === 'pahalvaan';
+    const table = isPahalvaan
+      ? '<p class="cheat-joke">Pahalvaan не подглядывает. Pahalvaan уже знает.</p><div class="cheat-joke-glyph" aria-hidden="true">💪</div>'
+      : `<div class="digit-cheat-table" role="table" aria-label="Цифры деванагари"><div role="row"><b role="columnheader">Деванагари</b><b role="columnheader">Обычная запись</b></div>${devanagariDigits.flashcards.map(({ hi, ru }) => `<div role="row"><span lang="hi">${hi}</span><span>${ru}</span></div>`).join('')}</div>`;
+    const overlay = document.createElement('div');
+    overlay.className = 'digit-cheat-overlay';
+    overlay.innerHTML = `<section class="digit-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="digit-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">Цифры деванагари</p><h2 id="digit-cheat-title">${isPahalvaan ? 'Шпаргалка? Какая шпаргалка?' : 'Все цифры'}</h2>${table}</section>`;
+    const onEscape = event => { if (event.key === 'Escape' && overlay.isConnected) close(); };
+    const close = () => { overlay.remove(); document.removeEventListener('keydown', onEscape); };
+    overlay.addEventListener('click', event => { if (event.target === overlay) close(); });
+    overlay.querySelector('.digit-cheat-close').addEventListener('click', close);
+    document.addEventListener('keydown', onEscape);
+    document.body.append(overlay);
+    overlay.querySelector('.digit-cheat-close').focus();
+  });
+}
+function digitSeriesMarkup(item) {
+  const stage = item.questions[digitSeriesIndex];
+  const detail = stage.display
+    ? `<div class="digit-display" lang="hi">${stage.display}</div>`
+    : `<div class="scenario digit-context">${stage.prompt}</div>`;
+  return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p>${stage.display ? `<p class="digit-prompt">${stage.prompt}</p>` : ''}${detail}${answersMarkup(stage.choices, 'choice-grid digit-choices')}</div>`;
+}
+function digitComposeMarkup(item) {
+  const stage = item.questions[digitSeriesIndex];
+  const glyphs = devanagariDigits.flashcards.map(({ hi, ru }) => `<button class="digit-key" type="button" data-digit-key="${hi}" aria-label="Добавить цифру ${ru}">${hi}</button>`).join('');
+  const answer = digitComposeSelection.map(glyph => `<span lang="hi">${glyph}</span>`).join('') || '<span class="digit-compose-placeholder">＿</span>';
+  return `<div class="digit-compose"><p class="digit-progress">Число ${digitSeriesIndex + 1} из ${item.questions.length}</p><p class="digit-prompt">${stage.prompt}</p><div class="digit-target">${stage.value}</div><div class="digit-compose-answer" aria-live="polite">${answer}</div><div class="digit-keypad">${glyphs}</div><div class="digit-compose-actions"><button class="digit-edit" type="button" data-digit-back ${digitComposeSelection.length ? '' : 'disabled'}>← Стереть</button><button class="digit-edit" type="button" data-digit-clear ${digitComposeSelection.length ? '' : 'disabled'}>Очистить</button></div><button class="semantic-check digit-submit" type="button" data-digit-submit ${digitComposeSelection.length === stage.correct.length ? '' : 'disabled'}>Проверить</button></div>`;
+}
+function bindDigitCompose(item, isReview = false) {
+  const stage = item.questions[digitSeriesIndex];
+  const refresh = () => {
+    card.querySelector('.digit-compose-answer').innerHTML = digitComposeSelection.map(glyph => `<span lang="hi">${glyph}</span>`).join('') || '<span class="digit-compose-placeholder">＿</span>';
+    card.querySelector('[data-digit-back]').disabled = digitComposeSelection.length === 0;
+    card.querySelector('[data-digit-clear]').disabled = digitComposeSelection.length === 0;
+    card.querySelector('[data-digit-submit]').disabled = digitComposeSelection.length !== stage.correct.length;
+  };
+  card.querySelectorAll('[data-digit-key]').forEach(button => button.addEventListener('click', () => {
+    if (digitComposeSelection.length >= stage.correct.length) return;
+    digitComposeSelection.push(button.dataset.digitKey);
+    refresh();
+  }));
+  card.querySelector('[data-digit-back]').addEventListener('click', () => { digitComposeSelection.pop(); refresh(); });
+  card.querySelector('[data-digit-clear]').addEventListener('click', () => { digitComposeSelection = []; refresh(); });
+  card.querySelector('[data-digit-submit]').addEventListener('click', () => answerDigitCompose(item, digitComposeSelection.join('') === stage.correct, isReview));
+}
+function render() {
+  updateHeader();
+  const item = rounds[current];
+  let inner = `${activeLesson.data.id === 'digits' ? digitCheatMarkup() : ''}<p class="game-label">${item.label}</p><h2 class="game-title">${item.title}</h2><p class="game-description">${item.description}</p>`;
+  if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
+  if (item.type === 'emoji') { const stage = item.emojiSeries[emojiStep]; inner += emojiMarkup(item, stage); inner += answersMarkup(stage.choices); }
+  if (item.type === 'choice' || item.type === 'opinion') inner += answersMarkup(item.choices, item.type === 'opinion' ? 'opinion' : 'choice-grid');
+  if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div><div class="word-options">${item.choices.map((option, index) => `<button class="word-option" data-answer="${index}">${option}</button>`).join('')}</div>`;
+  if (item.type === 'match') inner += matchMarkup(item);
+  if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
+  if (item.type === 'order') { orderSelection = []; inner += orderMarkup(item); }
+  if (item.type === 'chat') inner += chatMarkup(item);
+  if (item.type === 'digit-series') inner += digitSeriesMarkup(item);
+  else if (item.type === 'digit-compose') inner += digitComposeMarkup(item);
+  card.innerHTML = inner;
+  bindDigitCheat();
+  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
+  card.querySelectorAll('[data-match]').forEach(button => button.addEventListener('click', () => selectMatch(button)));
+  card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
+  card.querySelector('[data-semantic-check]')?.addEventListener('click', () => checkSemantic(item));
+  if (item.type === 'order') bindOrder(item);
+  if (item.type === 'digit-compose') bindDigitCompose(item);
+  if (item.type === 'chat') scrollChatMessages(false);
+  matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
+}
+function showFeedback(correct, explanation, wrongExplanation) {
+  const feedback = document.createElement('div');
+  feedback.className = 'feedback';
+  feedback.textContent = correct ? explanation : wrongExplanation || 'Почти! Посмотри на выделенный правильный вариант — и запомни его.';
+  card.append(feedback);
+}
+function addNext(label, callback, scrollDelay = 0, scrollCardAfterClick = true) {
+  const next = document.createElement('button');
+  next.className = 'next';
+  next.textContent = label;
+  next.addEventListener('click', () => {
+    callback();
+    if (!scrollCardAfterClick) return;
+    requestAnimationFrame(() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start', inline: 'nearest' });
+    });
+  });
+  card.append(next);
+  window.setTimeout(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    next.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center', inline: 'nearest' });
+  }, scrollDelay);
+}
+function scrollChatMessages(animate = true) {
+  const messages = card.querySelector('.chat-messages');
+  if (!messages) return;
+  requestAnimationFrame(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    messages.scrollTo({ top: messages.scrollHeight, behavior: animate && !reduceMotion ? 'smooth' : 'auto' });
+  });
+}
+function advanceChat(item) {
+  card.querySelector('.feedback')?.remove();
+  card.querySelector('.next')?.remove();
+  const hint = card.querySelector('.chat-hint');
+  hint.textContent = 'Аджай печатает…';
+  hint.classList.add('typing');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setTimeout(() => {
+    chatStep++;
+    const stage = item.dialogue[chatStep];
+    const messages = card.querySelector('.chat-messages');
+    const incoming = document.createElement('div');
+    incoming.className = 'message incoming is-received';
+    incoming.textContent = stage.message;
+    messages.append(incoming);
+    card.querySelector('.chat-progress').textContent = `${chatStep + 1}/${item.dialogue.length}`;
+    hint.textContent = 'Выбери ответ:';
+    hint.classList.remove('typing');
+    card.querySelector('.chat-choices').outerHTML = answersMarkup(stage.choices, 'chat-choices');
+    card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
+    scrollChatMessages();
+  }, reduceMotion ? 0 : 500);
+}
+function updateScoreText() {
+  document.querySelector('#score-text').textContent = `${score} ${scoreWord(score)}`;
+}
+function rememberMistake() {
+  if (mistakeKeys.has(current)) return;
+  mistakeKeys.add(current);
+  mistakes.push(current);
+}
+function selectMatch(button) {
+  if (matchLocked || button.disabled) return;
+  const candidate = { side: button.dataset.side, key: button.dataset.key, button };
+  if (!matchSelection || matchSelection.side === candidate.side) {
+    card.querySelectorAll('.match-card.selected').forEach(cardButton => cardButton.classList.remove('selected'));
+    matchSelection = candidate;
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed', 'true');
+    return;
+  }
+  matchLocked = true;
+  if (matchSelection.key === candidate.key) {
+    matchedPairs.add(candidate.key);
+    card.querySelectorAll(`[data-key="${candidate.key}"]`).forEach(cardButton => { cardButton.classList.remove('selected'); cardButton.classList.add('matched'); cardButton.setAttribute('aria-pressed', 'false'); cardButton.disabled = true; });
+    matchSelection = null;
+    matchLocked = false;
+    if (matchedPairs.size === rounds[current].pairs.length) {
+      score++;
+      recordPracticeResult(rounds[current], true);
+      completed.add(current);
+      document.querySelectorAll('.round')[current].classList.add('done');
+      showFeedback(true, 'Все пары собраны. Отличная работа!');
+      addNext('Следующее задание →', () => { current++; render(); });
+      updateHeader();
+    }
+    return;
+  }
+  recordPracticeResult(rounds[current], false);
+  matchSelection.button.classList.add('wrong');
+  button.classList.add('wrong');
+  window.setTimeout(() => {
+    matchSelection?.button.classList.remove('selected', 'wrong');
+    matchSelection?.button.setAttribute('aria-pressed', 'false');
+    button.classList.remove('wrong');
+    matchSelection = null;
+    matchLocked = false;
+  }, 550);
+}
+function selectSemantic(button) {
+  const index = Number(button.dataset.semantic);
+  if (semanticSelection.has(index)) {
+    semanticSelection.delete(index);
+    button.classList.remove('selected');
+    button.setAttribute('aria-pressed', 'false');
+  } else {
+    semanticSelection.add(index);
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed', 'true');
+  }
+  const check = card.querySelector('[data-semantic-check]');
+  check.disabled = semanticSelection.size === 0;
+  check.textContent = semanticSelection.size ? `Проверить · ${semanticSelection.size}` : 'Проверить';
+}
+function markSemanticAnswer(item) {
+  const correctIndexes = item.options.map((option, index) => option.correct ? index : null).filter(index => index !== null);
+  const correct = correctIndexes.length === semanticSelection.size && correctIndexes.every(index => semanticSelection.has(index));
+  card.querySelectorAll('[data-semantic]').forEach((button, index) => {
+    const isCorrect = item.options[index].correct;
+    const isSelected = semanticSelection.has(index);
+    button.disabled = true;
+    button.setAttribute('aria-pressed', 'false');
+    if (isCorrect) button.classList.add('correct');
+    if (isSelected && !isCorrect) button.classList.add('wrong');
+    if (isCorrect && !isSelected) button.classList.add('missed');
+    const translation = semanticTranslations[item.options[index].text];
+    if (translation && (isCorrect || isSelected)) {
+      const note = document.createElement('small');
+      note.textContent = translation;
+      button.append(note);
+    }
+  });
+  card.querySelector('[data-semantic-check]')?.remove();
+  return correct;
+}
+function checkSemantic(item, isReview = false) {
+  const correct = markSemanticAnswer(item);
+  if (correct) score++;
+  if (isReview) {
+    if (correct) completed.add(mistakes[reviewIndex]);
+    showFeedback(correct, 'Готово — теперь эта языковая модель закрепилась.', 'Зелёным отмечены нужные продолжения, а розовым — чужаки, которых ты выбрал.');
+    addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+      if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+    });
+    updateScoreText();
+    return;
+  }
+  if (!correct) rememberMistake();
+  recordPracticeResult(item, correct);
+  if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+  showFeedback(correct, item.explanation, 'Зелёным отмечены выражения из урока, а розовым — чужаки, которых ты выбрал.');
+  addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateHeader();
+}
+function bindOrder(item, isReview = false) {
+  card.querySelectorAll('[data-order]').forEach(button => button.addEventListener('click', () => {
+    orderSelection.push(Number(button.dataset.order));
+    refreshOrder(item, isReview);
+  }));
+  card.querySelectorAll('[data-order-remove]').forEach(button => button.addEventListener('click', () => {
+    orderSelection = orderSelection.filter(index => index !== Number(button.dataset.orderRemove));
+    refreshOrder(item, isReview);
+  }));
+  card.querySelector('[data-order-check]').addEventListener('click', () => checkOrder(item, isReview));
+}
+function refreshOrder(item, isReview) {
+  card.querySelector('.order-board').outerHTML = orderMarkup(item);
+  bindOrder(item, isReview);
+}
+function checkOrder(item, isReview = false) {
+  const chosenKeys = orderSelection.map(index => item.lines[index].key);
+  const correct = item.answer.every((key, index) => chosenKeys[index] === key);
+  card.querySelectorAll('[data-order], [data-order-remove]').forEach(button => button.disabled = true);
+  card.querySelectorAll('[data-order-remove]').forEach((button, index) => button.classList.add(chosenKeys[index] === item.answer[index] ? 'correct' : 'wrong'));
+  card.querySelector('[data-order-check]').remove();
+  if (!correct) {
+    const solution = document.createElement('div');
+    solution.className = 'order-solution';
+    solution.innerHTML = `<b>Правильный порядок:</b>${item.answer.map((key, index) => `<span>${index + 1}. ${item.lines.find(line => line.key === key).text}</span>`).join('')}`;
+    card.querySelector('.order-board').append(solution);
+  }
+  if (correct) score++;
+  if (isReview) {
+    if (correct) completed.add(mistakes[reviewIndex]);
+    showFeedback(correct, 'Готово — разговор теперь звучит естественно.', 'Правильный порядок уже показан. Прочитай диалог целиком и запомни ритм разговора.');
+    addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+      if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+    });
+    updateScoreText();
+    return;
+  }
+  if (!correct) rememberMistake();
+  recordPracticeResult(item, correct);
+  if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+  showFeedback(correct, item.explanation, 'Правильный порядок уже показан. Прочитай диалог целиком и запомни ритм разговора.');
+  addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateHeader();
+}
+function answerEmoji(item, selected, button) {
+  const stage = item.emojiSeries[emojiStep];
+  const correct = selected === stage.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === stage.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) score++;
+  else emojiHadError = true;
+  showFeedback(correct, stage.explanation);
+  const finalEmoji = emojiStep === item.emojiSeries.length - 1;
+  addNext(finalEmoji ? 'Следующее задание →' : 'Следующий эмодзи →', () => {
+    if (!finalEmoji) { emojiStep++; render(); return; }
+    recordPracticeResult(item, !emojiHadError);
+    completed.add(current);
+    document.querySelectorAll('.round')[current].classList.add('done');
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateHeader();
+}
+function answerDigitStage(item, correct, isReview = false) {
+  const stage = item.questions[digitSeriesIndex];
+  if (correct) {
+    if (!isReview) score++;
+  } else {
+    digitSeriesHadError = true;
+    if (!isReview) rememberMistake();
+  }
+  showFeedback(correct, stage.explanation, `Правильный ответ: ${item.type === 'digit-compose' ? stage.correct : stage.choices[stage.answer]}.`);
+  const isLast = digitSeriesIndex === item.questions.length - 1;
+  addNext(isLast ? (isReview ? 'К результату →' : current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →') : 'Следующий вопрос →', () => {
+    digitComposeSelection = [];
+    if (!isLast) {
+      digitSeriesIndex++;
+      isReview ? renderReview() : render();
+      return;
+    }
+    const roundCorrect = !digitSeriesHadError;
+    if (isReview) {
+      if (roundCorrect) completed.add(mistakes[reviewIndex]);
+      if (reviewIndex < mistakes.length - 1) { reviewIndex++; digitSeriesIndex = 0; digitSeriesHadError = false; renderReview(); }
+      else finish();
+      return;
+    }
+    recordPracticeResult(item, roundCorrect);
+    const finishDigitRoundWithoutReview = activeLesson.data.id === 'digits' && mode === 'lesson';
+    if (roundCorrect || finishDigitRoundWithoutReview) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+    digitSeriesIndex = 0;
+    digitSeriesHadError = false;
+    if (completingPending) { finish(); return; }
+    if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+  });
+  updateScoreText();
+  if (!isReview) updateHeader();
+}
+function answerDigitSeries(item, selected, button, isReview = false) {
+  const stage = item.questions[digitSeriesIndex];
+  const correct = selected === stage.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === stage.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  answerDigitStage(item, correct, isReview);
+}
+function answerDigitCompose(item, correct, isReview = false) {
+  card.querySelectorAll('[data-digit-key], [data-digit-back], [data-digit-clear], [data-digit-submit]').forEach(button => { button.disabled = true; });
+  const entered = digitComposeSelection.join('');
+  if (entered !== item.questions[digitSeriesIndex].correct) {
+    card.querySelector('.digit-compose-answer').classList.add('wrong');
+    card.querySelector('.digit-compose-answer').insertAdjacentHTML('beforeend', `<small>Правильная запись: ${item.questions[digitSeriesIndex].correct}</small>`);
+  } else card.querySelector('.digit-compose-answer').classList.add('correct');
+  answerDigitStage(item, correct, isReview);
+}
+function answer(selected, button) {
+  const item = rounds[current];
+  if (item.type === 'emoji') { answerEmoji(item, selected, button); return; }
+  if (item.type === 'digit-series') { answerDigitSeries(item, selected, button); return; }
+  const stage = item.type === 'chat' ? item.dialogue[chatStep] : item;
+  const correct = selected === stage.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === stage.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) score++;
+  if (item.type !== 'chat') {
+    if (!correct) rememberMistake();
+    recordPracticeResult(item, correct);
+    if (correct) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
+    showFeedback(correct, stage.explanation);
+    addNext(current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →', () => {
+      if (completingPending) { finish(); return; }
+      if (current < total() - 1) { current++; render(); } else startReviewOrFinish();
+    });
+    updateHeader();
+    return;
+  }
+  if (!correct) recordPracticeResult(item, false);
+  if (correct && chatStep === item.dialogue.length - 1) recordPracticeResult(item, true);
+  if (correct) {
+    chatAnswers[chatStep] = selected;
+    const response = document.createElement('div');
+    response.className = 'message outgoing is-sent';
+    response.textContent = stage.choices[selected];
+    card.querySelector('.chat-messages').append(response);
+    scrollChatMessages();
+  }
+  showFeedback(correct, stage.explanation);
+  const finalLine = chatStep === item.dialogue.length - 1;
+  const chatPageScrollDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 680;
+  addNext(correct ? (finalLine ? 'Посмотреть результат →' : 'Продолжить чат →') : 'Попробовать ещё раз →', () => {
+    if (!correct) { render(); return; }
+    if (finalLine) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); startReviewOrFinish(); }
+    else { advanceChat(item); }
+  }, correct ? chatPageScrollDelay : 0, !correct || finalLine);
+  updateHeader();
+}
+function startReviewOrFinish() {
+  if (!mistakes.length || (activeLesson.data.id === 'digits' && mode === 'lesson')) { finish(); return; }
+  reviewIndex = 0;
+  digitSeriesIndex = 0;
+  digitSeriesHadError = false;
+  digitComposeSelection = [];
+  renderReview();
+}
+function renderReview() {
+  const item = rounds[mistakes[reviewIndex]];
+  progress.style.width = '100%';
+  document.querySelector('#progress-text').textContent = `Повтор ошибок · ${reviewIndex + 1} из ${mistakes.length}`;
+  updateScoreText();
+  let inner = `${activeLesson.data.id === 'digits' ? digitCheatMarkup() : ''}<p class="game-label">Финальный раунд · повтор</p><h2 class="game-title">Закрепим ещё раз</h2><p class="game-description">В этом задании раньше был неверный ответ. Выбери правильный вариант — и урок будет пройден.</p>`;
+  if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
+  if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div>`;
+  if (item.type === 'digit-series') inner += digitSeriesMarkup(item);
+  if (item.type === 'digit-compose') inner += digitComposeMarkup(item);
+  else if (item.type === 'semantic') { semanticSelection = new Set(); inner += semanticMarkup(item); }
+  else if (item.type === 'order') { orderSelection = []; inner += orderMarkup(item); }
+  else if (item.type !== 'digit-series' && item.type !== 'digit-compose') inner += answersMarkup(item.choices, item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid');
+  card.innerHTML = inner;
+  bindDigitCheat();
+  if (item.type === 'digit-series') card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answerDigitSeries(item, Number(button.dataset.answer), button, true)));
+  else if (item.type === 'semantic') {
+    card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
+    card.querySelector('[data-semantic-check]').addEventListener('click', () => checkSemantic(item, true));
+  } else if (item.type === 'order') bindOrder(item, true);
+  else if (item.type === 'digit-compose') bindDigitCompose(item, true);
+  else card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => reviewAnswer(Number(button.dataset.answer), button, item)));
+}
+function reviewAnswer(selected, button, item) {
+  const correct = selected === item.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === item.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) { score++; completed.add(mistakes[reviewIndex]); }
+  showFeedback(correct, correct ? 'Готово — теперь этот ответ закреплён.' : 'Правильный вариант уже выделен. Запомни его и двигайся дальше.');
+  addNext(reviewIndex === mistakes.length - 1 ? 'Посмотреть результат →' : 'Следующая ошибка →', () => {
+    if (reviewIndex < mistakes.length - 1) { reviewIndex++; renderReview(); } else finish();
+  });
+  updateScoreText();
+}
+function homeButtonMarkup() {
+  return digitsStandalone
+    ? '<button class="next catalog" id="digits-home">К меню цифр</button>'
+    : '<button class="next catalog" id="all-lessons">Ко всем урокам</button>';
+}
+function bindHomeButton() {
+  const button = document.querySelector(digitsStandalone ? '#digits-home' : '#all-lessons');
+  button?.addEventListener('click', () => digitsStandalone ? openLessonMode('digits') : openCatalog());
+}
+function finish() {
+  const pending = rounds.findIndex((_, index) => !completed.has(index));
+  if (pending !== -1) {
+    completingPending = true;
+    card.innerHTML = `<p class="game-label">Ещё не всё</p><h2 class="game-title">Осталось одно дело</h2><div class="finish">Чтобы завершить урок и сохранить результат, пройди все задания.</div><button class="next restart" id="continue-pending">К незавершённому заданию</button>`;
+    document.querySelector('#continue-pending').addEventListener('click', () => {
+      current = pending;
+      if (['digit-series', 'digit-compose'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; }
+      render();
+    });
+    return;
+  }
+  completingPending = false;
+  if (mode === 'practice') {
+    progress.style.width = '100%';
+    document.querySelector('#progress-text').textContent = 'Трудное повторено';
+    card.innerHTML = `<p class="game-label">Готово · повторение</p><h2 class="game-title">Слабые места стали сильнее</h2><div class="finish">Вы повторили темы, в которых раньше были ошибки. При следующем прохождении набор обновится.</div><div class="finish-actions"><button class="next restart" id="restart-practice">Ещё раз</button><button class="next catalog" id="all-lessons">Ко всем урокам</button></div>`;
+    document.querySelector('#restart-practice').addEventListener('click', () => startPractice(activeLesson.data.id));
+    document.querySelector('#all-lessons').addEventListener('click', () => openCatalog());
+    return;
+  }
+  saveCompletedLesson();
+  progress.style.width = '100%';
+  document.querySelector('#progress-text').textContent = 'Урок пройден';
+  const lessonName = activeLesson.data.shortLabel ? activeLesson.data.title : `Урок ${activeLesson.data.id}`;
+  const resultCopy = digitsStandalone
+    ? 'Можно пройти урок ещё раз или проверить себя в минутном блице.'
+    : 'Можно повторить урок, перейти к другим материалам или проверить себя в минутном блице.';
+  card.innerHTML = `<p class="game-label">Готово · ${lessonName}</p><h2 class="game-title">Хорошая практика!</h2><div class="finish">Ваш результат: <strong>${score} из ${totalPoints()}</strong>.<br>${resultCopy}</div><div class="finish-actions"><button class="next restart" id="restart">Пройти ещё раз</button><button class="next blitz-button" id="start-blitz">Минутный блиц →</button>${homeButtonMarkup()}</div>`;
+  document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(activeLesson.data.id === 'digits' ? selectedDifficulty : undefined); resetProgress(); renderNavigation(); render(); });
+  document.querySelector('#start-blitz').addEventListener('click', startBlitz);
+  bindHomeButton();
+}
+function buildPracticeRounds(lessonId) {
+  const stats = practiceProgress[lessonId] || {};
+  const tags = Object.entries(stats)
+    .filter(([tag, entry]) => tag !== '_blitz' && entry.mistakes)
+    .sort(([, a], [, b]) => (b.mistakes / b.attempts) - (a.mistakes / a.attempts) || b.mistakes - a.mistakes)
+    .slice(0, 4)
+    .map(([tag]) => tag);
+  const selected = [];
+  tags.forEach(tag => {
+    for (let attempt = 0; attempt < 12; attempt++) {
+      const candidate = lessons[lessonId].createRounds(lessonId === 'digits' ? selectedDifficulty : undefined).find(round => round.trainingTag === tag);
+      if (candidate) { selected.push(candidate); break; }
+    }
+  });
+  return selected;
+}
+function startPractice(lessonId) {
+  if (digitsStandalone) return;
+  activeLesson = lessons[lessonId];
+  const practiceRounds = buildPracticeRounds(lessonId);
+  if (!practiceRounds.length) return;
+  mode = 'practice';
+  rounds = practiceRounds;
+  resetProgress();
+  updateLessonChrome();
+  document.querySelector('#lesson-task-count').textContent = `Персональная тренировка · ${rounds.length} задания`;
+  renderNavigation();
+  appShell.classList.remove('selecting', 'choosing-mode', 'flashcards', 'blitzing');
+  render();
+}
+function openLessonMode(lessonId) {
+  if (digitsStandalone && lessonId !== 'digits') return;
+  if (blitz) window.clearInterval(blitz.timer);
+  blitz = null;
+  activeLesson = lessons[lessonId];
+  mode = 'mode-select';
+  updateLessonChrome();
+  modeKicker.textContent = activeLesson.data.shortLabel || `Урок ${activeLesson.data.id}`;
+  modeTitle.textContent = 'Как позанимаемся?';
+  modeSubtitle.textContent = activeLesson.data.subtitle;
+  if (digitsStandalone) {
+    document.querySelector('.topbar p').textContent = 'Цифры деванагари';
+    brand.setAttribute('aria-label', 'Цифры деванагари — в начало');
+  }
+  modeOptions.hidden = false;
+  difficultyPicker.hidden = true;
+  flashcardCountPicker.hidden = true;
+  startGame.querySelector('small').textContent = lessonId === 'digits' ? 'Пять видов практики с цифрами деванагари' : 'Ситуации, диалоги и задания по материалу урока';
+  startFlashcards.querySelector('b').textContent = lessonId === 'digits' ? 'Цифра за цифрой' : 'Слово за словом';
+  startFlashcards.querySelector('small').textContent = lessonId === 'digits' ? 'Переворачивай карточки с цифрами' : 'Переворачивай карточки в своём темпе';
+  appShell.classList.remove('selecting', 'flashcards', 'blitzing');
+  appShell.classList.add('choosing-mode');
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+function renderFlashcards() {
+  const pair = flashcardDeck[flashcardIndex];
+  if (!pair) { finishFlashcards(); return; }
+  const showingHindi = flashcardFlipped ? flashcardDirection !== 'hi' : flashcardDirection === 'hi';
+  const digitLesson = activeLesson.data.id === 'digits';
+  const cardCountNoun = digitLesson ? 'карточек' : wordCountWord(flashcardDeck.length);
+  document.querySelector('#lesson-task-count').textContent = digitLesson ? `Цифры деванагари · ${flashcardDeck.length} карточек` : `Карточки · ${flashcardDeck.length} ${cardCountNoun}`;
+  document.querySelector('#hero-title').innerHTML = digitLesson ? 'Цифра за<br /><em>цифрой</em>' : 'Слово за<br /><em>словом</em>';
+  lessonSubtitle.textContent = digitLesson ? 'Переворачивай карточки и запоминай начертание цифр.' : 'Переворачивай карточки в своём темпе — без баллов и ошибок.';
+  document.querySelector('#progress-text').textContent = `${digitLesson ? 'Карточка' : 'Слово'} ${flashcardIndex + 1} из ${flashcardDeck.length}`;
+  document.querySelector('#score-text').textContent = flashcardDirection === 'hi' ? 'хинди → русский' : 'русский → хинди';
+  progress.style.width = `${(flashcardIndex + 1) / flashcardDeck.length * 100}%`;
+  const cardSides = digitLesson ? ['१२३', '123'] : ['Хинди', 'Русский'];
+  const directionSeparator = digitLesson ? ' – ' : ' → ';
+  card.innerHTML = `<p class="game-label">Карточки · ${digitLesson ? 'дополнительный урок' : `урок ${activeLesson.data.id}`}</p><div class="flashcard-controls" role="group" aria-label="Направление карточек"><button class="flashcard-direction${flashcardDirection === 'hi' ? ' active' : ''}" data-direction="hi" type="button">${cardSides[0]}${directionSeparator}${cardSides[1]}</button><button class="flashcard-direction${flashcardDirection === 'ru' ? ' active' : ''}" data-direction="ru" type="button">${cardSides[1]}${directionSeparator}${cardSides[0]}</button></div><button class="flashcard${showingHindi ? '' : ' flipped'}" id="flashcard" type="button" aria-label="Перевернуть карточку"><span class="flashcard-inner"><span class="flashcard-face hi"><span>${cardSides[0]}</span><b>${pair.hi}</b><small>Нажми, чтобы перевернуть</small></span><span class="flashcard-face ru"><span>${cardSides[1]}</span><b>${pair.ru}</b><small>Нажми, чтобы перевернуть</small></span></span></button><div class="flashcard-actions"><button class="next flashcard-previous" id="previous-flashcard" type="button" ${flashcardIndex === 0 ? 'disabled' : ''}>← Предыдущее слово</button><button class="next flashcard-next" id="next-flashcard" type="button">${flashcardIndex === flashcardDeck.length - 1 ? 'Посмотреть итог →' : 'Следующее слово →'}</button></div>`;
+  card.querySelector('#flashcard').addEventListener('click', () => {
+    flashcardFlipped = !flashcardFlipped;
+    const flashcard = card.querySelector('#flashcard');
+    const nowShowingHindi = flashcardFlipped ? flashcardDirection !== 'hi' : flashcardDirection === 'hi';
+    flashcard.classList.toggle('flipped', !nowShowingHindi);
+  });
+  card.querySelectorAll('[data-direction]').forEach(button => button.addEventListener('click', () => {
+    flashcardDirection = button.dataset.direction;
+    flashcardFlipped = false;
+    renderFlashcards();
+  }));
+  card.querySelector('#next-flashcard').addEventListener('click', () => {
+    flashcardIndex++;
+    flashcardFlipped = false;
+    renderFlashcards();
+  });
+  card.querySelector('#previous-flashcard').addEventListener('click', () => {
+    flashcardIndex--;
+    flashcardFlipped = false;
+    renderFlashcards();
+  });
+}
+function shuffleCards(items) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const other = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+  }
+  return shuffled;
+}
+function makeDigitFlashcardDeck(count) {
+  const deck = [];
+  const cards = activeLesson.data.flashcards;
+  while (deck.length < count) {
+    const cycle = shuffleCards(cards);
+    if (deck.length && cycle.length > 1 && cycle[0].hi === deck[deck.length - 1].hi) {
+      [cycle[0], cycle[1]] = [cycle[1], cycle[0]];
+    }
+    deck.push(...cycle);
+  }
+  return deck.slice(0, count);
+}
+function startFlashcardMode(count) {
+  mode = 'flashcards';
+  if (activeLesson.data.id === 'digits') {
+    if (count) flashcardCount = count;
+    flashcardDeck = makeDigitFlashcardDeck(flashcardCount);
+  } else flashcardDeck = shuffleCards(activeLesson.data.flashcards);
+  flashcardIndex = 0;
+  flashcardDirection = 'hi';
+  flashcardFlipped = false;
+  appShell.classList.remove('selecting', 'choosing-mode', 'blitzing');
+  appShell.classList.add('flashcards');
+  renderFlashcards();
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+function finishFlashcards() {
+  progress.style.width = '100%';
+  const digitLesson = activeLesson.data.id === 'digits';
+  document.querySelector('#progress-text').textContent = digitLesson ? 'Все карточки просмотрены' : 'Все слова просмотрены';
+  const noun = digitLesson ? `${flashcardDeck.length} карточек с цифрами деванагари` : `${flashcardDeck.length} ${wordCountWord(flashcardDeck.length)} этого урока`;
+  document.querySelector('#score-text').textContent = digitLesson ? `${flashcardDeck.length} карточек` : `${flashcardDeck.length} ${wordCountWord(flashcardDeck.length)}`;
+  card.innerHTML = `<p class="game-label">Готово · карточки</p><h2 class="game-title">${digitLesson ? 'Цифры просмотрены' : 'Слово за словом — пройдено'}</h2><div class="flashcard-finish">Вы просмотрели все ${noun}. В новом круге они снова перемешаются.</div><div class="finish-actions"><button class="next restart" id="restart-flashcards">Ещё раз</button><button class="next blitz-button" id="to-game">Игровая практика →</button>${homeButtonMarkup()}</div>`;
+  document.querySelector('#restart-flashcards').addEventListener('click', () => startFlashcardMode(flashcardCount));
+  document.querySelector('#to-game').addEventListener('click', () => openLesson(activeLesson.data.id));
+  bindHomeButton();
+}
+function shuffleBlitz(items) { return [...items].sort(() => Math.random() - .5); }
+function blitzKey(item) { return `${item.type}:${item.prompt || item.sentence || item.scenario || item.title}:${item.display || ''}`; }
+function quickRounds(lessonId) {
+  const uniqueRounds = new Map();
+  let staleAttempts = 0;
+  while (staleAttempts < 14) {
+    let added = false;
+    const generated = lessons[lessonId].createRounds(lessonId === 'digits' ? selectedDifficulty : undefined);
+    const candidates = generated.flatMap(round => {
+      if (round.type === 'digit-series') return round.questions.map(stage => ({ type: 'digit-choice', title: round.title, prompt: stage.prompt, display: stage.display, choices: stage.choices, answer: stage.answer, explanation: stage.explanation }));
+      if (round.type === 'digit-compose') return round.questions.map(stage => ({ type: 'digit-choice', title: round.title, prompt: `${stage.prompt}: ${stage.value}`, choices: stage.choices, answer: stage.answer, explanation: stage.explanation }));
+      if (round.type === 'match' && lessonId === 'digits') return round.pairs.map(pair => {
+        const choices = shuffleBlitz([pair.ru, ...round.pairs.filter(other => other.key !== pair.key).map(other => other.ru)]).slice(0, Math.min(4, round.pairs.length));
+        return { type: 'digit-choice', title: round.title, prompt: `Как записать цифру ${pair.hi}?`, choices, answer: choices.indexOf(pair.ru), explanation: `${pair.hi} — это ${pair.ru}.` };
+      });
+      return ['choice', 'fill', 'opinion'].includes(round.type) ? [round] : [];
+    });
+    candidates.forEach(round => {
+      const key = blitzKey(round);
+      if (!uniqueRounds.has(key)) { uniqueRounds.set(key, round); added = true; }
+    });
+    staleAttempts = added ? 0 : staleAttempts + 1;
+  }
+  return shuffleBlitz([...uniqueRounds.values()]);
+}
+function renderBlitzQuestion() {
+  if (!blitz || blitz.seconds <= 0) return finishBlitz();
+  const item = blitz.items[blitz.index];
+  const answerClass = item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid';
+  const task = item.type === 'fill' ? `<div class="sentence">${item.sentence}</div>` : item.display ? `<p class="digit-prompt">${item.prompt}</p><div class="digit-display blitz-digit" lang="hi">${item.display}</div>` : item.prompt ? `<div class="scenario">${item.prompt}</div>` : item.scenario ? `<div class="scenario">${item.scenario}</div>` : '';
+  card.innerHTML = `<p class="game-label">Минутный блиц</p><h2 class="game-title">Не думай слишком долго</h2><div class="blitz-status"><span class="blitz-stat hot" id="blitz-clock">${blitz.seconds} сек</span><span class="blitz-stat">Серия: ${blitz.streak}</span><span class="blitz-stat">Верно: ${blitz.correct}</span></div>${task}${answersMarkup(item.choices, answerClass)}`;
+  card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answerBlitz(Number(button.dataset.answer), button, item)));
+}
+function startBlitzTimer() {
+  if (!blitz || blitz.timer || blitz.seconds <= 0) return;
+  blitz.timer = window.setInterval(() => {
+    if (!blitz) return;
+    blitz.seconds--;
+    const clock = document.querySelector('#blitz-clock');
+    if (clock) clock.textContent = `${blitz.seconds} сек`;
+    if (blitz.seconds <= 0) finishBlitz();
+  }, 1000);
+}
+function answerBlitz(selected, button, item) {
+  if (!blitz || blitz.locked) return;
+  blitz.locked = true;
+  const correct = selected === item.answer;
+  card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
+    answerButton.disabled = true;
+    if (index === item.answer) answerButton.classList.add('correct');
+    if (answerButton === button && !correct) answerButton.classList.add('wrong');
+  });
+  if (correct) { blitz.correct++; blitz.streak++; blitz.bestStreak = Math.max(blitz.bestStreak, blitz.streak); }
+  else blitz.streak = 0;
+  const reaction = document.createElement('div');
+  reaction.className = `blitz-reaction ${correct ? 'correct' : 'wrong'}`;
+  reaction.setAttribute('role', 'status');
+  reaction.textContent = correct ? '✓ Верно' : '✕ Неверно';
+  card.append(reaction);
+  const session = blitz;
+  window.setTimeout(() => {
+    if (blitz !== session || session.seconds <= 0) return;
+    const previousKey = blitzKey(item);
+    session.index++;
+    if (session.index === session.items.length) {
+      session.items = shuffleBlitz(session.items);
+      if (session.items.length > 1 && blitzKey(session.items[0]) === previousKey) session.items.push(session.items.shift());
+      session.index = 0;
+    }
+    session.locked = false;
+    renderBlitzQuestion();
+  }, 500);
+}
+function finishBlitz() {
+  if (!blitz) return;
+  if (blitz.timer) window.clearInterval(blitz.timer);
+  const lessonStats = practiceProgress[activeLesson.data.id] ||= {};
+  const priorBest = lessonStats._blitz?.bestStreak || 0;
+  const isRecord = blitz.bestStreak > priorBest;
+  lessonStats._blitz = { bestStreak: Math.max(priorBest, blitz.bestStreak) };
+  savePracticeProgress();
+  card.innerHTML = `<p class="game-label">Время вышло</p><h2 class="game-title">Блиц завершён</h2><div class="blitz-done">Правильных ответов: <strong>${blitz.correct}</strong><br>Лучшая серия: <strong>${blitz.bestStreak}</strong>${isRecord ? ' — новый личный рекорд!' : ` · рекорд: ${priorBest}`}</div><div class="finish-actions"><button class="next restart" id="restart-blitz">Ещё один блиц</button>${homeButtonMarkup()}</div>`;
+  blitz = null;
+  document.querySelector('#restart-blitz').addEventListener('click', () => startBlitz());
+  bindHomeButton();
+}
+function startBlitz() {
+  mode = 'blitz';
+  resetProgress();
+  appShell.classList.remove('selecting', 'choosing-mode', 'flashcards');
+  appShell.classList.add('blitzing');
+  document.querySelector('#progress-text').textContent = 'Минутный блиц';
+  document.querySelector('#score-text').textContent = '60 секунд';
+  progress.style.width = '100%';
+  blitz = { items: quickRounds(activeLesson.data.id), index: 0, seconds: 60, correct: 0, streak: 0, bestStreak: 0, locked: false, timer: null };
+  startBlitzTimer();
+  renderBlitzQuestion();
+}
+function openLesson(lessonId, difficulty = selectedDifficulty) {
+  if (digitsStandalone && lessonId !== 'digits') return;
+  if (blitz) window.clearInterval(blitz.timer);
+  blitz = null;
+  mode = 'lesson';
+  activeLesson = lessons[lessonId];
+  if (lessonId === 'digits') selectedDifficulty = difficulty;
+  saveLastOpenedLesson(lessonId);
+  rounds = activeLesson.createRounds(lessonId === 'digits' ? selectedDifficulty : undefined);
+  resetProgress();
+  updateLessonChrome();
+  renderNavigation();
+  appShell.classList.remove('selecting', 'choosing-mode', 'flashcards', 'blitzing');
+  render();
+}
+function openCatalog(event) {
+  event?.preventDefault();
+  if (digitsStandalone) { openLessonMode('digits'); return; }
+  if (blitz) window.clearInterval(blitz.timer);
+  blitz = null;
+  mode = 'lesson';
+  appShell.classList.remove('choosing-mode', 'flashcards', 'blitzing');
+  appShell.classList.add('selecting');
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+lessonCards.forEach(cardButton => cardButton.addEventListener('click', () => openLessonMode(cardButton.dataset.lesson)));
+practiceCards.forEach(cardButton => cardButton.addEventListener('click', () => startPractice(cardButton.dataset.practice)));
+continueLesson.addEventListener('click', () => openLesson(learningProgress.lastLessonId || '3'));
+backToLessons.addEventListener('click', openCatalog);
+startGame.addEventListener('click', () => {
+  if (activeLesson.data.id !== 'digits') { openLesson(activeLesson.data.id); return; }
+  flashcardCountPicker.hidden = true;
+  modeTitle.textContent = 'Выбери уровень';
+  modeSubtitle.textContent = 'Спокойная разминка, уверенный разгон или испытание Pahalvaan.';
+  modeOptions.hidden = true;
+  difficultyPicker.hidden = false;
+});
+difficultyPicker.querySelectorAll('[data-digit-level]').forEach(button => button.addEventListener('click', () => openLesson('digits', button.dataset.digitLevel)));
+flashcardCountPicker.querySelectorAll('[data-flashcard-count]').forEach(button => button.addEventListener('click', () => startFlashcardMode(Number(button.dataset.flashcardCount))));
+startFlashcards.addEventListener('click', () => {
+  if (activeLesson.data.id !== 'digits') { startFlashcardMode(); return; }
+  modeTitle.textContent = 'Цифра за цифрой';
+  modeSubtitle.textContent = 'Выберите длину серии — цифры будут идти кругами в случайном порядке.';
+  modeOptions.hidden = true;
+  difficultyPicker.hidden = true;
+  flashcardCountPicker.hidden = false;
+});
+brand.addEventListener('click', event => {
+  if (digitsStandalone) { event.preventDefault(); openLessonMode('digits'); return; }
+  openCatalog(event);
+});
+appShell.classList.add('selecting');
+if (digitsStandalone) {
+  appShell.classList.remove('digits-boot');
+  openLessonMode('digits');
+} else {
+  updateLessonChrome();
+  renderNavigation();
+  updateCatalogProgress();
+  render();
+}
+
+    </script>
+  </body>
+</html>
