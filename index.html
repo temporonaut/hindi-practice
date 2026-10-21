@@ -66,13 +66,22 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 @media (prefers-reduced-motion:reduce){.message.outgoing.is-sent,.message.incoming.is-received{animation:none}.chat-messages{scroll-behavior:auto}}
 @media (hover:none) and (pointer:coarse){.flashcard,.flashcard-inner,.flashcard-face{-webkit-transform-style:preserve-3d}.flashcard-inner{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}.flashcard.flipped .flashcard-inner{-webkit-transform:rotateY(180deg) translateZ(0);transform:rotateY(180deg) translateZ(0)}.flashcard-face{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(.1px);transform:translateZ(.1px)}.flashcard-face.ru{-webkit-transform:rotateY(180deg) translateZ(.1px);transform:rotateY(180deg) translateZ(.1px)}}
 .flashcard{-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.digit-sequence-answer.correct{color:var(--green)}
+.digit-sequence-answer.wrong{color:var(--pink)}
 
 .mode-option[hidden],.back-link[hidden]{display:none!important}
 .difficulty-picker .back-link{justify-self:start;margin:0 0 5px}
-.mode-option#start-word-cards .mode-icon{background:#ffe3eb;color:var(--pink);font-family:"Noto Sans Devanagari",sans-serif;font-size:16px}
+.mode-option#start-word-cards .mode-icon{background:#ffe3eb;color:var(--pink);font-family:"Nunito Sans",sans-serif;font-size:18px}
+.word-scope{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:5px;border-radius:15px;background:#e7f0ed}
+.word-scope-option{min-height:42px;border:0;border-radius:11px;background:transparent;color:var(--ink);font-size:14px;font-weight:900;cursor:pointer}
+.word-scope-option.active{background:var(--paper);box-shadow:0 3px 11px rgba(22,71,90,.1)}
+.word-choice-panel{display:grid;gap:10px}.word-choice-panel[hidden]{display:none}
+.word-range-label{color:var(--ink);font-size:14px;font-weight:900}
+.word-range-select{width:100%;min-height:48px;padding:10px 13px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink-dark);font:inherit;font-weight:800;cursor:pointer}
+.word-range-select:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 .word-bonus-option{margin-top:12px}
-.word-flashcard .flashcard-face.hi b{font-family:"Nunito Sans",sans-serif;font-size:clamp(72px,13vw,110px);line-height:1}
-.word-flashcard .flashcard-face.ru b{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(31px,5vw,48px);line-height:1.25}
+.word-flashcard .flashcard-face.number-face b{font-family:"Nunito Sans",sans-serif;font-size:clamp(72px,13vw,110px);line-height:1}
+.word-flashcard .flashcard-face.word-face b{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(31px,5vw,48px);line-height:1.25}
 .word-cheat-dialog{width:min(100%,760px);max-height:min(88vh,760px)}
 .word-cheat-dialog h3{margin:23px 0 10px;color:var(--ink);font-size:18px}
 .word-cheat-label{display:block;margin-bottom:7px;color:#587684;font-size:13px;font-weight:900}
@@ -182,10 +191,25 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
         </div>
         <div class="difficulty-picker" id="digits-word-counts" hidden>
           <button class="back-link" data-back-to-modes type="button">← К видам практики</button>
-          <p class="difficulty-intro">Каждый заход — новый порядок, без повторов в одной серии.</p>
-          <button class="difficulty-option" data-word-count="10" type="button"><span class="difficulty-badge">10</span><span><b>10 чисел</b><small>Короткая тренировка</small></span><span class="lesson-arrow">→</span></button>
-          <button class="difficulty-option" data-word-count="30" type="button"><span class="difficulty-badge">30</span><span><b>30 чисел</b><small>Хорошая разминка памяти</small></span><span class="lesson-arrow">→</span></button>
-          <button class="difficulty-option pahalvaan-option" data-word-count="100" type="button"><span class="difficulty-badge">100</span><span><b>100 чисел</b><small>Большой круг</small></span><span class="lesson-arrow">→</span></button>
+          <div class="word-scope" role="group" aria-label="Выбор набора чисел">
+            <button class="word-scope-option active" data-word-scope="all" type="button" aria-pressed="true">Все числа</button>
+            <button class="word-scope-option" data-word-scope="decade" type="button" aria-pressed="false">По десяткам</button>
+          </div>
+          <div class="word-choice-panel" id="word-all-choices">
+            <p class="difficulty-intro">Каждый заход — новый порядок, без повторов в одной серии.</p>
+            <button class="difficulty-option" data-word-count="10" type="button"><span class="difficulty-badge">10</span><span><b>10 чисел</b><small>Короткая тренировка</small></span><span class="lesson-arrow">→</span></button>
+            <button class="difficulty-option" data-word-count="30" type="button"><span class="difficulty-badge">30</span><span><b>30 чисел</b><small>Хорошая разминка памяти</small></span><span class="lesson-arrow">→</span></button>
+            <button class="difficulty-option pahalvaan-option" data-word-count="100" type="button"><span class="difficulty-badge">100</span><span><b>100 чисел</b><small>Большой круг</small></span><span class="lesson-arrow">→</span></button>
+          </div>
+          <div class="word-choice-panel" id="word-decade-choices" hidden>
+            <label class="word-range-label" for="word-decade-range">Какой десяток повторим?</label>
+            <select class="word-range-select" id="word-decade-range">
+              <option value="0">0–10</option><option value="11">11–20</option><option value="21">21–30</option><option value="31">31–40</option><option value="41">41–50</option>
+              <option value="51">51–60</option><option value="61">61–70</option><option value="71">71–80</option><option value="81">81–90</option><option value="91">91–100</option>
+            </select>
+            <p class="difficulty-intro">Все числа выбранного диапазона — один раз, в случайном порядке.</p>
+            <button class="difficulty-option" id="start-word-decade" type="button"><span class="difficulty-badge">↗</span><span><b>Начать тренировку</b><small id="word-decade-summary">0–10 · 11 карточек</small></span><span class="lesson-arrow">→</span></button>
+          </div>
           <button class="difficulty-option word-bonus-option" data-word-count="bonus" type="button"><span class="difficulty-badge">+</span><span><b>Бонус: большие числа</b><small>Тысяча, лакх и крор</small></span><span class="lesson-arrow">→</span></button>
         </div>
         <div class="difficulty-picker" id="digits-flashcard-counts" hidden>
@@ -1110,7 +1134,7 @@ function bindDigitCheat() {
 function digitSeriesMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
   const detail = stage.display
-    ? `<div class="digit-display" lang="hi">${stage.display}</div>`
+    ? `<div class="digit-display" lang="hi">${stage.display.replace('＿', '<span class="digit-sequence-answer">＿</span>')}</div>`
     : `<div class="scenario digit-context">${stage.prompt}</div>`;
   return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p>${stage.display ? `<p class="digit-prompt">${stage.prompt}</p>` : ''}${detail}${answersMarkup(stage.choices, 'choice-grid digit-choices')}</div>`;
 }
@@ -1436,6 +1460,11 @@ function answerDigitStage(item, correct, isReview = false) {
 function answerDigitSeries(item, selected, button, isReview = false) {
   const stage = item.questions[digitSeriesIndex];
   const correct = selected === stage.answer;
+  const sequenceAnswer = card.querySelector('.digit-sequence-answer');
+  if (sequenceAnswer) {
+    sequenceAnswer.textContent = stage.choices[stage.answer];
+    sequenceAnswer.classList.add(correct ? 'correct' : 'wrong');
+  }
   card.querySelectorAll('[data-answer]').forEach((answerButton, index) => {
     answerButton.disabled = true;
     if (index === stage.answer) answerButton.classList.add('correct');
@@ -1620,7 +1649,7 @@ function openLessonMode(lessonId) {
   activeLesson = lessons[lessonId];
   mode = 'mode-select';
   updateLessonChrome();
-  modeKicker.textContent = activeLesson.data.shortLabel || `Урок ${activeLesson.data.id}`;
+  modeKicker.textContent = digitsStandalone ? 'Цифры и числа деванагари' : activeLesson.data.shortLabel || `Урок ${activeLesson.data.id}`;
   modeTitle.textContent = 'Как позанимаемся?';
   modeSubtitle.textContent = activeLesson.data.subtitle;
   if (digitsStandalone) {
@@ -1650,11 +1679,13 @@ function renderFlashcards() {
   document.querySelector('#hero-title').innerHTML = digitLesson ? 'Цифра за<br /><em>цифрой</em>' : 'Слово за<br /><em>словом</em>';
   lessonSubtitle.textContent = digitLesson ? 'Переворачивай карточки и запоминай начертание цифр.' : 'Переворачивай карточки в своём темпе — без баллов и ошибок.';
   document.querySelector('#progress-text').textContent = `${digitLesson ? 'Карточка' : 'Слово'} ${flashcardIndex + 1} из ${flashcardDeck.length}`;
-  document.querySelector('#score-text').textContent = flashcardDirection === 'hi' ? 'хинди → русский' : 'русский → хинди';
+  document.querySelector('#score-text').textContent = digitLesson
+    ? flashcardDirection === 'hi' ? '१२३ → 123' : '123 → १२३'
+    : flashcardDirection === 'hi' ? 'хинди → русский' : 'русский → хинди';
   progress.style.width = `${(flashcardIndex + 1) / flashcardDeck.length * 100}%`;
   const cardSides = digitLesson ? ['१२३', '123'] : ['Хинди', 'Русский'];
   const directionSeparator = digitLesson ? ' – ' : ' → ';
-  card.innerHTML = `<p class="game-label">Карточки · ${digitLesson ? 'дополнительный урок' : `урок ${activeLesson.data.id}`}</p><div class="flashcard-controls" role="group" aria-label="Направление карточек"><button class="flashcard-direction${flashcardDirection === 'hi' ? ' active' : ''}" data-direction="hi" type="button">${cardSides[0]}${directionSeparator}${cardSides[1]}</button><button class="flashcard-direction${flashcardDirection === 'ru' ? ' active' : ''}" data-direction="ru" type="button">${cardSides[1]}${directionSeparator}${cardSides[0]}</button></div><button class="flashcard${showingHindi ? '' : ' flipped'}" id="flashcard" type="button" aria-label="Перевернуть карточку"><span class="flashcard-inner"><span class="flashcard-face hi"><span>${cardSides[0]}</span><b>${pair.hi}</b><small>Нажми, чтобы перевернуть</small></span><span class="flashcard-face ru"><span>${cardSides[1]}</span><b>${pair.ru}</b><small>Нажми, чтобы перевернуть</small></span></span></button><div class="flashcard-actions"><button class="next flashcard-previous" id="previous-flashcard" type="button" ${flashcardIndex === 0 ? 'disabled' : ''}>← Предыдущее слово</button><button class="next flashcard-next" id="next-flashcard" type="button">${flashcardIndex === flashcardDeck.length - 1 ? 'Посмотреть итог →' : 'Следующее слово →'}</button></div>`;
+  card.innerHTML = `<p class="game-label">Карточки · ${digitLesson ? 'цифры деванагари' : `урок ${activeLesson.data.id}`}</p><div class="flashcard-controls" role="group" aria-label="Направление карточек"><button class="flashcard-direction${flashcardDirection === 'hi' ? ' active' : ''}" data-direction="hi" type="button">${cardSides[0]}${directionSeparator}${cardSides[1]}</button><button class="flashcard-direction${flashcardDirection === 'ru' ? ' active' : ''}" data-direction="ru" type="button">${cardSides[1]}${directionSeparator}${cardSides[0]}</button></div><button class="flashcard${showingHindi ? '' : ' flipped'}" id="flashcard" type="button" aria-label="Перевернуть карточку"><span class="flashcard-inner"><span class="flashcard-face hi"><span>${cardSides[0]}</span><b>${pair.hi}</b><small>Нажми, чтобы перевернуть</small></span><span class="flashcard-face ru"><span>${cardSides[1]}</span><b>${pair.ru}</b><small>Нажми, чтобы перевернуть</small></span></span></button><div class="flashcard-actions"><button class="next flashcard-previous" id="previous-flashcard" type="button" ${flashcardIndex === 0 ? 'disabled' : ''}>← ${digitLesson ? 'Предыдущая цифра' : 'Предыдущее слово'}</button><button class="next flashcard-next" id="next-flashcard" type="button">${flashcardIndex === flashcardDeck.length - 1 ? 'Посмотреть итог →' : digitLesson ? 'Следующая цифра →' : 'Следующее слово →'}</button></div>`;
   card.querySelector('#flashcard').addEventListener('click', () => {
     flashcardFlipped = !flashcardFlipped;
     const flashcard = card.querySelector('#flashcard');
@@ -1912,10 +1943,36 @@ const largeNumberCards = [
   { value: 10000000, number: '1,00,00,000', word: 'एक करोड़' }
 ];
 const wordCountPicker = document.querySelector('#digits-word-counts');
+const allChoices = wordCountPicker.querySelector('#word-all-choices');
+const decadeChoices = wordCountPicker.querySelector('#word-decade-choices');
+const decadeSelect = wordCountPicker.querySelector('#word-decade-range');
 let numberDeck = [];
 let numberIndex = 0;
 let numberFlipped = false;
+let numberDirection = 'number';
 let numberDeckType = 10;
+let numberRangeStart = 0;
+
+function decadeRange(start) {
+  const end = start === 0 ? 10 : start + 9;
+  return { start, end, label: `${start}–${end}` };
+}
+
+function setWordScope(scope) {
+  const all = scope === 'all';
+  allChoices.hidden = !all;
+  decadeChoices.hidden = all;
+  wordCountPicker.querySelectorAll('[data-word-scope]').forEach(button => {
+    const active = button.dataset.wordScope === scope;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+}
+
+function updateDecadeSummary() {
+  const { start, end, label } = decadeRange(Number(decadeSelect.value));
+  wordCountPicker.querySelector('#word-decade-summary').textContent = `${label} · ${end - start + 1} ${numberCardNoun(end - start + 1)}`;
+}
 
 function shuffleNumberCards(items) {
   const result = [...items];
@@ -1939,6 +1996,8 @@ function goToDigitsMenu() {
 }
 
 function openNumberWordChoices() {
+  numberDirection = 'number';
+  setWordScope('all');
   modeTitle.textContent = 'Число за числом';
   modeSubtitle.textContent = 'Число на одной стороне, его название на хинди — на другой.';
   modeOptions.hidden = true;
@@ -1948,9 +2007,15 @@ function openNumberWordChoices() {
   wordCountPicker.hidden = false;
 }
 
-function startNumberWords(count) {
+function startNumberWords(count, rangeStart = numberRangeStart) {
   numberDeckType = count;
-  numberDeck = count === 'bonus' ? shuffleNumberCards(largeNumberCards) : shuffleNumberCards(numberWordCards).slice(0, count);
+  if (count === 'decade') {
+    numberRangeStart = rangeStart;
+    const { start, end } = decadeRange(rangeStart);
+    numberDeck = shuffleNumberCards(numberWordCards.filter(item => item.value >= start && item.value <= end));
+  } else {
+    numberDeck = count === 'bonus' ? shuffleNumberCards(largeNumberCards) : shuffleNumberCards(numberWordCards).slice(0, count);
+  }
   numberIndex = 0;
   numberFlipped = false;
   wordCountPicker.hidden = true;
@@ -1964,13 +2029,23 @@ function startNumberWords(count) {
 function renderNumberWordCard() {
   if (numberIndex >= numberDeck.length) { finishNumberWords(); return; }
   const item = numberDeck[numberIndex];
-  document.querySelector('#lesson-task-count').textContent = numberDeckType === 'bonus' ? 'Большие числа · бонус' : `Числа на хинди · ${numberDeck.length} карточек`;
+  const numberFirst = numberDirection === 'number';
+  const front = numberFirst ? { label: 'Число', value: item.number, type: 'number-face' } : { label: 'На хинди', value: item.word, type: 'word-face' };
+  const back = numberFirst ? { label: 'На хинди', value: item.word, type: 'word-face' } : { label: 'Число', value: item.number, type: 'number-face' };
+  const deckLabel = numberDeckType === 'bonus' ? 'большие числа' : numberDeckType === 'decade' ? `числа ${decadeRange(numberRangeStart).label}` : 'числа 0–100';
+  document.querySelector('#lesson-task-count').textContent = numberDeckType === 'bonus' ? 'Большие числа · бонус' : `${deckLabel} · ${numberDeck.length} карточек`;
   document.querySelector('#hero-title').innerHTML = 'Число за<br /><em>числом</em>';
-  lessonSubtitle.textContent = 'Переверните карточку, чтобы увидеть название числа на хинди.';
+  lessonSubtitle.textContent = numberFirst ? 'Переверните карточку, чтобы увидеть название числа на хинди.' : 'Переверните карточку, чтобы увидеть число.';
   document.querySelector('#progress-text').textContent = `Карточка ${numberIndex + 1} из ${numberDeck.length}`;
-  document.querySelector('#score-text').textContent = 'число → слово';
+  document.querySelector('#score-text').textContent = numberFirst ? 'число → слово' : 'слово → число';
   progress.style.width = `${(numberIndex + 1) / numberDeck.length * 100}%`;
-  card.innerHTML = `<div class="digit-tools"><button class="digit-cheat-button" id="number-word-cheat" type="button">▦ Шпаргалка</button></div><p class="game-label">Карточки · ${numberDeckType === 'bonus' ? 'большие числа' : 'числа 0–100'}</p><button class="flashcard word-flashcard" id="number-word-card" type="button" aria-label="Перевернуть карточку"><span class="flashcard-inner"><span class="flashcard-face hi"><span>Число</span><b>${item.number}</b><small>Нажмите, чтобы перевернуть</small></span><span class="flashcard-face ru"><span>На хинди</span><b lang="hi">${item.word}</b><small>Нажмите, чтобы перевернуть</small></span></span></button><div class="flashcard-actions"><button class="next flashcard-previous" id="previous-number" type="button" ${numberIndex === 0 ? 'disabled' : ''}>← Предыдущее число</button><button class="next flashcard-next" id="next-number" type="button">${numberIndex === numberDeck.length - 1 ? 'Посмотреть итог →' : 'Следующее число →'}</button></div>`;
+  card.innerHTML = `<div class="digit-tools"><button class="digit-cheat-button" id="number-word-cheat" type="button">▦ Шпаргалка</button></div><p class="game-label">Карточки · ${deckLabel}</p><div class="flashcard-controls" role="group" aria-label="Направление карточек"><button class="flashcard-direction${numberFirst ? ' active' : ''}" data-number-direction="number" type="button" aria-pressed="${numberFirst}">Число – слово</button><button class="flashcard-direction${numberFirst ? '' : ' active'}" data-number-direction="word" type="button" aria-pressed="${!numberFirst}">Слово – число</button></div><button class="flashcard word-flashcard${numberFlipped ? ' flipped' : ''}" id="number-word-card" type="button" aria-label="Перевернуть карточку"><span class="flashcard-inner"><span class="flashcard-face hi ${front.type}"><span>${front.label}</span><b${front.type === 'word-face' ? ' lang="hi"' : ''}>${front.value}</b><small>Нажмите, чтобы перевернуть</small></span><span class="flashcard-face ru ${back.type}"><span>${back.label}</span><b${back.type === 'word-face' ? ' lang="hi"' : ''}>${back.value}</b><small>Нажмите, чтобы перевернуть</small></span></span></button><div class="flashcard-actions"><button class="next flashcard-previous" id="previous-number" type="button" ${numberIndex === 0 ? 'disabled' : ''}>← Предыдущее число</button><button class="next flashcard-next" id="next-number" type="button">${numberIndex === numberDeck.length - 1 ? 'Посмотреть итог →' : 'Следующее число →'}</button></div>`;
+  card.querySelectorAll('[data-number-direction]').forEach(button => button.addEventListener('click', () => {
+    if (button.dataset.numberDirection === numberDirection) return;
+    numberDirection = button.dataset.numberDirection;
+    numberFlipped = false;
+    renderNumberWordCard();
+  }));
   card.querySelector('#number-word-card').addEventListener('click', () => {
     numberFlipped = !numberFlipped;
     card.querySelector('#number-word-card').classList.toggle('flipped', numberFlipped);
@@ -2015,6 +2090,9 @@ function openNumberWordCheat() {
 }
 
 document.querySelector('#start-word-cards').addEventListener('click', openNumberWordChoices);
+wordCountPicker.querySelectorAll('[data-word-scope]').forEach(button => button.addEventListener('click', () => setWordScope(button.dataset.wordScope)));
+decadeSelect.addEventListener('change', updateDecadeSummary);
+wordCountPicker.querySelector('#start-word-decade').addEventListener('click', () => startNumberWords('decade', Number(decadeSelect.value)));
 wordCountPicker.querySelectorAll('[data-word-count]').forEach(button => button.addEventListener('click', () => {
   const count = button.dataset.wordCount === 'bonus' ? 'bonus' : Number(button.dataset.wordCount);
   startNumberWords(count);
