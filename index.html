@@ -71,6 +71,20 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .digit-sequence-answer.correct{color:var(--green)}
 .digit-sequence-answer.wrong{color:var(--pink)}
 .feedback.digit-feedback.wrong{background:#fff0f3;color:#a32850}
+.number-game-mode .mode-icon{background:#fff0f3;color:var(--pink)}
+.mode-option[hidden]{display:none!important}
+.number-word-display{font-size:clamp(34px,8vw,64px);overflow-wrap:anywhere}
+.number-word-choices .choice{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(18px,3vw,24px);line-height:1.35;overflow-wrap:anywhere}
+.number-compare{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,32px);min-height:132px;margin:0 auto 22px;color:var(--ink);font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(29px,6vw,56px);font-weight:800;text-align:center}
+.number-compare>span:not(.compare-separator){min-width:0;overflow-wrap:anywhere}
+.number-compare .compare-separator{color:#7b929a;font-family:"Nunito Sans",sans-serif;font-size:14px;font-weight:900}
+.number-sequence{counter-reset:number-step;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:760px;margin:12px auto 25px}
+.number-sequence-token{counter-increment:number-step;position:relative;display:grid;place-items:center;min-height:104px;padding:25px 9px 10px;border:1.5px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(20px,2.4vw,30px);font-weight:800;line-height:1.25;text-align:center;overflow-wrap:anywhere}
+.number-sequence-token::before{content:counter(number-step);position:absolute;top:8px;left:11px;color:#7b929a;font-family:"Nunito Sans",sans-serif;font-size:11px;font-weight:900}
+.number-sequence-token.digit-sequence-answer{border-style:dashed;background:#f7f4ee}
+.number-sequence-token.correct{border-color:var(--green);background:#effaf5;color:var(--green)}
+.number-sequence-token.wrong{border-color:var(--pink);background:#fff0f3;color:var(--pink)}
+@media(max-width:600px){.number-sequence{grid-template-columns:repeat(2,minmax(0,1fr))}.number-sequence-token{min-height:80px;font-size:22px}.number-compare{min-height:105px;font-size:30px}}
 
 .mode-option[hidden],.back-link[hidden]{display:none!important}
 .difficulty-picker .back-link{justify-self:start;margin:0 0 5px}
@@ -186,6 +200,11 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
             <span><b>Слово за словом</b><small>Переворачивай карточки в своём темпе</small></span>
             <span class="lesson-arrow">→</span>
           </button>
+          <button class="mode-option number-game-mode" id="start-number-game" type="button" hidden>
+            <span class="mode-icon">✦</span>
+            <span><b>Игровая практика: числа</b><small>Семь заданий с названиями чисел</small></span>
+            <span class="lesson-arrow">→</span>
+          </button>
           <button class="mode-option flashcard-mode" id="start-word-cards" type="button" hidden>
             <span class="mode-icon">१२३</span>
             <span><b>Число за числом</b><small>Узнай, как называются числа на хинди</small></span>
@@ -228,6 +247,13 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
           <button class="difficulty-option" data-digit-level="warmup" type="button"><span class="difficulty-badge">1</span><span><b>Разминка</b><small>4 пары · по 3 вопроса в сериях</small></span><span class="lesson-arrow">→</span></button>
           <button class="difficulty-option" data-digit-level="drive" type="button"><span class="difficulty-badge">2</span><span><b>Разгон</b><small>6 пар · по 6 вопросов в сериях</small></span><span class="lesson-arrow">→</span></button>
           <button class="difficulty-option pahalvaan-option" data-digit-level="pahalvaan" type="button"><span class="difficulty-badge">💪</span><span><b>Pahalvaan</b><small>10 пар · по 10 вопросов в сериях</small></span><span class="lesson-arrow">→</span></button>
+        </div>
+        <div class="difficulty-picker" id="numbers-difficulty" hidden>
+          <button class="back-link" data-back-to-modes type="button">← К видам практики</button>
+          <p class="difficulty-intro">Выбирай по настроению — шпаргалка всегда рядом.</p>
+          <button class="difficulty-option" data-number-level="warmup" type="button"><span class="difficulty-badge">1</span><span><b>Разминка</b><small>Числа 0–20 · 4 пары · по 3 вопроса</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option" data-number-level="drive" type="button"><span class="difficulty-badge">2</span><span><b>Разгон</b><small>Числа 0–50 · 6 пар · по 6 вопросов</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option pahalvaan-option" data-number-level="pahalvaan" type="button"><span class="difficulty-badge">💪</span><span><b>Pahalvaan</b><small>Числа 0–100 · 10 пар · по 10 вопросов</small></span><span class="lesson-arrow">→</span></button>
         </div>
       </section>
 
@@ -741,7 +767,7 @@ const devanagariDigits = {
   title: 'Цифры деванагари',
   shortLabel: 'Дополнительный урок',
   subtitle: 'Узнавай цифры деванагари, собирай числа и читай их в бытовых ситуациях.',
-  taskCount: 5,
+  taskCount: 7,
   duration: '4-8 минут',
   flashcardTitle: 'Цифра за цифрой',
   heroTitle: 'Игровая<br /><em>практика</em>',
@@ -750,6 +776,22 @@ const devanagariDigits = {
     { hi: '५', ru: '5' }, { hi: '६', ru: '6' }, { hi: '७', ru: '7' }, { hi: '८', ru: '8' }, { hi: '९', ru: '9' }
   ]
 };
+
+// 1–100 follow the table supplied for this lesson; 0 is added as शून्य.
+const numberWords = [
+  'शून्य',
+  'एक', 'दो', 'तीन', 'चार', 'पाँच', 'छः', 'सात', 'आठ', 'नौ', 'दस',
+  'ग्यारह', 'बारह', 'तेरह', 'चौदह', 'पन्द्रह', 'सोलह', 'सत्रह', 'अठारह', 'उन्नीस', 'बीस',
+  'इक्कीस', 'बाईस', 'तेईस', 'चौबीस', 'पच्चीस', 'छब्बीस', 'सत्ताईस', 'अट्ठाईस', 'उनतीस', 'तीस',
+  'इकतीस', 'बत्तीस', 'तैंतीस', 'चौंतीस', 'पैंतीस', 'छत्तीस', 'सैंतीस', 'अड़तीस', 'उनतालीस', 'चालीस',
+  'इकतालीस', 'बयालीस', 'तैंतालीस', 'चौवालीस', 'पैंतालीस', 'छियालीस', 'सैंतालीस', 'अड़तालीस', 'उनचास', 'पचास',
+  'इक्यावन', 'बावन', 'तिरेपन', 'चौवन', 'पचपन', 'छप्पन', 'सत्तावन', 'अट्ठावन', 'उनसठ', 'साठ',
+  'इकसठ', 'बासठ', 'तिरसठ', 'चौंसठ', 'पैंसठ', 'छियासठ', 'सड़सठ', 'अड़सठ', 'उनहत्तर', 'सत्तर',
+  'इकहत्तर', 'बहत्तर', 'तिहत्तर', 'चौहत्तर', 'पचहत्तर', 'छिहत्तर', 'सतहत्तर', 'अठहत्तर', 'उनासी', 'अस्सी',
+  'इक्यासी', 'बयासी', 'तिरासी', 'चौरासी', 'पचासी', 'छियासी', 'सत्तासी', 'अट्ठासी', 'नवासी', 'नब्बे',
+  'इक्यानवे', 'बानवे', 'तिरानवे', 'चौरानवे', 'पंचानवे', 'छियानवे', 'सत्तानवे', 'अट्ठानवे', 'निन्यानवे', 'सौ'
+];
+if (numberWords.length !== 101) throw new Error('Expected names for every number from 0 to 100.');
 
 const digits = devanagariDigits.flashcards.map(({ hi, ru }) => ({ glyph: hi, value: Number(ru) }));
 const levels = {
@@ -860,7 +902,7 @@ function createDevanagariDigitRounds(level = 'warmup') {
     {
       type: 'match', trainingTag: 'найди пару', label: 'Задание 1 · найди пару', title: 'Найди пару',
       description: `Соедини цифры деванагари с привычной записью. В этом раунде ${counted(config.pairs, 'пара', 'пары', 'пар')}.`,
-      pairs, hindi: shuffle(pairs), russian: shuffle(pairs)
+      leftLabel: 'Деванагари', rightLabel: 'Обычная запись', pairs, hindi: shuffle(pairs), russian: shuffle(pairs)
     },
     seriesRound(2, 'Узнай цифру', `Определи ${counted(config.questions, 'цифру', 'цифры', 'цифр')} по очереди.`, makeRecognitionQuestions(config)),
     seriesRound(3, 'Продолжи ряд', `Восстанови ${counted(config.questions, 'ряд', 'ряда', 'рядов')} по очереди.`, makeSequenceQuestions(config)),
@@ -868,20 +910,115 @@ function createDevanagariDigitRounds(level = 'warmup') {
       type: 'digit-compose', trainingTag: 'собери число', label: 'Задание 4 · собери число', title: 'Собери число',
       description: `Запиши ${counted(config.questions, 'число', 'числа', 'чисел')} цифрами деванагари, выбирая цифры на клавиатуре.`, questions: makeComposeQuestions(config)
     },
-    seriesRound(5, 'Цифры вокруг нас', `Прочитай ${counted(config.questions, 'номер', 'номера', 'номеров')} и значения в бытовых ситуациях.`, makeContextQuestions(config))
+    seriesRound(5, 'Цифры вокруг нас', `Прочитай ${counted(config.questions, 'номер', 'номера', 'номеров')} и значения в бытовых ситуациях.`, makeContextQuestions(config)),
+    seriesRound(6, 'Кто больше?', 'Выбери большую из двух цифр.', makeComparisonQuestions(config, 'digit')),
+    seriesRound(7, 'Соседи', 'Найди цифру на единицу больше или меньше.', makeNeighborQuestions(config, 'digit'))
   ];
 }
 
-Object.assign(globalThis, { devanagariDigits, createDevanagariDigitRounds });
+const devanagariNumbers = {
+  id: 'numbers', title: 'Числа на хинди', shortLabel: 'Дополнительный урок',
+  subtitle: 'Узнавай названия чисел от 0 до 100 на хинди.', taskCount: 7,
+  heroTitle: 'Игровая<br /><em>практика</em>'
+};
+
+const numberLevels = {
+  warmup: { pairs: 4, questions: 3, choices: 4, max: 20 },
+  drive: { pairs: 6, questions: 6, choices: 5, max: 50 },
+  pahalvaan: { pairs: 10, questions: 10, choices: 6, max: 100 }
+};
+const range = max => Array.from({ length: max + 1 }, (_, value) => value);
+const word = value => numberWords[value];
+const notation = (value, kind) => kind === 'digit' ? digits[value].glyph : word(value);
+const pickTargets = (max, count) => pickSome(range(max), count);
+function nearbyChoices(value, max, count, kind) {
+  const near = [value - 1, value + 1, value - 2, value + 2, value - 10, value + 10, value - 9, value + 9]
+    .filter(other => other >= 0 && other <= max && other !== value);
+  const others = [...new Set([...shuffle(near), ...pickSome(range(max).filter(other => other !== value), max + 1)])];
+  return shuffle([value, ...others.slice(0, count - 1)]).map(other => notation(other, kind));
 }
-const { lesson3, createLesson3Rounds, lesson18, createLesson18Rounds, lesson17, createLesson17Rounds, devanagariDigits, createDevanagariDigitRounds } = globalThis;
+function makeComparisonQuestions(config, kind) {
+  const max = kind === 'digit' ? 9 : config.max;
+  return Array.from({ length: config.questions }, () => {
+    const [first, second] = pickSome(range(max), 2);
+    const choices = shuffle([notation(first, kind), notation(second, kind)]);
+    const bigger = Math.max(first, second);
+    return {
+      prompt: 'Какое число больше?', compare: [notation(first, kind), notation(second, kind)],
+      choices, answer: choices.indexOf(notation(bigger, kind)),
+      explanation: `${notation(bigger, kind)} — это ${bigger}; больше, чем ${Math.min(first, second)}.`
+    };
+  });
+}
+function makeNeighborQuestions(config, kind) {
+  const max = kind === 'digit' ? 9 : config.max;
+  const targets = pickSome(range(max), config.questions);
+  return targets.map(value => {
+    const step = value === 0 ? 1 : value === max ? -1 : pick([-1, 1]);
+    const target = value + step;
+    const choices = nearbyChoices(target, max, Math.min(config.choices, max + 1), kind);
+    return {
+      prompt: `Какое число на единицу ${step === 1 ? 'больше' : 'меньше'}?`, display: notation(value, kind),
+      wordDisplay: kind === 'word', choices, answer: choices.indexOf(notation(target, kind)),
+      explanation: `${notation(value, kind)} — это ${value}, ${step === 1 ? 'следующее' : 'предыдущее'} число — ${notation(target, kind)} (${target}).`
+    };
+  });
+}
+
+function createDevanagariNumberRounds(level = 'warmup') {
+  const config = numberLevels[level] || numberLevels.warmup;
+  const values = range(config.max);
+  const pairs = pickSome(values, config.pairs).map(value => ({ key: `number-${value}`, hi: word(value), ru: String(value) }));
+  const recognition = pickTargets(config.max, config.questions).map(value => {
+    const choices = makeChoices(String(value), values.map(String), config.choices);
+    return { prompt: 'Какое число написано?', display: word(value), wordDisplay: true,
+      choices, answer: choices.indexOf(String(value)), explanation: `${word(value)} — это ${value}.` };
+  });
+  const confusing = pickTargets(config.max, config.questions).map(value => {
+    const choices = nearbyChoices(value, config.max, config.choices, 'word');
+    return { prompt: `Найди название числа ${value}.`, display: String(value),
+      choices, wordChoices: true, answer: choices.indexOf(word(value)), explanation: `${value} — это ${word(value)}.` };
+  });
+  const sequences = Array.from({ length: config.questions }, () => {
+    const start = Math.floor(Math.random() * (config.max - 2));
+    const missing = Math.floor(Math.random() * 4);
+    const sequence = Array.from({ length: 4 }, (_, index) => start + index);
+    const value = sequence[missing];
+    const choices = nearbyChoices(value, config.max, config.choices, 'word');
+    return { prompt: 'Какого числа не хватает в ряду?', sequenceWords: sequence.map((entry, index) => index === missing ? '＿' : word(entry)),
+      choices, wordChoices: true, answer: choices.indexOf(word(value)), explanation: `Пропуск — ${word(value)} (${value}).` };
+  });
+  const contexts = ['На ценнике написано', 'На билете указано', 'На табло видно', 'В записи встречается'];
+  const situations = pickTargets(config.max, config.questions).map(value => {
+    const choices = makeChoices(String(value), values.map(String), config.choices);
+    return { prompt: `${pick(contexts)} «${word(value)}». Какое это число?`, choices,
+      answer: choices.indexOf(String(value)), explanation: `${word(value)} — это ${value}.` };
+  });
+  return [
+    { type: 'match', trainingTag: 'найди пару', label: 'Задание 1 · найди пару', title: 'Найди пару',
+      description: `Соедини ${counted(config.pairs, 'слово', 'слова', 'слов')} с числами.`,
+      leftLabel: 'На хинди', rightLabel: 'Число', pairs, hindi: shuffle(pairs), russian: shuffle(pairs) },
+    seriesRound(2, 'Узнай число', `Определи ${counted(config.questions, 'число', 'числа', 'чисел')} по очереди.`, recognition),
+    seriesRound(3, 'Не перепутай!', 'Выбери название числа среди близких вариантов.', confusing),
+    seriesRound(4, 'Продолжи ряд', `Восстанови ${counted(config.questions, 'ряд', 'ряда', 'рядов')} по очереди.`, sequences),
+    seriesRound(5, 'Числа вокруг нас', `Прочитай ${counted(config.questions, 'число', 'числа', 'чисел')} в небольших ситуациях.`, situations),
+    seriesRound(6, 'Кто больше?', 'Выбери большее из двух чисел.', makeComparisonQuestions(config, 'word')),
+    seriesRound(7, 'Соседи', 'Найди число на единицу больше или меньше.', makeNeighborQuestions(config, 'word'))
+  ];
+}
+
+Object.assign(globalThis, { devanagariDigits, devanagariNumbers, numberWords, createDevanagariDigitRounds, createDevanagariNumberRounds });
+}
+const { lesson3, createLesson3Rounds, lesson18, createLesson18Rounds, lesson17, createLesson17Rounds, devanagariDigits, devanagariNumbers, numberWords, createDevanagariDigitRounds, createDevanagariNumberRounds } = globalThis;
 
 const lessons = {
   '3': { data: lesson3, createRounds: createLesson3Rounds },
   '17': { data: lesson17, createRounds: createLesson17Rounds },
   '18': { data: lesson18, createRounds: createLesson18Rounds },
-  digits: { data: devanagariDigits, createRounds: createDevanagariDigitRounds }
+  digits: { data: devanagariDigits, createRounds: createDevanagariDigitRounds },
+  numbers: { data: devanagariNumbers, createRounds: createDevanagariNumberRounds }
 };
+const isNumberPractice = id => id === 'digits' || id === 'numbers';
 const semanticTranslations = {
   'ईमानदार': 'честный', 'उदार': 'щедрый', 'मेहनती': 'трудолюбивый', 'संस्कारी': 'воспитанный, традиционный', 'होशियार': 'смышлёный',
   'बहादुर': 'смелый', 'दयालु': 'добрый', 'नादां': 'наивный, простой', 'शांत': 'спокойный', 'लापरवाह': 'беззаботный',
@@ -961,9 +1098,12 @@ const startGame = document.querySelector('#start-game');
 const startFlashcards = document.querySelector('#start-flashcards');
 const modeOptions = document.querySelector('.mode-options');
 const difficultyPicker = document.querySelector('#digits-difficulty');
+const numberDifficultyPicker = document.querySelector('#numbers-difficulty');
 const flashcardCountPicker = document.querySelector('#digits-flashcard-counts');
 const wordCountPicker = document.querySelector('#digits-word-counts');
 const startWordCards = document.querySelector('#start-word-cards');
+const startNumberGame = document.querySelector('#start-number-game');
+let numberWordMode;
 const practiceCards = document.querySelectorAll('[data-practice]');
 const practiceCounters = document.querySelectorAll('[data-practice-count]');
 const progressStorageKey = 'hindi-practice-progress-v1';
@@ -1111,7 +1251,7 @@ function chatMarkup(item) {
 }
 function matchMarkup(item) {
   const cards = (items, side) => items.map(pair => `<button class="match-card" data-match data-side="${side}" data-key="${pair.key}">${side === 'hi' ? pair.hi : pair.ru}</button>`).join('');
-  return `<div class="match-grid"><div class="match-column"><p>Хинди</p>${cards(item.hindi, 'hi')}</div><div class="match-column"><p>Русский</p>${cards(item.russian, 'ru')}</div></div>`;
+  return `<div class="match-grid"><div class="match-column"><p>${item.leftLabel || 'Хинди'}</p>${cards(item.hindi, 'hi')}</div><div class="match-column"><p>${item.rightLabel || 'Русский'}</p>${cards(item.russian, 'ru')}</div></div>`;
 }
 function semanticMarkup(item) {
   return `<div class="semantic-board"><div class="semantic-center"><span>${item.center}</span></div><div class="semantic-cloud">${item.options.map((option, index) => `<button class="semantic-chip" type="button" data-semantic="${index}" aria-pressed="false">${option.text}</button>`).join('')}</div><button class="semantic-check" type="button" data-semantic-check disabled>Проверить</button></div>`;
@@ -1128,13 +1268,17 @@ function digitCheatMarkup() {
 }
 function bindDigitCheat() {
   card.querySelector('[data-digit-cheat]')?.addEventListener('click', () => {
+    if (activeLesson.data.id === 'numbers' && selectedDifficulty !== 'pahalvaan') {
+      numberWordMode.openNumberWordCheat(card.querySelector('[data-digit-cheat]'));
+      return;
+    }
     const isPahalvaan = selectedDifficulty === 'pahalvaan';
     const table = isPahalvaan
       ? '<p class="cheat-joke">Pahalvaan не подглядывает. Pahalvaan уже знает.</p><div class="cheat-joke-glyph" aria-hidden="true">💪</div>'
       : `<div class="digit-cheat-table" role="table" aria-label="Цифры деванагари"><div role="row"><b role="columnheader">Деванагари</b><b role="columnheader">Обычная запись</b></div>${devanagariDigits.flashcards.map(({ hi, ru }) => `<div role="row"><span lang="hi">${hi}</span><span>${ru}</span></div>`).join('')}</div>`;
     const overlay = document.createElement('div');
     overlay.className = 'digit-cheat-overlay';
-    overlay.innerHTML = `<section class="digit-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="digit-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">Цифры деванагари</p><h2 id="digit-cheat-title">${isPahalvaan ? 'Шпаргалка? Какая шпаргалка?' : 'Все цифры'}</h2>${table}</section>`;
+    overlay.innerHTML = `<section class="digit-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="digit-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">${activeLesson.data.title}</p><h2 id="digit-cheat-title">${isPahalvaan ? 'Шпаргалка? Какая шпаргалка?' : 'Все цифры'}</h2>${table}</section>`;
     const onEscape = event => { if (event.key === 'Escape' && overlay.isConnected) close(); };
     const close = () => { overlay.remove(); document.removeEventListener('keydown', onEscape); };
     overlay.addEventListener('click', event => { if (event.target === overlay) close(); });
@@ -1146,13 +1290,18 @@ function bindDigitCheat() {
 }
 function digitSeriesMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
-  const sequence = item.type === 'digit-series' && stage.display
+  const sequence = item.type === 'digit-series' && stage.display && !stage.wordDisplay
     ? stage.display.split('　').map(glyph => `<span class="digit-sequence-token${glyph === '＿' ? ' digit-sequence-answer' : ''}">${glyph}</span>`).join('')
     : null;
-  const detail = stage.display
-    ? `<div class="digit-display${sequence ? ' digit-sequence-display' : ''}" lang="hi">${sequence || stage.display}</div>`
-    : `<div class="scenario digit-context">${stage.prompt}</div>`;
-  return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p>${stage.display ? `<p class="digit-prompt">${stage.prompt}</p>` : ''}${detail}${answersMarkup(stage.choices, 'choice-grid digit-choices')}</div>`;
+  const wordSequence = stage.sequenceWords?.map(value => `<span class="number-sequence-token${value === '＿' ? ' digit-sequence-answer' : ''}" lang="hi">${value}</span>`).join('');
+  const detail = wordSequence
+    ? `<div class="number-sequence" aria-label="Числовой ряд">${wordSequence}</div>`
+    : stage.compare
+      ? `<div class="number-compare" lang="hi">${stage.compare.map(value => `<span>${value}</span>`).join('<span class="compare-separator">или</span>')}</div>`
+      : stage.display
+        ? `<div class="digit-display${sequence ? ' digit-sequence-display' : ''}${stage.wordDisplay ? ' number-word-display' : ''}" ${stage.wordDisplay || sequence ? 'lang="hi"' : ''}>${sequence || stage.display}</div>`
+        : '';
+  return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p><p class="digit-prompt">${stage.prompt}</p>${detail}${answersMarkup(stage.choices, `choice-grid digit-choices${stage.wordChoices || stage.sequenceWords || (stage.compare && activeLesson.data.id === 'numbers') ? ' number-word-choices' : ''}`)}</div>`;
 }
 function digitComposeMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
@@ -1188,7 +1337,7 @@ function bindDigitCompose(item, isReview = false) {
 function render() {
   updateHeader();
   const item = rounds[current];
-  let inner = `${activeLesson.data.id === 'digits' ? digitCheatMarkup() : ''}<p class="game-label">${item.label}</p><h2 class="game-title">${item.title}</h2><p class="game-description">${item.description}</p>`;
+  let inner = `${isNumberPractice(activeLesson.data.id) ? digitCheatMarkup() : ''}<p class="game-label">${item.label}</p><h2 class="game-title">${item.title}</h2><p class="game-description">${item.description}</p>`;
   if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
   if (item.type === 'emoji') { const stage = item.emojiSeries[emojiStep]; inner += emojiMarkup(item, stage); inner += answersMarkup(stage.choices); }
   if (item.type === 'choice' || item.type === 'opinion') inner += answersMarkup(item.choices, item.type === 'opinion' ? 'opinion' : 'choice-grid');
@@ -1465,7 +1614,7 @@ function answerDigitStage(item, correct, isReview = false) {
       return;
     }
     recordPracticeResult(item, roundCorrect);
-    const finishDigitRoundWithoutReview = activeLesson.data.id === 'digits' && mode === 'lesson';
+    const finishDigitRoundWithoutReview = isNumberPractice(activeLesson.data.id) && mode === 'lesson';
     if (roundCorrect || finishDigitRoundWithoutReview) { completed.add(current); document.querySelectorAll('.round')[current].classList.add('done'); }
     digitSeriesIndex = 0;
     digitSeriesHadError = false;
@@ -1544,7 +1693,7 @@ function answer(selected, button) {
   updateHeader();
 }
 function startReviewOrFinish() {
-  if (!mistakes.length || (activeLesson.data.id === 'digits' && mode === 'lesson')) { finish(); return; }
+  if (!mistakes.length || (isNumberPractice(activeLesson.data.id) && mode === 'lesson')) { finish(); return; }
   reviewIndex = 0;
   digitSeriesIndex = 0;
   digitSeriesHadError = false;
@@ -1556,7 +1705,7 @@ function renderReview() {
   progress.style.width = '100%';
   document.querySelector('#progress-text').textContent = `Повтор ошибок · ${reviewIndex + 1} из ${mistakes.length}`;
   updateScoreText();
-  let inner = `${activeLesson.data.id === 'digits' ? digitCheatMarkup() : ''}<p class="game-label">Финальный раунд · повтор</p><h2 class="game-title">Закрепим ещё раз</h2><p class="game-description">В этом задании раньше был неверный ответ. Выбери правильный вариант — и урок будет пройден.</p>`;
+  let inner = `${isNumberPractice(activeLesson.data.id) ? digitCheatMarkup() : ''}<p class="game-label">Финальный раунд · повтор</p><h2 class="game-title">Закрепим ещё раз</h2><p class="game-description">В этом задании раньше был неверный ответ. Выбери правильный вариант — и урок будет пройден.</p>`;
   if (item.scenario) inner += `<div class="scenario">${item.scenario}</div>`;
   if (item.type === 'fill') inner += `<div class="sentence">${item.sentence}</div>`;
   if (item.type === 'digit-series') inner += digitSeriesMarkup(item);
@@ -1626,7 +1775,7 @@ function finish() {
     ? 'Можно пройти урок ещё раз или проверить себя в минутном блице.'
     : 'Можно повторить урок, перейти к другим материалам или проверить себя в минутном блице.';
   card.innerHTML = `<p class="game-label">Готово · ${lessonName}</p><h2 class="game-title">Хорошая практика!</h2><div class="finish">Ваш результат: <strong>${score} из ${totalPoints()}</strong>.<br>${resultCopy}</div><div class="finish-actions"><button class="next restart" id="restart">Пройти ещё раз</button><button class="next blitz-button" id="start-blitz">Минутный блиц →</button>${homeButtonMarkup()}</div>`;
-  document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(activeLesson.data.id === 'digits' ? selectedDifficulty : undefined); resetProgress(); renderNavigation(); render(); });
+  document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(isNumberPractice(activeLesson.data.id) ? selectedDifficulty : undefined); resetProgress(); renderNavigation(); render(); });
   document.querySelector('#start-blitz').addEventListener('click', startBlitz);
   bindHomeButton();
 }
@@ -1640,7 +1789,7 @@ function buildPracticeRounds(lessonId) {
   const selected = [];
   tags.forEach(tag => {
     for (let attempt = 0; attempt < 12; attempt++) {
-      const candidate = lessons[lessonId].createRounds(lessonId === 'digits' ? selectedDifficulty : undefined).find(round => round.trainingTag === tag);
+      const candidate = lessons[lessonId].createRounds(isNumberPractice(lessonId) ? selectedDifficulty : undefined).find(round => round.trainingTag === tag);
       if (candidate) { selected.push(candidate); break; }
     }
   });
@@ -1677,10 +1826,13 @@ function openLessonMode(lessonId) {
   modeOptions.hidden = false;
   backToLessons.hidden = false;
   difficultyPicker.hidden = true;
+  numberDifficultyPicker.hidden = true;
   flashcardCountPicker.hidden = true;
   wordCountPicker.hidden = true;
   startWordCards.hidden = lessonId !== 'digits';
-  startGame.querySelector('small').textContent = lessonId === 'digits' ? 'Пять видов практики с цифрами деванагари' : 'Ситуации, диалоги и задания по материалу урока';
+  startNumberGame.hidden = lessonId !== 'digits';
+  startGame.querySelector('b').textContent = lessonId === 'digits' ? 'Игровая практика: цифры' : 'Игровая практика';
+  startGame.querySelector('small').textContent = lessonId === 'digits' ? 'Семь заданий с цифрами деванагари' : 'Ситуации, диалоги и задания по материалу урока';
   startFlashcards.querySelector('b').textContent = lessonId === 'digits' ? 'Цифра за цифрой' : 'Слово за словом';
   startFlashcards.querySelector('small').textContent = lessonId === 'digits' ? 'Переворачивай карточки с цифрами' : 'Переворачивай карточки в своём темпе';
   appShell.classList.remove('selecting', 'flashcards', 'blitzing');
@@ -1772,19 +1924,19 @@ function finishFlashcards() {
   bindHomeButton();
 }
 function shuffleBlitz(items) { return [...items].sort(() => Math.random() - .5); }
-function blitzKey(item) { return `${item.type}:${item.prompt || item.sentence || item.scenario || item.title}:${item.display || ''}`; }
+function blitzKey(item) { return JSON.stringify([item.type, item.prompt || item.sentence || item.scenario || item.title, item.display, item.compare, item.sequenceWords]); }
 function quickRounds(lessonId) {
   const uniqueRounds = new Map();
   let staleAttempts = 0;
   while (staleAttempts < 14) {
     let added = false;
-    const generated = lessons[lessonId].createRounds(lessonId === 'digits' ? selectedDifficulty : undefined);
+    const generated = lessons[lessonId].createRounds(isNumberPractice(lessonId) ? selectedDifficulty : undefined);
     const candidates = generated.flatMap(round => {
-      if (round.type === 'digit-series') return round.questions.map(stage => ({ type: 'digit-choice', title: round.title, prompt: stage.prompt, display: stage.display, choices: stage.choices, answer: stage.answer, explanation: stage.explanation }));
+      if (round.type === 'digit-series') return round.questions.map(stage => ({ type: 'digit-choice', title: round.title, prompt: stage.prompt, display: stage.display, compare: stage.compare, sequenceWords: stage.sequenceWords, wordDisplay: stage.wordDisplay, wordChoices: stage.wordChoices, choices: stage.choices, answer: stage.answer, explanation: stage.explanation }));
       if (round.type === 'digit-compose') return round.questions.map(stage => ({ type: 'digit-choice', title: round.title, prompt: `${stage.prompt}: ${stage.value}`, choices: stage.choices, answer: stage.answer, explanation: stage.explanation }));
-      if (round.type === 'match' && lessonId === 'digits') return round.pairs.map(pair => {
-        const choices = shuffleBlitz([pair.ru, ...round.pairs.filter(other => other.key !== pair.key).map(other => other.ru)]).slice(0, Math.min(4, round.pairs.length));
-        return { type: 'digit-choice', title: round.title, prompt: `Как записать цифру ${pair.hi}?`, choices, answer: choices.indexOf(pair.ru), explanation: `${pair.hi} — это ${pair.ru}.` };
+      if (round.type === 'match' && isNumberPractice(lessonId)) return round.pairs.map(pair => {
+        const choices = shuffleBlitz([pair.ru, ...shuffleBlitz(round.pairs.filter(other => other.key !== pair.key).map(other => other.ru)).slice(0, 3)]);
+        return { type: 'digit-choice', title: round.title, prompt: `Какое число означает ${pair.hi}?`, choices, answer: choices.indexOf(pair.ru), explanation: `${pair.hi} — это ${pair.ru}.` };
       });
       return ['choice', 'fill', 'opinion'].includes(round.type) ? [round] : [];
     });
@@ -1799,8 +1951,12 @@ function quickRounds(lessonId) {
 function renderBlitzQuestion() {
   if (!blitz || blitz.seconds <= 0) return finishBlitz();
   const item = blitz.items[blitz.index];
-  const answerClass = item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : 'choice-grid';
-  const task = item.type === 'fill' ? `<div class="sentence">${item.sentence}</div>` : item.display ? `<p class="digit-prompt">${item.prompt}</p><div class="digit-display blitz-digit" lang="hi">${item.display}</div>` : item.prompt ? `<div class="scenario">${item.prompt}</div>` : item.scenario ? `<div class="scenario">${item.scenario}</div>` : '';
+  const answerClass = item.type === 'fill' ? 'word-options' : item.type === 'opinion' ? 'opinion' : item.wordChoices || item.sequenceWords || (item.compare && activeLesson.data.id === 'numbers') ? 'choice-grid number-word-choices' : 'choice-grid';
+  const task = item.type === 'fill' ? `<div class="sentence">${item.sentence}</div>`
+    : item.compare ? `<p class="digit-prompt">${item.prompt}</p><div class="number-compare" lang="hi">${item.compare.map(value => `<span>${value}</span>`).join('<span class="compare-separator">или</span>')}</div>`
+    : item.sequenceWords ? `<p class="digit-prompt">${item.prompt}</p><div class="number-sequence">${item.sequenceWords.map(value => `<span class="number-sequence-token" lang="hi">${value}</span>`).join('')}</div>`
+    : item.display ? `<p class="digit-prompt">${item.prompt}</p><div class="digit-display blitz-digit${item.wordDisplay ? ' number-word-display' : ''}" lang="hi">${item.display}</div>`
+    : item.prompt ? `<div class="scenario">${item.prompt}</div>` : item.scenario ? `<div class="scenario">${item.scenario}</div>` : '';
   card.innerHTML = `<p class="game-label">Минутный блиц</p><h2 class="game-title">Не думай слишком долго</h2><div class="blitz-status"><span class="blitz-stat hot" id="blitz-clock">${blitz.seconds} сек</span><span class="blitz-stat">Серия: ${blitz.streak}</span><span class="blitz-stat">Верно: ${blitz.correct}</span></div>${task}${answersMarkup(item.choices, answerClass)}`;
   card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answerBlitz(Number(button.dataset.answer), button, item)));
 }
@@ -1870,14 +2026,14 @@ function startBlitz() {
   renderBlitzQuestion();
 }
 function openLesson(lessonId, difficulty = selectedDifficulty) {
-  if (digitsStandalone && lessonId !== 'digits') return;
+  if (digitsStandalone && !isNumberPractice(lessonId)) return;
   if (blitz) window.clearInterval(blitz.timer);
   blitz = null;
   mode = 'lesson';
   activeLesson = lessons[lessonId];
-  if (lessonId === 'digits') selectedDifficulty = difficulty;
+  if (isNumberPractice(lessonId)) selectedDifficulty = difficulty;
   saveLastOpenedLesson(lessonId);
-  rounds = activeLesson.createRounds(lessonId === 'digits' ? selectedDifficulty : undefined);
+  rounds = activeLesson.createRounds(isNumberPractice(lessonId) ? selectedDifficulty : undefined);
   resetProgress();
   updateLessonChrome();
   renderNavigation();
@@ -1902,6 +2058,7 @@ startGame.addEventListener('click', () => {
   if (activeLesson.data.id !== 'digits') { openLesson(activeLesson.data.id); return; }
   flashcardCountPicker.hidden = true;
   wordCountPicker.hidden = true;
+  numberDifficultyPicker.hidden = true;
   modeTitle.textContent = 'Выбери уровень';
   modeSubtitle.textContent = 'Спокойная разминка, уверенный разгон или испытание Pahalvaan.';
   modeOptions.hidden = true;
@@ -1909,6 +2066,17 @@ startGame.addEventListener('click', () => {
   difficultyPicker.hidden = false;
 });
 difficultyPicker.querySelectorAll('[data-digit-level]').forEach(button => button.addEventListener('click', () => openLesson('digits', button.dataset.digitLevel)));
+startNumberGame.addEventListener('click', () => {
+  modeTitle.textContent = 'Игровая практика: числа';
+  modeSubtitle.textContent = 'Сначала знакомые числа, потом весь диапазон от 0 до 100.';
+  modeOptions.hidden = true;
+  backToLessons.hidden = true;
+  difficultyPicker.hidden = true;
+  flashcardCountPicker.hidden = true;
+  wordCountPicker.hidden = true;
+  numberDifficultyPicker.hidden = false;
+});
+numberDifficultyPicker.querySelectorAll('[data-number-level]').forEach(button => button.addEventListener('click', () => openLesson('numbers', button.dataset.numberLevel)));
 flashcardCountPicker.querySelectorAll('[data-flashcard-count]').forEach(button => button.addEventListener('click', () => startFlashcardMode(Number(button.dataset.flashcardCount))));
 startFlashcards.addEventListener('click', () => {
   if (activeLesson.data.id !== 'digits') { startFlashcardMode(); return; }
@@ -1917,11 +2085,12 @@ startFlashcards.addEventListener('click', () => {
   modeOptions.hidden = true;
   backToLessons.hidden = true;
   difficultyPicker.hidden = true;
+  numberDifficultyPicker.hidden = true;
   wordCountPicker.hidden = true;
   flashcardCountPicker.hidden = false;
 });
 document.querySelectorAll('[data-back-to-modes]').forEach(button => button.addEventListener('click', () => openLessonMode('digits')));
-setupNumberWordMode({ card, progress, appShell, modeTitle, modeSubtitle, modeOptions, difficultyPicker, flashcardCountPicker, lessonSubtitle, openLessonMode, setMode: value => { mode = value; } });
+numberWordMode = setupNumberWordMode({ card, progress, appShell, modeTitle, modeSubtitle, modeOptions, difficultyPicker, flashcardCountPicker, lessonSubtitle, openLessonMode, setMode: value => { mode = value; } });
 brand?.addEventListener('click', event => {
   if (digitsStandalone) { event.preventDefault(); openLessonMode('digits'); return; }
   openCatalog(event);
@@ -1937,22 +2106,8 @@ if (digitsStandalone) {
   render();
 }
 
+
 function setupNumberWordMode({ card, progress, appShell, modeTitle, modeSubtitle, modeOptions, difficultyPicker, flashcardCountPicker, lessonSubtitle, openLessonMode, setMode }) {
-// 1–100 follow the table supplied for this lesson; 0 is added as शून्य.
-const numberWords = [
-  'शून्य',
-  'एक', 'दो', 'तीन', 'चार', 'पाँच', 'छः', 'सात', 'आठ', 'नौ', 'दस',
-  'ग्यारह', 'बारह', 'तेरह', 'चौदह', 'पन्द्रह', 'सोलह', 'सत्रह', 'अठारह', 'उन्नीस', 'बीस',
-  'इक्कीस', 'बाईस', 'तेईस', 'चौबीस', 'पच्चीस', 'छब्बीस', 'सत्ताईस', 'अट्ठाईस', 'उनतीस', 'तीस',
-  'इकतीस', 'बत्तीस', 'तैंतीस', 'चौंतीस', 'पैंतीस', 'छत्तीस', 'सैंतीस', 'अड़तीस', 'उनतालीस', 'चालीस',
-  'इकतालीस', 'बयालीस', 'तैंतालीस', 'चौवालीस', 'पैंतालीस', 'छियालीस', 'सैंतालीस', 'अड़तालीस', 'उनचास', 'पचास',
-  'इक्यावन', 'बावन', 'तिरेपन', 'चौवन', 'पचपन', 'छप्पन', 'सत्तावन', 'अट्ठावन', 'उनसठ', 'साठ',
-  'इकसठ', 'बासठ', 'तिरसठ', 'चौंसठ', 'पैंसठ', 'छियासठ', 'सड़सठ', 'अड़सठ', 'उनहत्तर', 'सत्तर',
-  'इकहत्तर', 'बहत्तर', 'तिहत्तर', 'चौहत्तर', 'पचहत्तर', 'छिहत्तर', 'सतहत्तर', 'अठहत्तर', 'उनासी', 'अस्सी',
-  'इक्यासी', 'बयासी', 'तिरासी', 'चौरासी', 'पचासी', 'छियासी', 'सत्तासी', 'अट्ठासी', 'नवासी', 'नब्बे',
-  'इक्यानवे', 'बानवे', 'तिरानवे', 'चौरानवे', 'पंचानवे', 'छियानवे', 'सत्तानवे', 'अट्ठानवे', 'निन्यानवे', 'सौ'
-];
-if (numberWords.length !== 101) throw new Error('Expected names for every number from 0 to 100.');
 
 const numberWordCards = numberWords.map((word, value) => ({ value, number: String(value), word }));
 const largeNumberCards = [
@@ -2076,7 +2231,7 @@ function renderNumberWordCard() {
     numberFlipped = false;
     renderNumberWordCard();
   });
-  card.querySelector('#number-word-cheat').addEventListener('click', openNumberWordCheat);
+  card.querySelector('#number-word-cheat').addEventListener('click', () => openNumberWordCheat());
 }
 
 function finishNumberWords() {
@@ -2088,8 +2243,7 @@ function finishNumberWords() {
   card.querySelector('#number-words-home').addEventListener('click', goToDigitsMenu);
 }
 
-function openNumberWordCheat() {
-  const trigger = card.querySelector('#number-word-cheat');
+function openNumberWordCheat(trigger = card.querySelector('#number-word-cheat')) {
   const overlay = document.createElement('div');
   overlay.className = 'digit-cheat-overlay';
   overlay.innerHTML = `<section class="digit-cheat-dialog word-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="word-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">Шпаргалка</p><h2 id="word-cheat-title">Числа от 0 до 100</h2><label class="word-cheat-label" for="word-cheat-search">Найти число или слово</label><input id="word-cheat-search" class="word-cheat-search" type="search" inputmode="search" placeholder="Например, 54 или चौवन" /><div class="word-cheat-grid">${numberWordCards.map(({ number, word }) => `<div class="word-cheat-item" data-word-search="${number} ${word}"><b>${number}</b><span lang="hi">${word}</span></div>`).join('')}</div><section class="word-cheat-extra"><h3>Большие числа</h3><div class="word-cheat-grid">${largeNumberCards.map(({ number, word }) => `<div class="word-cheat-item" data-word-search="${number.replace(/[\s,]/g, '')} ${word}"><b>${number}</b><span lang="hi">${word}</span></div>`).join('')}</div></section></section>`;
@@ -2117,6 +2271,7 @@ wordCountPicker.querySelectorAll('[data-word-count]').forEach(button => button.a
 }));
 document.querySelector('#digits-site-title')?.addEventListener('click', goToDigitsMenu);
 document.querySelector('#digits-back-menu')?.addEventListener('click', goToDigitsMenu);
+return { openNumberWordCheat };
 }
 
     </script>
