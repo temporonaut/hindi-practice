@@ -66,8 +66,11 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 @media (prefers-reduced-motion:reduce){.message.outgoing.is-sent,.message.incoming.is-received{animation:none}.chat-messages{scroll-behavior:auto}}
 @media (hover:none) and (pointer:coarse){.flashcard,.flashcard-inner,.flashcard-face{-webkit-transform-style:preserve-3d}.flashcard-inner{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}.flashcard.flipped .flashcard-inner{-webkit-transform:rotateY(180deg) translateZ(0);transform:rotateY(180deg) translateZ(0)}.flashcard-face{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(.1px);transform:translateZ(.1px)}.flashcard-face.ru{-webkit-transform:rotateY(180deg) translateZ(.1px);transform:rotateY(180deg) translateZ(.1px)}}
 .flashcard{-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.digit-sequence-display{display:flex;align-items:baseline;justify-content:center;gap:clamp(8px,3vw,38px);font-size:clamp(40px,9vw,92px);white-space:nowrap}
+.digit-sequence-token{display:inline-block;flex:0 0 1em;width:1em;text-align:center}
 .digit-sequence-answer.correct{color:var(--green)}
 .digit-sequence-answer.wrong{color:var(--pink)}
+.feedback.digit-feedback.wrong{background:#fff0f3;color:#a32850}
 
 .mode-option[hidden],.back-link[hidden]{display:none!important}
 .difficulty-picker .back-link{justify-self:start;margin:0 0 5px}
@@ -928,6 +931,16 @@ let digitSeriesIndex = 0;
 let digitSeriesHadError = false;
 let digitComposeSelection = [];
 let lastDigitKeyOrder = '';
+let lastDigitFeedback = '';
+const digitFeedbackLines = {
+  correct: ['В яблочко!', 'Есть контакт!', 'Вернее некуда!', 'Точно в цель!', 'Бинго!', 'Разгадано!'],
+  wrong: ['Небольшая ловушка!', 'Почти поймали!', 'Деванагари решила схитрить.', 'Ответ прятался рядом.', 'Разберём этот фокус.']
+};
+function pickDigitFeedback(correct) {
+  const choices = digitFeedbackLines[correct ? 'correct' : 'wrong'].filter(line => line !== lastDigitFeedback);
+  lastDigitFeedback = choices[Math.floor(Math.random() * choices.length)];
+  return lastDigitFeedback;
+}
 const card = document.querySelector('#game-card');
 const progress = document.querySelector('#progress-fill');
 const appShell = document.querySelector('.app-shell');
@@ -1133,8 +1146,11 @@ function bindDigitCheat() {
 }
 function digitSeriesMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
+  const sequence = item.type === 'digit-series' && stage.display
+    ? stage.display.split('　').map(glyph => `<span class="digit-sequence-token${glyph === '＿' ? ' digit-sequence-answer' : ''}">${glyph}</span>`).join('')
+    : null;
   const detail = stage.display
-    ? `<div class="digit-display" lang="hi">${stage.display.replace('＿', '<span class="digit-sequence-answer">＿</span>')}</div>`
+    ? `<div class="digit-display${sequence ? ' digit-sequence-display' : ''}" lang="hi">${sequence || stage.display}</div>`
     : `<div class="scenario digit-context">${stage.prompt}</div>`;
   return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p>${stage.display ? `<p class="digit-prompt">${stage.prompt}</p>` : ''}${detail}${answersMarkup(stage.choices, 'choice-grid digit-choices')}</div>`;
 }
@@ -1199,6 +1215,7 @@ function showFeedback(correct, explanation, wrongExplanation) {
   feedback.className = 'feedback';
   feedback.textContent = correct ? explanation : wrongExplanation || 'Почти! Посмотри на выделенный правильный вариант — и запомни его.';
   card.append(feedback);
+  return feedback;
 }
 function addNext(label, callback, scrollDelay = 0, scrollCardAfterClick = true) {
   const next = document.createElement('button');
@@ -1430,7 +1447,8 @@ function answerDigitStage(item, correct, isReview = false) {
     digitSeriesHadError = true;
     if (!isReview) rememberMistake();
   }
-  showFeedback(correct, stage.explanation, `Правильный ответ: ${item.type === 'digit-compose' ? stage.correct : stage.choices[stage.answer]}.`);
+  const feedback = `${pickDigitFeedback(correct)} ${stage.explanation}`;
+  showFeedback(correct, feedback, feedback).classList.add('digit-feedback', correct ? 'correct' : 'wrong');
   const isLast = digitSeriesIndex === item.questions.length - 1;
   addNext(isLast ? (isReview ? 'К результату →' : current === total() - 1 ? 'Посмотреть результат →' : 'Следующее задание →') : 'Следующий вопрос →', () => {
     digitComposeSelection = [];
