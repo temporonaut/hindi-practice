@@ -1766,9 +1766,9 @@ function finishFlashcards() {
   document.querySelector('#progress-text').textContent = digitLesson ? 'Все карточки просмотрены' : 'Все слова просмотрены';
   const noun = digitLesson ? `${flashcardDeck.length} карточек с цифрами деванагари` : `${flashcardDeck.length} ${wordCountWord(flashcardDeck.length)} этого урока`;
   document.querySelector('#score-text').textContent = digitLesson ? `${flashcardDeck.length} карточек` : `${flashcardDeck.length} ${wordCountWord(flashcardDeck.length)}`;
-  card.innerHTML = `<p class="game-label">Готово · карточки</p><h2 class="game-title">${digitLesson ? 'Цифры просмотрены' : 'Слово за словом — пройдено'}</h2><div class="flashcard-finish">Вы просмотрели все ${noun}. В новом круге они снова перемешаются.</div><div class="finish-actions"><button class="next restart" id="restart-flashcards">Ещё раз</button><button class="next blitz-button" id="to-game">Игровая практика →</button>${homeButtonMarkup()}</div>`;
+  card.innerHTML = `<p class="game-label">Готово · карточки</p><h2 class="game-title">${digitLesson ? 'Цифры просмотрены' : 'Слово за словом — пройдено'}</h2><div class="flashcard-finish">Вы просмотрели все ${noun}. В новом круге они снова перемешаются.</div><div class="finish-actions"><button class="next restart" id="restart-flashcards">Ещё раз</button>${digitLesson ? '' : '<button class="next blitz-button" id="to-game">Игровая практика →</button>'}${homeButtonMarkup()}</div>`;
   document.querySelector('#restart-flashcards').addEventListener('click', () => startFlashcardMode(flashcardCount));
-  document.querySelector('#to-game').addEventListener('click', () => openLesson(activeLesson.data.id));
+  document.querySelector('#to-game')?.addEventListener('click', () => openLesson(activeLesson.data.id));
   bindHomeButton();
 }
 function shuffleBlitz(items) { return [...items].sort(() => Math.random() - .5); }
