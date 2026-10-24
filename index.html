@@ -91,7 +91,7 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .mode-option#start-word-cards .mode-icon{background:#ffe3eb;color:var(--pink)}
 .mode-option#start-number-game .mode-icon{background:var(--pink);color:#fff}
 .mode-option#start-word-cards .mode-icon{font-family:"Nunito Sans",sans-serif;font-size:18px}
-.mode-option#start-large-numbers .mode-icon{background:#e7f0ed;color:var(--ink);font-family:"Noto Sans Devanagari",sans-serif}
+.mode-option#start-large-numbers .mode-icon{background:#397d90;color:#fff}
 .number-table-open{width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;grid-column:1/-1;border:1.5px solid var(--line);border-radius:14px;padding:11px 17px;background:var(--paper);color:var(--ink);font:inherit;font-size:14px;font-weight:900;text-align:left;cursor:pointer}
 .number-table-open[hidden]{display:none!important}.number-table-open:hover{border-color:var(--pink);color:var(--pink)}
 .digit-flashcard .flashcard-face{gap:11px}
@@ -100,6 +100,18 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .digit-flashcard~.flashcard-actions{margin-top:28px}
 .flashcard-controls{flex-wrap:wrap}
 .large-number-display{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;font-family:"Nunito Sans",sans-serif;font-size:clamp(30px,7vw,58px);line-height:1.1;white-space:nowrap}
+.large-input-round .large-number-display{margin:24px auto 30px}
+.large-input-form{display:grid;gap:9px;width:min(100%,520px);margin:0 auto}
+.large-input-form label{color:var(--ink);font-size:15px;font-weight:900}
+.large-input-control{display:flex;align-items:center;gap:10px;min-width:0}
+.large-input-answer{width:100%;min-width:0;min-height:58px;padding:11px 15px;border:2px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font:inherit;font-size:clamp(22px,5vw,30px);font-weight:900;text-align:center;font-variant-numeric:tabular-nums}
+.large-input-answer::placeholder{color:#aeb9bb;opacity:1}
+.large-input-answer:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.large-input-form.correct .large-input-answer{border-color:var(--green);background:#effaf5;color:var(--green)}
+.large-input-form.wrong .large-input-answer{border-color:var(--pink);background:#fff0f3;color:var(--pink)}
+.large-input-unit{flex:0 0 auto;color:var(--ink);font-size:15px;font-weight:900;white-space:nowrap}
+.large-input-form small{color:#6e8993;font-size:12px;font-weight:800}
+.large-input-submit{justify-self:start;margin-top:12px}
 .large-number-match .match-card{font-family:"Nunito Sans",sans-serif;font-size:clamp(12px,2.3vw,20px);overflow-wrap:anywhere;text-align:center}
 .large-number-word-match .match-column:first-child .match-card{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(15px,2.3vw,20px)}
 .word-scope{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:5px;border-radius:15px;background:#e7f0ed}
@@ -114,12 +126,35 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .word-flashcard[data-number-size="lakh"] .flashcard-face.number-face b{max-width:100%;font-size:clamp(42px,9vw,68px);white-space:nowrap}
 .word-flashcard[data-number-size="crore"] .flashcard-face.number-face b{max-width:100%;font-size:clamp(34px,7vw,54px);white-space:nowrap}
 .word-flashcard .flashcard-face.word-face b{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(31px,5vw,48px);line-height:1.25}
-.word-cheat-dialog{width:min(100%,760px);max-height:min(88vh,760px)}
+.word-cheat-dialog{width:min(100%,1540px);max-height:min(92vh,900px)}
 .word-cheat-dialog h3{margin:23px 0 10px;color:var(--ink);font-size:18px}
 .word-cheat-label{display:block;margin-bottom:7px;color:#587684;font-size:13px;font-weight:900}
 .word-cheat-search{width:100%;margin-bottom:16px;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink-dark);font:inherit}
 .word-cheat-search:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 .word-cheat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.word-cheat-extra .word-cheat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.word-cheat-extra .word-cheat-item{flex-wrap:wrap}
+.word-cheat-extra .word-cheat-item span{white-space:nowrap;overflow-wrap:normal}
+.word-cheat-main[hidden]{display:none!important}
+.word-cheat-scroll-hint{margin:0 0 7px;color:#78929a;font-size:12px;font-weight:800}
+.word-cheat-board{overflow-x:auto;padding:2px 2px 9px;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-color:#bdcfd0 transparent}
+.word-cheat-board:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.word-cheat-columns{display:grid;grid-template-columns:repeat(10,minmax(140px,1fr));gap:8px;min-width:1472px}
+.word-cheat-decade{display:grid;grid-template-rows:auto repeat(10,minmax(0,1fr));gap:5px;min-width:0;scroll-snap-align:start;--decade-ink:var(--ink);--decade-tint:#e7f0ed}
+.word-cheat-decade[data-tone="1"]{--decade-ink:#9f3d55;--decade-tint:#fae8ec}
+.word-cheat-decade[data-tone="2"]{--decade-ink:#835827;--decade-tint:#f8ecd9}
+.word-cheat-decade[data-tone="3"]{--decade-ink:#286a68;--decade-tint:#e0f0eb}
+.word-cheat-decade[data-tone="4"]{--decade-ink:#675780;--decade-tint:#eee9f5}
+.word-cheat-dialog .word-cheat-decade-title{margin:0;padding:8px 7px;border:1px solid var(--line);border-radius:9px;background:#f7f4ee;color:var(--ink);font-family:"Nunito Sans",sans-serif;font-size:13px;font-weight:900;text-align:center}
+.word-cheat-main.show-endings .word-cheat-decade-title{border-color:var(--decade-tint);background:var(--decade-tint);color:var(--decade-ink)}
+.word-cheat-decade .word-cheat-item{min-height:39px;padding:7px 6px;gap:5px}
+.word-cheat-decade .word-cheat-item b{min-width:20px;font-size:12px}
+.word-cheat-decade .word-cheat-item span{font-size:14px;white-space:nowrap;overflow-wrap:normal}
+.word-cheat-hundred{width:min(100%,154px);margin:10px 0 0 2px}
+.word-cheat-search-status{margin:-8px 0 10px;color:#587684;font-size:12px;font-weight:800}
+.word-cheat-search-status:empty{display:none}
+.word-cheat-item.search-dimmed{opacity:.55}
+.word-cheat-item.search-match{outline:2px solid var(--pink);outline-offset:-2px;background:#fff7f9}
 .word-cheat-item{display:flex;align-items:center;gap:8px;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:11px;background:#fff}
 .word-cheat-item[hidden]{display:none}
 .word-cheat-item b{min-width:25px;color:var(--pink);font-size:14px;font-weight:900}
@@ -129,12 +164,12 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .word-cheat-mode{border:1.5px solid var(--line);border-radius:999px;padding:8px 11px;background:#fff;color:var(--ink);font:inherit;font-size:12px;font-weight:900;cursor:pointer}
 .word-cheat-mode.active{border-color:var(--ink);background:var(--ink);color:#fff}
 .word-cheat-note{margin:0 0 12px;color:#587684;font-size:13px;font-weight:700;line-height:1.45}
-.word-cheat-item .word-cheat-ending{color:var(--pink);font-weight:900}
+.word-cheat-item .word-cheat-ending{padding:0 .12em;border-radius:4px;background:var(--decade-tint);color:var(--decade-ink);font-weight:900;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .word-bridge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .word-bridge-item{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;font-family:"Noto Sans Devanagari",sans-serif;font-size:14px;font-weight:800}
 .word-bridge-item[hidden]{display:none!important}
 .word-bridge-item b{color:var(--pink);font-family:"Nunito Sans",sans-serif}.word-bridge-item .bridge-arrow{color:#78929a}
-@media(max-width:700px){.word-cheat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.word-cheat-item{padding:8px}.word-cheat-item span{font-size:14px}}
+@media(max-width:700px){.word-cheat-dialog{padding:22px 15px 17px}.word-cheat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.word-cheat-extra .word-cheat-grid{grid-template-columns:1fr}.word-cheat-item{padding:8px}.word-cheat-item span{font-size:14px}}
 @media(max-width:520px){.word-bridge-grid{grid-template-columns:1fr}}
 @media(max-width:380px){.word-cheat-grid{grid-template-columns:1fr}}
 
@@ -237,7 +272,7 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
             <span class="lesson-arrow">→</span>
           </button>
           <button class="mode-option large-number-mode" id="start-large-numbers" type="button" hidden>
-            <span class="mode-icon">ल</span>
+            <span class="mode-icon">✦</span>
             <span><b>Большие числа</b><small>Лакхи, кроры и непривычные запятые</small></span>
             <span class="lesson-arrow">→</span>
           </button>
@@ -286,6 +321,12 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
           <button class="difficulty-option" data-number-level="warmup" type="button"><span class="difficulty-badge">1</span><span><b>Разминка</b><small>Числа 0–20 · 4 пары · по 3 вопроса</small></span><span class="lesson-arrow">→</span></button>
           <button class="difficulty-option" data-number-level="drive" type="button"><span class="difficulty-badge">2</span><span><b>Разгон</b><small>Числа 0–50 · 6 пар · по 6 вопросов</small></span><span class="lesson-arrow">→</span></button>
           <button class="difficulty-option pahalvaan-option" data-number-level="pahalvaan" type="button"><span class="difficulty-badge">💪</span><span><b>Pahalvaan</b><small>Числа 0–100 · 10 пар · по 10 вопросов</small></span><span class="lesson-arrow">→</span></button>
+        </div>
+        <div class="difficulty-picker" id="large-numbers-difficulty" hidden>
+          <button class="back-link" data-back-to-modes type="button">← К видам практики</button>
+          <p class="difficulty-intro">Выбери темп: сначала знакомые числа или сразу некруглые — без вариантов ответа.</p>
+          <button class="difficulty-option" data-large-level="warmup" type="button"><span class="difficulty-badge">1</span><span><b>Разминка</b><small>Лакхи, кроры и запись чисел · 4 задания</small></span><span class="lesson-arrow">→</span></button>
+          <button class="difficulty-option pahalvaan-option" data-large-level="pahalvaan" type="button"><span class="difficulty-badge">💪</span><span><b>Pahalvaan</b><small>Некруглые числа · 3 раунда с вводом ответа</small></span><span class="lesson-arrow">→</span></button>
         </div>
       </section>
 
@@ -1053,6 +1094,11 @@ const devanagariLargeNumbers = {
   taskCount: 4, heroTitle: 'Большие<br /><em>числа</em>'
 };
 
+const compositeLargeNumbers = [
+  3870000, 5430000, 9260000, 12450000, 16840000, 21640000,
+  30500000, 48350000, 61780000, 73290000, 87250000, 95670000
+];
+
 const largeNumberExamples = [
   { value: 1000000, word: 'दस लाख' },
   { value: 2000000, word: 'बीस लाख' },
@@ -1069,7 +1115,33 @@ const largeNumberExamples = [
 const westernNumber = value => new Intl.NumberFormat('en-US').format(value);
 const indianNumber = value => new Intl.NumberFormat('en-IN').format(value);
 
-function createLargeNumberRounds() {
+function createLargeNumberRounds(level = 'warmup') {
+  if (level === 'pahalvaan') {
+    const examples = shuffle(compositeLargeNumbers);
+    const typedQuestions = (values, kind) => values.map(value => {
+      const display = westernNumber(value);
+      const notation = indianNumber(value);
+      const divisor = kind === 'lakh' ? 100000 : 10000000;
+      const answer = kind === 'grouping' ? notation : String(value / divisor).replace('.', ',');
+      const unit = kind === 'lakh' ? '1 лакх' : '1 крор';
+      return {
+        value, display, largeDisplay: true, inputKind: kind, answer,
+        prompt: kind === 'grouping' ? 'Раздели разряды числа по лакхам и крорам.'
+          : `Сколько здесь ${kind === 'lakh' ? 'лакхов' : 'кроров'}? Введи только число.`,
+        unit: kind === 'grouping' ? '' : `× ${unit}`,
+        explanation: kind === 'grouping' ? `${display} → ${notation}.`
+          : `${display} = ${notation} = ${answer} × ${unit}.`
+      };
+    });
+    return [
+      { type: 'large-input', trainingTag: 'группировка некруглых чисел', label: 'Задание 1 · раздели разряды', title: 'Раздели разряды',
+        description: 'Запиши четыре числа, отделяя группы разрядов запятыми или точками.', questions: typedQuestions(examples.slice(0, 4), 'grouping') },
+      { type: 'large-input', trainingTag: 'некруглые числа в лакхах', label: 'Задание 2 · в лакхах', title: 'Сколько лакхов?',
+        description: 'Переведи четыре числа в лакхи. Дробную часть можно писать через запятую или точку.', questions: typedQuestions(examples.slice(4, 8), 'lakh') },
+      { type: 'large-input', trainingTag: 'некруглые числа в крорах', label: 'Задание 3 · в крорах', title: 'Сколько кроров?',
+        description: 'Переведи четыре числа в кроры. Ответ может быть меньше единицы.', questions: typedQuestions(examples.slice(8), 'crore') }
+    ];
+  }
   const firstMillion = largeNumberExamples[0];
   const others = largeNumberExamples.slice(1);
   const anchoredQuestions = () => [firstMillion, ...pickSome(others, 3)];
@@ -1119,7 +1191,7 @@ const lessons = {
   'large-numbers': { data: devanagariLargeNumbers, createRounds: createLargeNumberRounds }
 };
 const isNumberPractice = id => id === 'digits' || id === 'numbers' || id === 'large-numbers';
-const hasNumberCheat = id => id === 'digits' || id === 'numbers';
+const hasNumberCheat = id => id === 'digits' || id === 'numbers' || id === 'large-numbers';
 const semanticTranslations = {
   'ईमानदार': 'честный', 'उदार': 'щедрый', 'मेहनती': 'трудолюбивый', 'संस्कारी': 'воспитанный, традиционный', 'होशियार': 'смышлёный',
   'बहादुर': 'смелый', 'दयालु': 'добрый', 'नादां': 'наивный, простой', 'शांत': 'спокойный', 'लापरवाह': 'беззаботный',
@@ -1200,6 +1272,7 @@ const startFlashcards = document.querySelector('#start-flashcards');
 const modeOptions = document.querySelector('.mode-options');
 const difficultyPicker = document.querySelector('#digits-difficulty');
 const numberDifficultyPicker = document.querySelector('#numbers-difficulty');
+const largeNumberDifficultyPicker = document.querySelector('#large-numbers-difficulty');
 const flashcardCountPicker = document.querySelector('#digits-flashcard-counts');
 const wordCountPicker = document.querySelector('#digits-word-counts');
 const startWordCards = document.querySelector('#start-word-cards');
@@ -1213,7 +1286,7 @@ const practiceStorageKey = 'hindi-practice-practice-v1';
 let learningProgress = loadLearningProgress();
 let practiceProgress = loadPracticeProgress();
 
-function roundPoints(round) { return round.type === 'chat' ? round.dialogue.length : round.type === 'emoji' ? round.emojiSeries.length : round.type === 'digit-series' || round.type === 'digit-compose' ? round.questions.length : 1; }
+function roundPoints(round) { return round.type === 'chat' ? round.dialogue.length : round.type === 'emoji' ? round.emojiSeries.length : ['digit-series', 'digit-compose', 'large-input'].includes(round.type) ? round.questions.length : 1; }
 function totalPoints() { return rounds.reduce((sum, round) => sum + roundPoints(round), 0); }
 function total() { return rounds.length; }
 function loadLearningProgress() {
@@ -1303,8 +1376,9 @@ function saveLastOpenedLesson(id) {
 }
 function saveCompletedLesson() {
   const id = activeLesson.data.id;
-  const oldScore = learningProgress[id]?.bestScore || 0;
-  learningProgress[id] = { completed: true, bestScore: Math.max(oldScore, score), maxScore: totalPoints() };
+  const oldResult = learningProgress[id];
+  const keepOldBest = oldResult?.bestScore > score;
+  learningProgress[id] = { completed: true, bestScore: keepOldBest ? oldResult.bestScore : score, maxScore: keepOldBest ? oldResult.maxScore || totalPoints() : totalPoints() };
   try { localStorage.setItem(progressStorageKey, JSON.stringify(learningProgress)); }
   catch { /* Игра остаётся рабочей, если браузер запретил локальное хранилище. */ }
   updateCatalogProgress();
@@ -1326,7 +1400,7 @@ function renderNavigation() {
     const label = round.label.split('·')[1].trim();
     return `<button class="round${index === current ? ' active' : ''}" data-round="${index}" aria-current="${index === current ? 'step' : 'false'}"><span>${index + 1}</span><b>${label.charAt(0).toUpperCase() + label.slice(1)}</b></button>`;
   }).join('');
-  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } if (rounds[current].type === 'emoji') { emojiStep = 0; emojiHadError = false; } if (['digit-series', 'digit-compose'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; } render(); }));
+  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } if (rounds[current].type === 'emoji') { emojiStep = 0; emojiHadError = false; } if (['digit-series', 'digit-compose', 'large-input'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; } render(); }));
 }
 
 function scoreWord(value) { return value === 1 ? 'балл' : value > 1 && value < 5 ? 'балла' : 'баллов'; }
@@ -1371,7 +1445,7 @@ function digitCheatMarkup() {
 }
 function bindDigitCheat() {
   card.querySelector('[data-digit-cheat]')?.addEventListener('click', () => {
-    if (activeLesson.data.id === 'numbers' && selectedDifficulty !== 'pahalvaan') {
+    if (['numbers', 'large-numbers'].includes(activeLesson.data.id) && selectedDifficulty !== 'pahalvaan') {
       numberWordMode.openNumberWordCheat(card.querySelector('[data-digit-cheat]'));
       return;
     }
@@ -1405,6 +1479,31 @@ function digitSeriesMarkup(item) {
         ? `<div class="digit-display${sequence ? ' digit-sequence-display' : ''}${stage.wordDisplay ? ' number-word-display' : ''}${stage.largeDisplay ? ' large-number-display' : ''}" ${stage.wordDisplay || sequence ? 'lang="hi"' : ''}>${sequence || stage.display}</div>`
         : '';
   return `<div class="digit-series"><p class="digit-progress">Вопрос ${digitSeriesIndex + 1} из ${item.questions.length}</p><p class="digit-prompt">${stage.prompt}</p>${detail}${answersMarkup(stage.choices, `choice-grid digit-choices${stage.wordChoices || stage.sequenceWords || (stage.compare && activeLesson.data.id === 'numbers') ? ' number-word-choices' : ''}`)}</div>`;
+}
+function largeInputMarkup(item) {
+  const stage = item.questions[digitSeriesIndex];
+  return `<div class="large-input-round"><p class="digit-progress">Число ${digitSeriesIndex + 1} из ${item.questions.length}</p><p class="digit-prompt">${stage.prompt}</p><div class="large-number-display">${stage.display}</div><form class="large-input-form"><label for="large-input-answer">${stage.inputKind === 'grouping' ? 'Запись по лакхам и крорам' : 'Твой ответ'}</label><div class="large-input-control"><input id="large-input-answer" class="large-input-answer" type="text" inputmode="${stage.inputKind === 'grouping' ? 'text' : 'decimal'}" autocomplete="off" spellcheck="false" placeholder="${stage.inputKind === 'grouping' ? 'Например: 12,34,567' : 'Введите число'}" required aria-describedby="large-input-hint" />${stage.unit ? `<span class="large-input-unit">${stage.unit}</span>` : ''}</div><small id="large-input-hint">${stage.inputKind === 'grouping' ? 'Разделяй разряды запятыми или точками.' : 'Можно ввести дробную часть через запятую или точку.'}</small><button class="semantic-check large-input-submit" type="submit">Проверить</button></form></div>`;
+}
+function parseLargeAnswer(input, kind) {
+  const digits = input.trim().replace(/[०-९]/g, digit => String(digit.charCodeAt(0) - 0x0966));
+  if (kind === 'grouping') return digits.replace(/\s/g, '').replace(/\./g, ',');
+  const normalized = digits.replace(/\s/g, '').replace(',', '.');
+  return /^\d+(?:\.\d+)?$/.test(normalized) ? Number(normalized) : NaN;
+}
+function bindLargeInput(item) {
+  const form = card.querySelector('.large-input-form');
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const stage = item.questions[digitSeriesIndex];
+    const input = form.querySelector('.large-input-answer');
+    const actual = parseLargeAnswer(input.value, stage.inputKind);
+    const expected = parseLargeAnswer(stage.answer, stage.inputKind);
+    const correct = actual === expected;
+    input.disabled = true;
+    form.querySelector('button').disabled = true;
+    form.classList.add(correct ? 'correct' : 'wrong');
+    answerDigitStage(item, correct);
+  });
 }
 function digitComposeMarkup(item) {
   const stage = item.questions[digitSeriesIndex];
@@ -1451,6 +1550,7 @@ function render() {
   if (item.type === 'chat') inner += chatMarkup(item);
   if (item.type === 'digit-series') inner += digitSeriesMarkup(item);
   else if (item.type === 'digit-compose') inner += digitComposeMarkup(item);
+  else if (item.type === 'large-input') inner += largeInputMarkup(item);
   card.innerHTML = inner;
   bindDigitCheat();
   card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
@@ -1459,6 +1559,7 @@ function render() {
   card.querySelector('[data-semantic-check]')?.addEventListener('click', () => checkSemantic(item));
   if (item.type === 'order') bindOrder(item);
   if (item.type === 'digit-compose') bindDigitCompose(item);
+  if (item.type === 'large-input') bindLargeInput(item);
   if (item.type === 'chat') scrollChatMessages(false);
   matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
 }
@@ -1856,7 +1957,7 @@ function finish() {
     card.innerHTML = `<p class="game-label">Ещё не всё</p><h2 class="game-title">Осталось одно дело</h2><div class="finish">Чтобы завершить урок и сохранить результат, пройди все задания.</div><button class="next restart" id="continue-pending">К незавершённому заданию</button>`;
     document.querySelector('#continue-pending').addEventListener('click', () => {
       current = pending;
-      if (['digit-series', 'digit-compose'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; }
+      if (['digit-series', 'digit-compose', 'large-input'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; }
       render();
     });
     return;
@@ -1874,12 +1975,13 @@ function finish() {
   progress.style.width = '100%';
   document.querySelector('#progress-text').textContent = isNumberPractice(activeLesson.data.id) ? 'Практика пройдена' : 'Урок пройден';
   const lessonName = activeLesson.data.shortLabel ? activeLesson.data.title : `Урок ${activeLesson.data.id}`;
+  const typedLargeNumbers = activeLesson.data.id === 'large-numbers' && selectedDifficulty === 'pahalvaan';
   const resultCopy = digitsStandalone
-    ? 'Можно пройти практику ещё раз или проверить себя в минутном блице.'
-    : 'Можно повторить урок, перейти к другим материалам или проверить себя в минутном блице.';
-  card.innerHTML = `<p class="game-label">Готово · ${lessonName}</p><h2 class="game-title">Хорошая практика!</h2><div class="finish">Ваш результат: <strong>${score} из ${totalPoints()}</strong>.<br>${resultCopy}</div><div class="finish-actions"><button class="next restart" id="restart">Пройти ещё раз</button><button class="next blitz-button" id="start-blitz">Минутный блиц →</button>${homeButtonMarkup()}</div>`;
+    ? typedLargeNumbers ? 'Можно пройти Pahalvaan ещё раз или выбрать другую практику.' : 'Можно пройти практику ещё раз или проверить себя в минутном блице.'
+    : typedLargeNumbers ? 'Можно пройти Pahalvaan ещё раз или перейти к другим материалам.' : 'Можно повторить урок, перейти к другим материалам или проверить себя в минутном блице.';
+  card.innerHTML = `<p class="game-label">Готово · ${lessonName}</p><h2 class="game-title">Хорошая практика!</h2><div class="finish">Ваш результат: <strong>${score} из ${totalPoints()}</strong>.<br>${resultCopy}</div><div class="finish-actions"><button class="next restart" id="restart">Пройти ещё раз</button>${typedLargeNumbers ? '' : '<button class="next blitz-button" id="start-blitz">Минутный блиц →</button>'}${homeButtonMarkup()}</div>`;
   document.querySelector('#restart').addEventListener('click', () => { rounds = activeLesson.createRounds(isNumberPractice(activeLesson.data.id) ? selectedDifficulty : undefined); resetProgress(); renderNavigation(); render(); });
-  document.querySelector('#start-blitz').addEventListener('click', startBlitz);
+  document.querySelector('#start-blitz')?.addEventListener('click', startBlitz);
   bindHomeButton();
 }
 function buildPracticeRounds(lessonId) {
@@ -1930,6 +2032,7 @@ function openLessonMode(lessonId) {
   backToLessons.hidden = false;
   difficultyPicker.hidden = true;
   numberDifficultyPicker.hidden = true;
+  largeNumberDifficultyPicker.hidden = true;
   flashcardCountPicker.hidden = true;
   wordCountPicker.hidden = true;
   startWordCards.hidden = lessonId !== 'digits';
@@ -2143,6 +2246,7 @@ function openLesson(lessonId, difficulty = selectedDifficulty) {
   rounds = activeLesson.createRounds(isNumberPractice(lessonId) ? selectedDifficulty : undefined);
   resetProgress();
   updateLessonChrome();
+  if (lessonId === 'large-numbers' && selectedDifficulty === 'pahalvaan') document.querySelector('#lesson-task-count').textContent = 'Pahalvaan · 3 задания';
   renderNavigation();
   appShell.classList.remove('selecting', 'choosing-mode', 'flashcards', 'blitzing');
   render();
@@ -2166,6 +2270,7 @@ startGame.addEventListener('click', () => {
   flashcardCountPicker.hidden = true;
   wordCountPicker.hidden = true;
   numberDifficultyPicker.hidden = true;
+  largeNumberDifficultyPicker.hidden = true;
   modeTitle.textContent = 'Выбери уровень';
   modeSubtitle.textContent = 'Спокойная разминка, уверенный разгон или испытание Pahalvaan.';
   modeOptions.hidden = true;
@@ -2179,11 +2284,23 @@ startNumberGame.addEventListener('click', () => {
   modeOptions.hidden = true;
   backToLessons.hidden = true;
   difficultyPicker.hidden = true;
+  largeNumberDifficultyPicker.hidden = true;
   flashcardCountPicker.hidden = true;
   wordCountPicker.hidden = true;
   numberDifficultyPicker.hidden = false;
 });
-startLargeNumbers.addEventListener('click', () => openLesson('large-numbers'));
+startLargeNumbers.addEventListener('click', () => {
+  modeTitle.textContent = 'Большие числа';
+  modeSubtitle.textContent = 'Разминка или Pahalvaan — некруглые числа с вводом ответа.';
+  modeOptions.hidden = true;
+  backToLessons.hidden = true;
+  difficultyPicker.hidden = true;
+  numberDifficultyPicker.hidden = true;
+  flashcardCountPicker.hidden = true;
+  wordCountPicker.hidden = true;
+  largeNumberDifficultyPicker.hidden = false;
+});
+largeNumberDifficultyPicker.querySelectorAll('[data-large-level]').forEach(button => button.addEventListener('click', () => openLesson('large-numbers', button.dataset.largeLevel)));
 numberDifficultyPicker.querySelectorAll('[data-number-level]').forEach(button => button.addEventListener('click', () => openLesson('numbers', button.dataset.numberLevel)));
 flashcardCountPicker.querySelectorAll('[data-flashcard-count]').forEach(button => button.addEventListener('click', () => startFlashcardMode(Number(button.dataset.flashcardCount))));
 startFlashcards.addEventListener('click', () => {
@@ -2194,6 +2311,7 @@ startFlashcards.addEventListener('click', () => {
   backToLessons.hidden = true;
   difficultyPicker.hidden = true;
   numberDifficultyPicker.hidden = true;
+  largeNumberDifficultyPicker.hidden = true;
   wordCountPicker.hidden = true;
   flashcardCountPicker.hidden = false;
 });
@@ -2354,6 +2472,7 @@ function finishNumberWords() {
 }
 
 function recurringEnding(value, word) {
+  if (value >= 11 && value <= 18 && word.endsWith('ह')) return 'ह';
   const twenties = { 20: 'बीस', 21: 'कीस', 22: 'ईस', 23: 'ईस', 24: 'बीस', 25: 'चीस', 26: 'बीस', 27: 'ईस', 28: 'ईस' };
   if (twenties[value] && word.endsWith(twenties[value])) return twenties[value];
   if (value >= 31 && value <= 38 && word.endsWith('तीस')) return 'तीस';
@@ -2366,11 +2485,23 @@ function recurringEnding(value, word) {
   return '';
 }
 
+function numberWordItem({ number, word, value }) {
+  return `<div class="word-cheat-item" data-word-search="${number} ${word}"><b>${number}</b><span lang="hi" data-word-value="${value}">${word}</span></div>`;
+}
+
+function numberWordColumns() {
+  return Array.from({ length: 10 }, (_, decade) => {
+    const start = decade * 10;
+    const tone = decade === 0 ? 0 : (decade - 1) % 4 + 1;
+    return `<section class="word-cheat-decade" data-tone="${tone}" aria-label="Числа ${start}–${start + 9}"><h3 class="word-cheat-decade-title">${start}–${start + 9}</h3>${numberWordCards.slice(start, start + 10).map(numberWordItem).join('')}</section>`;
+  }).join('');
+}
+
 function openNumberWordCheat(trigger = card.querySelector('#number-word-cheat')) {
   const overlay = document.createElement('div');
   overlay.className = 'digit-cheat-overlay';
   const bridgeValues = Array.from({ length: 10 }, (_, index) => index * 10 + 9);
-  overlay.innerHTML = `<section class="digit-cheat-dialog word-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="word-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">Таблица чисел</p><h2 id="word-cheat-title">Числа от 0 до 100</h2><div class="word-cheat-modes" role="group" aria-label="Вид таблицы"><button class="word-cheat-mode active" data-table-mode="plain" type="button" aria-pressed="true">Обычный</button><button class="word-cheat-mode" data-table-mode="endings" type="button" aria-pressed="false">Похожие окончания</button><button class="word-cheat-mode" data-table-mode="bridges" type="button" aria-pressed="false">Перед круглым числом</button></div><p class="word-cheat-note" id="word-cheat-note">Все названия чисел — без подсветки.</p><label class="word-cheat-label" for="word-cheat-search">Найти число или слово</label><input id="word-cheat-search" class="word-cheat-search" type="search" inputmode="search" placeholder="Например, 54 или चौवन" /><div class="word-cheat-grid" id="word-cheat-main">${numberWordCards.map(({ number, word, value }) => `<div class="word-cheat-item" data-word-search="${number} ${word}"><b>${number}</b><span lang="hi" data-word-value="${value}">${word}</span></div>`).join('')}</div><section class="word-cheat-extra"><h3>Большие числа</h3><div class="word-cheat-grid">${largeNumberCards.map(({ number, word }) => `<div class="word-cheat-item" data-word-search="${number.replace(/[\s,]/g, '')} ${word}"><b>${number}</b><span lang="hi">${word}</span></div>`).join('')}</div></section><div class="word-bridge-grid" id="word-cheat-bridges" hidden>${bridgeValues.map(value => `<div class="word-bridge-item" data-word-search="${value} ${numberWords[value]} ${value + 1} ${numberWords[value + 1]}"><b>${value}</b><span lang="hi">${numberWords[value]}</span><span class="bridge-arrow">→</span><b>${value + 1}</b><span lang="hi">${numberWords[value + 1]}</span></div>`).join('')}</div></section>`;
+  overlay.innerHTML = `<section class="digit-cheat-dialog word-cheat-dialog" role="dialog" aria-modal="true" aria-labelledby="word-cheat-title"><button class="digit-cheat-close" type="button" aria-label="Закрыть">×</button><p class="eyebrow">Таблица чисел</p><h2 id="word-cheat-title">Числа от 0 до 100</h2><div class="word-cheat-modes" role="group" aria-label="Вид таблицы"><button class="word-cheat-mode active" data-table-mode="plain" type="button" aria-pressed="true">Обычный</button><button class="word-cheat-mode" data-table-mode="endings" type="button" aria-pressed="false">Похожие окончания</button><button class="word-cheat-mode" data-table-mode="bridges" type="button" aria-pressed="false">Перед круглым числом</button></div><p class="word-cheat-note" id="word-cheat-note">Все названия чисел — без подсветки.</p><label class="word-cheat-label" for="word-cheat-search">Найти число или слово</label><input id="word-cheat-search" class="word-cheat-search" type="search" inputmode="search" placeholder="Например, 54 или चौवन" /><p class="word-cheat-search-status" id="word-cheat-search-status" role="status" aria-live="polite"></p><div class="word-cheat-main" id="word-cheat-main"><p class="word-cheat-scroll-hint">← Листайте десятки →</p><div class="word-cheat-board" tabindex="0" role="region" aria-label="Таблица чисел по десяткам, листайте горизонтально"><div class="word-cheat-columns">${numberWordColumns()}</div></div><div class="word-cheat-hundred">${numberWordItem(numberWordCards[100])}</div><section class="word-cheat-extra"><h3>Большие числа</h3><div class="word-cheat-grid">${largeNumberCards.map(({ number, word }) => `<div class="word-cheat-item" data-word-search="${number.replace(/[\s,]/g, '')} ${word}"><b>${number}</b><span lang="hi">${word}</span></div>`).join('')}</div></section></div><div class="word-bridge-grid" id="word-cheat-bridges" hidden>${bridgeValues.map(value => `<div class="word-bridge-item" data-word-search="${value} ${numberWords[value]} ${value + 1} ${numberWords[value + 1]}"><b>${value}</b><span lang="hi">${numberWords[value]}</span><span class="bridge-arrow">→</span><b>${value + 1}</b><span lang="hi">${numberWords[value + 1]}</span></div>`).join('')}</div></section>`;
   document.body.append(overlay);
   const close = () => { overlay.remove(); document.removeEventListener('keydown', onKeyDown); trigger?.focus(); };
   const onKeyDown = event => { if (event.key === 'Escape') close(); };
@@ -2379,13 +2510,35 @@ function openNumberWordCheat(trigger = card.querySelector('#number-word-cheat'))
   document.addEventListener('keydown', onKeyDown);
   const search = overlay.querySelector('#word-cheat-search');
   const main = overlay.querySelector('#word-cheat-main');
+  const board = overlay.querySelector('.word-cheat-board');
   const extra = overlay.querySelector('.word-cheat-extra');
   const bridges = overlay.querySelector('#word-cheat-bridges');
+  const searchStatus = overlay.querySelector('#word-cheat-search-status');
   let tableMode = 'plain';
   const applySearch = () => {
     const query = search.value.trim().toLocaleLowerCase('hi');
-    overlay.querySelectorAll('[data-word-search]').forEach(item => { item.hidden = !item.dataset.wordSearch.toLocaleLowerCase('hi').includes(query); });
+    let matchCount = 0;
+    let firstMatch = null;
+    main.querySelectorAll('[data-word-search]').forEach(item => {
+      const matches = item.dataset.wordSearch.toLocaleLowerCase('hi').includes(query);
+      item.hidden = Boolean(query) && !matches && item.closest('.word-cheat-extra') !== null;
+      item.classList.toggle('search-match', Boolean(query) && matches);
+      item.classList.toggle('search-dimmed', Boolean(query) && !matches && item.closest('.word-cheat-extra') === null);
+      if (matches && query) { matchCount++; firstMatch ||= item; }
+    });
+    let bridgeMatches = 0;
+    bridges.querySelectorAll('[data-word-search]').forEach(item => {
+      item.hidden = Boolean(query) && !item.dataset.wordSearch.toLocaleLowerCase('hi').includes(query);
+      if (!item.hidden && query) bridgeMatches++;
+    });
     extra.hidden = tableMode === 'bridges' || ![...extra.querySelectorAll('.word-cheat-item')].some(item => !item.hidden);
+    const visibleMatches = tableMode === 'bridges' ? bridgeMatches : matchCount;
+    searchStatus.textContent = query ? visibleMatches ? `Совпадений: ${visibleMatches}` : 'Ничего не найдено' : '';
+    if (query && firstMatch?.closest('.word-cheat-decade')) {
+      const column = firstMatch.closest('.word-cheat-decade');
+      const left = column.getBoundingClientRect().left - board.getBoundingClientRect().left + board.scrollLeft;
+      board.scrollTo({ left: Math.max(0, left - 4), behavior: 'smooth' });
+    }
   };
   search.addEventListener('input', applySearch);
   overlay.querySelectorAll('[data-table-mode]').forEach(button => button.addEventListener('click', () => {
@@ -2396,8 +2549,9 @@ function openNumberWordCheat(trigger = card.querySelector('#number-word-cheat'))
       option.setAttribute('aria-pressed', String(active));
     });
     main.hidden = tableMode === 'bridges';
+    main.classList.toggle('show-endings', tableMode === 'endings');
     bridges.hidden = tableMode !== 'bridges';
-    overlay.querySelector('#word-cheat-note').textContent = tableMode === 'plain' ? 'Все названия чисел — без подсветки.' : tableMode === 'endings' ? 'Выделены созвучные части. У чисел 20–28 «-ис» пишется по-разному — это подсказка для памяти, не правило.' : 'Посмотрите, как число перед круглым десятком связано со следующим.';
+    overlay.querySelector('#word-cheat-note').textContent = tableMode === 'plain' ? 'Все названия чисел — без подсветки.' : tableMode === 'endings' ? 'Цветом отмечены созвучные части каждого десятка, в числах 11–18 — «ह». Это подсказка для памяти, не правило.' : 'Посмотрите, как число перед круглым десятком связано со следующим.';
     overlay.querySelectorAll('[data-word-value]').forEach(span => {
       const value = Number(span.dataset.wordValue);
       const word = numberWords[value];
