@@ -1223,7 +1223,7 @@ let mistakes = [];
 let mistakeKeys = new Set();
 let reviewIndex = 0;
 let matchSelection = null;
-let matchedPairs = new Set();
+let matchedPairsByRound = new Map();
 let matchLocked = false;
 let semanticSelection = new Set();
 let orderSelection = [];
@@ -1384,7 +1384,7 @@ function saveCompletedLesson() {
   updateCatalogProgress();
 }
 function resetProgress() {
-  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; emojiStep = 0; emojiHadError = false; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairs = new Set(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false; trackedResults = new Set(); digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = [];
+  current = 0; score = 0; completed = new Set(); chatStep = 0; chatAnswers = []; emojiStep = 0; emojiHadError = false; mistakes = []; mistakeKeys = new Set(); reviewIndex = 0; matchSelection = null; matchedPairsByRound = new Map(); matchLocked = false; semanticSelection = new Set(); orderSelection = []; completingPending = false; trackedResults = new Set(); digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = [];
 }
 function updateLessonChrome() {
   const { id, title, subtitle, taskCount } = activeLesson.data;
@@ -1400,7 +1400,7 @@ function renderNavigation() {
     const label = round.label.split('·')[1].trim();
     return `<button class="round${index === current ? ' active' : ''}" data-round="${index}" aria-current="${index === current ? 'step' : 'false'}"><span>${index + 1}</span><b>${label.charAt(0).toUpperCase() + label.slice(1)}</b></button>`;
   }).join('');
-  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } if (rounds[current].type === 'emoji') { emojiStep = 0; emojiHadError = false; } if (['digit-series', 'digit-compose', 'large-input'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; } render(); }));
+  roundsNav.querySelectorAll('.round').forEach(button => button.addEventListener('click', () => { current = Number(button.dataset.round); matchSelection = null; matchLocked = false; if (rounds[current].type === 'chat') { chatStep = 0; chatAnswers = []; } if (rounds[current].type === 'emoji') { emojiStep = 0; emojiHadError = false; } if (['digit-series', 'digit-compose', 'large-input'].includes(rounds[current].type)) { digitSeriesIndex = 0; digitSeriesHadError = false; digitComposeSelection = []; } render(); }));
 }
 
 function scoreWord(value) { return value === 1 ? 'балл' : value > 1 && value < 5 ? 'балла' : 'баллов'; }
@@ -1555,13 +1555,17 @@ function render() {
   bindDigitCheat();
   card.querySelectorAll('[data-answer]').forEach(button => button.addEventListener('click', () => answer(Number(button.dataset.answer), button)));
   card.querySelectorAll('[data-match]').forEach(button => button.addEventListener('click', () => selectMatch(button)));
+  if (item.type === 'match' && completed.has(current)) {
+    showFeedback(true, 'Все пары уже собраны.');
+    addMatchNext();
+  }
   card.querySelectorAll('[data-semantic]').forEach(button => button.addEventListener('click', () => selectSemantic(button)));
   card.querySelector('[data-semantic-check]')?.addEventListener('click', () => checkSemantic(item));
   if (item.type === 'order') bindOrder(item);
   if (item.type === 'digit-compose') bindDigitCompose(item);
   if (item.type === 'large-input') bindLargeInput(item);
   if (item.type === 'chat') scrollChatMessages(false);
-  matchedPairs.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
+  matchedPairsByRound.get(current)?.forEach(key => card.querySelectorAll(`[data-key="${key}"]`).forEach(button => { button.classList.add('matched'); button.disabled = true; }));
 }
 function showFeedback(correct, explanation, wrongExplanation) {
   const feedback = document.createElement('div');
@@ -1627,6 +1631,23 @@ function rememberMistake() {
   mistakeKeys.add(current);
   mistakes.push(current);
 }
+function nextUnfinishedRoundIndex() {
+  for (let offset = 1; offset <= rounds.length; offset++) {
+    const index = (current + offset) % rounds.length;
+    if (!completed.has(index)) return index;
+  }
+  return -1;
+}
+function addMatchNext() {
+  const nextIndex = nextUnfinishedRoundIndex();
+  const label = nextIndex === -1 ? 'Посмотреть результат →' : nextIndex < current ? 'К незавершённому заданию →' : 'Следующее задание →';
+  addNext(label, () => {
+    const pending = nextUnfinishedRoundIndex();
+    if (pending === -1) { startReviewOrFinish(); return; }
+    current = pending;
+    render();
+  });
+}
 function selectMatch(button) {
   if (matchLocked || button.disabled) return;
   const candidate = { side: button.dataset.side, key: button.dataset.key, button };
@@ -1639,30 +1660,32 @@ function selectMatch(button) {
   }
   matchLocked = true;
   if (matchSelection.key === candidate.key) {
-    matchedPairs.add(candidate.key);
+    const roundMatchedPairs = matchedPairsByRound.get(current) || new Set();
+    roundMatchedPairs.add(candidate.key);
+    matchedPairsByRound.set(current, roundMatchedPairs);
     card.querySelectorAll(`[data-key="${candidate.key}"]`).forEach(cardButton => { cardButton.classList.remove('selected'); cardButton.classList.add('matched'); cardButton.setAttribute('aria-pressed', 'false'); cardButton.disabled = true; });
     matchSelection = null;
     matchLocked = false;
-    if (matchedPairs.size === rounds[current].pairs.length) {
+    if (roundMatchedPairs.size === rounds[current].pairs.length) {
       score++;
       recordPracticeResult(rounds[current], true);
       completed.add(current);
       document.querySelectorAll('.round')[current].classList.add('done');
       showFeedback(true, 'Все пары собраны. Отличная работа!');
-      addNext('Следующее задание →', () => { current++; render(); });
+      addMatchNext();
       updateHeader();
     }
     return;
   }
   recordPracticeResult(rounds[current], false);
-  matchSelection.button.classList.add('wrong');
+  const attemptedSelection = matchSelection;
+  attemptedSelection.button.classList.add('wrong');
   button.classList.add('wrong');
   window.setTimeout(() => {
-    matchSelection?.button.classList.remove('selected', 'wrong');
-    matchSelection?.button.setAttribute('aria-pressed', 'false');
+    attemptedSelection.button.classList.remove('selected', 'wrong');
+    attemptedSelection.button.setAttribute('aria-pressed', 'false');
     button.classList.remove('wrong');
-    matchSelection = null;
-    matchLocked = false;
+    if (matchSelection === attemptedSelection) { matchSelection = null; matchLocked = false; }
   }, 550);
 }
 function selectSemantic(button) {
