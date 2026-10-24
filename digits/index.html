@@ -127,6 +127,7 @@ body[data-digits-only="true"] .lesson-picker,body[data-digits-only="true"] #back
 .word-flashcard[data-number-size="crore"] .flashcard-face.number-face b{max-width:100%;font-size:clamp(34px,7vw,54px);white-space:nowrap}
 .word-flashcard .flashcard-face.word-face b{font-family:"Noto Sans Devanagari",sans-serif;font-size:clamp(31px,5vw,48px);line-height:1.25}
 .word-cheat-dialog{width:min(100%,1540px);max-height:min(92vh,900px)}
+.word-cheat-dialog.bridge-mode{width:min(100%,820px)}
 .word-cheat-dialog h3{margin:23px 0 10px;color:var(--ink);font-size:18px}
 .word-cheat-label{display:block;margin-bottom:7px;color:#587684;font-size:13px;font-weight:900}
 .word-cheat-search{width:100%;margin-bottom:16px;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink-dark);font:inherit}
@@ -2574,6 +2575,7 @@ function openNumberWordCheat(trigger = card.querySelector('#number-word-cheat'))
     main.hidden = tableMode === 'bridges';
     main.classList.toggle('show-endings', tableMode === 'endings');
     bridges.hidden = tableMode !== 'bridges';
+    overlay.querySelector('.word-cheat-dialog').classList.toggle('bridge-mode', tableMode === 'bridges');
     overlay.querySelector('#word-cheat-note').textContent = tableMode === 'plain' ? 'Все названия чисел — без подсветки.' : tableMode === 'endings' ? 'Цветом отмечены созвучные части каждого десятка, в числах 11–18 — «ह». Это подсказка для памяти, не правило.' : 'Посмотрите, как число перед круглым десятком связано со следующим.';
     overlay.querySelectorAll('[data-word-value]').forEach(span => {
       const value = Number(span.dataset.wordValue);
