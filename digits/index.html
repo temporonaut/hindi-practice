@@ -2473,7 +2473,7 @@ function finishNumberWords() {
 
 function recurringEnding(value, word) {
   if (value >= 11 && value <= 18 && word.endsWith('ह')) return 'ह';
-  const twenties = { 20: 'बीस', 21: 'कीस', 22: 'ईस', 23: 'ईस', 24: 'बीस', 25: 'चीस', 26: 'बीस', 27: 'ईस', 28: 'ईस' };
+  const twenties = { 21: 'कीस', 22: 'ईस', 23: 'ईस', 24: 'बीस', 25: 'चीस', 26: 'बीस', 27: 'ईस', 28: 'ईस' };
   if (twenties[value] && word.endsWith(twenties[value])) return twenties[value];
   if (value >= 31 && value <= 38 && word.endsWith('तीस')) return 'तीस';
   if (value >= 41 && value <= 48 && word.endsWith('लीस')) return 'लीस';
