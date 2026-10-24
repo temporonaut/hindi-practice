@@ -1096,8 +1096,11 @@ const devanagariLargeNumbers = {
 };
 
 const compositeLargeNumbers = [
-  3870000, 5430000, 9260000, 12450000, 16840000, 21640000,
-  30500000, 48350000, 61780000, 73290000, 87250000, 95670000
+  1240000, 2680000, 3870000, 4150000, 5430000, 6740000,
+  7890000, 9260000, 11320000, 12450000, 14760000, 16840000,
+  18930000, 21640000, 24580000, 28470000, 30500000, 34920000,
+  39760000, 48350000, 52180000, 57640000, 61780000, 68430000,
+  73290000, 78960000, 83710000, 87250000, 95670000, 99540000
 ];
 
 const largeNumberExamples = [
@@ -1140,7 +1143,7 @@ function createLargeNumberRounds(level = 'warmup') {
       { type: 'large-input', trainingTag: 'некруглые числа в лакхах', label: 'Задание 2 · в лакхах', title: 'Сколько лакхов?',
         description: 'Переведи четыре числа в лакхи. Дробную часть можно писать через запятую или точку.', questions: typedQuestions(examples.slice(4, 8), 'lakh') },
       { type: 'large-input', trainingTag: 'некруглые числа в крорах', label: 'Задание 3 · в крорах', title: 'Сколько кроров?',
-        description: 'Переведи четыре числа в кроры. Ответ может быть меньше единицы.', questions: typedQuestions(examples.slice(8), 'crore') }
+        description: 'Переведи четыре числа в кроры. Ответ может быть меньше единицы.', questions: typedQuestions(examples.slice(8, 12), 'crore') }
     ];
   }
   const firstMillion = largeNumberExamples[0];
